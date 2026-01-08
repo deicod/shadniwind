@@ -461,10 +461,10 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 > **Agents: 4** | After Stream 5.13 (Form Core) completes.
 
 ### 10.1 Field [DEP: 5.13] [INDEPENDENT]
-- [ ] Create `ui/field.tsx`
-- [ ] Part of forms system
-- [ ] Presentational wrapper (label/help/error)
-- [ ] Create manifest
+- [x] Create `ui/field.tsx`
+- [x] Part of forms system
+- [x] Presentational wrapper (label/help/error)
+- [x] Create manifest
 
 ### 10.2 Item [DEP: 5.13] [INDEPENDENT]
 - [ ] Create `ui/item.tsx`

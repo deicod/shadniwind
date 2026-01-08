@@ -1,0 +1,16 @@
+{
+  "name": "field",
+  "type": "registry:ui",
+  "title": "Field",
+  "description": "High-level presentational field wrapper combining label, control, description, and error messages. Built on Form Core components.",
+  "registryDependencies": [
+    "form-core"
+  ],
+  "files": [
+    {
+      "path": "components/ui/field.tsx",
+      "content": "import * as React from \"react\"\nimport { View, type ViewProps } from \"react-native\"\nimport { StyleSheet } from \"react-native-unistyles\"\nimport {\n  FormControl,\n  FormDescription,\n  FormLabel,\n  type FormLabelProps,\n  FormMessage,\n} from \"./form-core.js\"\n\nexport type FieldProps = ViewProps & {\n  /**\n   * Field label\n   */\n  label?: string\n  /**\n   * Helper/description text\n   */\n  description?: string\n  /**\n   * Error message to display\n   */\n  error?: string\n  /**\n   * Info message to display\n   */\n  info?: string\n  /**\n   * Whether the field is required\n   */\n  required?: boolean\n  /**\n   * Whether the field is disabled\n   */\n  disabled?: boolean\n  /**\n   * Label props passthrough\n   */\n  labelProps?: Omit<FormLabelProps, \"required\" | \"disabled\">\n}\n\n/**\n * Field component - high-level wrapper combining label, control, description, and messages.\n *\n * This is a presentational wrapper built on Form Core components.\n * Use for consistent field layout in forms.\n *\n * **Note:** This is presentational only - no state management or validation.\n * Use with form libraries like react-hook-form.\n *\n * @example\n * ```tsx\n * <Field\n *   label=\"Email\"\n *   description=\"We'll never share your email\"\n *   required\n *   error={errors.email?.message}\n * >\n *   <Input placeholder=\"Enter email\" />\n * </Field>\n * ```\n */\nexport const Field = React.forwardRef<\n  React.ComponentRef<typeof View>,\n  FieldProps\n>(\n  (\n    {\n      label,\n      description,\n      error,\n      info,\n      required,\n      disabled,\n      labelProps,\n      style,\n      children,\n      ...props\n    },\n    ref,\n  ) => {\n    return (\n      <View ref={ref} style={[styles.field, style]} {...props}>\n        {label && (\n          <FormLabel required={required} disabled={disabled} {...labelProps}>\n            {label}\n          </FormLabel>\n        )}\n\n        {description && <FormDescription>{description}</FormDescription>}\n\n        <FormControl>{children}</FormControl>\n\n        {error && <FormMessage type=\"error\">{error}</FormMessage>}\n        {!error && info && <FormMessage type=\"info\">{info}</FormMessage>}\n      </View>\n    )\n  },\n)\n\nField.displayName = \"Field\"\n\nconst styles = StyleSheet.create((_theme) => ({\n  field: {\n    marginBottom: 16,\n  },\n}))\n",
+      "type": "registry:ui"
+    }
+  ]
+}

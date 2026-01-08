@@ -1,0 +1,14 @@
+{
+  "name": "field",
+  "type": "registry:ui",
+  "title": "Field",
+  "description": "High-level presentational field wrapper combining label, control, description, and error messages. Built on Form Core components.",
+  "registryDependencies": ["form-core"],
+  "files": [
+    {
+      "source": "ui/field.tsx",
+      "path": "components/ui/field.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}
