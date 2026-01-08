@@ -136,6 +136,18 @@
       ]
     },
     {
+      "name": "native-select",
+      "type": "registry:ui",
+      "title": "Native Select",
+      "description": "Native picker component using platform-specific select UI. iOS: bottom sheet, Android: dropdown/dialog, Web: HTML select.",
+      "dependencies": [
+        "@react-native-picker/picker"
+      ],
+      "registryDependencies": [
+        "tokens"
+      ]
+    },
+    {
       "name": "overlay",
       "type": "registry:lib",
       "title": "Overlay",

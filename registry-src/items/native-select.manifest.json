@@ -1,0 +1,15 @@
+{
+  "name": "native-select",
+  "type": "registry:ui",
+  "title": "Native Select",
+  "description": "Native picker component using platform-specific select UI. iOS: bottom sheet, Android: dropdown/dialog, Web: HTML select.",
+  "dependencies": ["@react-native-picker/picker"],
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "source": "ui/native-select.tsx",
+      "path": "components/ui/native-select.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

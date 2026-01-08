@@ -281,10 +281,10 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 5.9 Native Select [DEP: 2A] [INDEPENDENT]
-- [ ] Create `ui/native-select.tsx`
-- [ ] Web: `<select>` style equivalent
-- [ ] Native: platform picker
-- [ ] Create manifest
+- [x] Create `ui/native-select.tsx`
+- [x] Web: `<select>` style equivalent
+- [x] Native: platform picker
+- [x] Create manifest
 
 ### 5.10 Table [DEP: 2A] [INDEPENDENT]
 - [ ] Create `ui/table.tsx`
