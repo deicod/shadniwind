@@ -1,0 +1,16 @@
+{
+  "name": "separator",
+  "type": "registry:ui",
+  "title": "Separator",
+  "description": "Horizontal or vertical separator line.",
+  "registryDependencies": [
+    "tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/separator.tsx",
+      "content": "import * as React from \"react\"\nimport { View, type StyleProp, type ViewProps, type ViewStyle } from \"react-native\"\nimport { StyleSheet } from \"react-native-unistyles\"\n\ntype SeparatorOrientation = \"horizontal\" | \"vertical\"\n\nexport type SeparatorProps = ViewProps & {\n  orientation?: SeparatorOrientation\n  decorative?: boolean\n  style?: StyleProp<ViewStyle>\n}\n\nconst separatorStyles = StyleSheet.create((theme) => ({\n  separator: {\n    flexShrink: 0,\n    backgroundColor: theme.colors.border,\n    variants: {\n      orientation: {\n        horizontal: {\n          height: 1,\n          width: \"100%\",\n        },\n        vertical: {\n          width: 1,\n          height: \"100%\",\n        },\n      },\n    },\n  },\n}))\n\nexport const Separator = React.forwardRef<View, SeparatorProps>(\n  ({ orientation = \"horizontal\", decorative = true, style, accessibilityRole, ...props }, ref) => {\n    const variantStyles = separatorStyles.useVariants({\n      orientation,\n    }) as typeof separatorStyles | undefined\n\n    const styles = variantStyles ?? separatorStyles\n    const isDecorative = decorative ?? true\n\n    return (\n      <View\n        ref={ref}\n        style={[styles.separator, style]}\n        accessibilityRole={isDecorative ? undefined : accessibilityRole}\n        accessibilityElementsHidden={isDecorative ? true : props.accessibilityElementsHidden}\n        importantForAccessibility={isDecorative ? \"no\" : props.importantForAccessibility}\n        accessible={isDecorative ? false : props.accessible}\n        {...props}\n      />\n    )\n  },\n)\n\nSeparator.displayName = \"Separator\"\n",
+      "type": "registry:ui"
+    }
+  ]
+}

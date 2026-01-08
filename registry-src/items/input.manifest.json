@@ -1,0 +1,13 @@
+{
+  "name": "input",
+  "type": "registry:ui",
+  "dependencies": ["react-native-unistyles"],
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "path": "components/ui/input.tsx",
+      "type": "registry:ui",
+      "source": "ui/input.tsx"
+    }
+  ]
+}

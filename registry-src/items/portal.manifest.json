@@ -1,0 +1,33 @@
+{
+  "name": "portal",
+  "type": "registry:lib",
+  "title": "Portal",
+  "description": "Portal provider and host primitives for overlays.",
+  "files": [
+    {
+      "source": "primitives/portal/PortalProvider.tsx",
+      "path": "lib/portal/PortalProvider.tsx",
+      "type": "registry:lib"
+    },
+    {
+      "source": "primitives/portal/PortalHost.tsx",
+      "path": "lib/portal/PortalHost.tsx",
+      "type": "registry:lib"
+    },
+    {
+      "source": "primitives/portal/Portal.tsx",
+      "path": "lib/portal/Portal.tsx",
+      "type": "registry:lib"
+    },
+    {
+      "source": "primitives/portal/portal-store.ts",
+      "path": "lib/portal/portal-store.ts",
+      "type": "registry:lib"
+    },
+    {
+      "source": "primitives/portal/index.ts",
+      "path": "lib/portal/index.ts",
+      "type": "registry:lib"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "badge",
+  "type": "registry:ui",
+  "title": "Badge",
+  "description": "Badge component with default, secondary, destructive, and outline variants.",
+  "registryDependencies": [
+    "tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/badge.tsx",
+      "content": "import * as React from \"react\"\nimport {\n  Text,\n  View,\n  type StyleProp,\n  type TextStyle,\n  type ViewProps,\n  type ViewStyle,\n} from \"react-native\"\nimport { StyleSheet } from \"react-native-unistyles\"\n\nexport type BadgeVariant = \"default\" | \"secondary\" | \"destructive\" | \"outline\"\n\nexport type BadgeProps = Omit<ViewProps, \"style\"> & {\n  variant?: BadgeVariant\n  style?: StyleProp<ViewStyle>\n  textStyle?: StyleProp<TextStyle>\n}\n\nconst styles = StyleSheet.create((theme) => ({\n  container: {\n    alignSelf: \"flex-start\",\n    flexDirection: \"row\",\n    alignItems: \"center\",\n    borderRadius: theme.radius.sm,\n    borderWidth: 1,\n    borderColor: \"transparent\",\n    backgroundColor: theme.colors.primary,\n    paddingHorizontal: theme.spacing[2],\n    paddingVertical: 2,\n    variants: {\n      variant: {\n        default: {\n          backgroundColor: theme.colors.primary,\n          borderColor: \"transparent\",\n        },\n        secondary: {\n          backgroundColor: theme.colors.secondary,\n          borderColor: \"transparent\",\n        },\n        destructive: {\n          backgroundColor: theme.colors.destructive,\n          borderColor: \"transparent\",\n        },\n        outline: {\n          backgroundColor: \"transparent\",\n          borderColor: theme.colors.border,\n        },\n      },\n    },\n  },\n  label: {\n    fontSize: theme.typography.sizes.xs,\n    lineHeight: theme.typography.lineHeights.xs,\n    fontWeight: theme.typography.weights.semibold,\n    color: theme.colors.primaryForeground,\n    variants: {\n      variant: {\n        default: {\n          color: theme.colors.primaryForeground,\n        },\n        secondary: {\n          color: theme.colors.secondaryForeground,\n        },\n        destructive: {\n          color: theme.colors.destructiveForeground,\n        },\n        outline: {\n          color: theme.colors.foreground,\n        },\n      },\n    },\n  },\n}))\n\nexport const Badge = React.forwardRef<View, BadgeProps>(\n  ({ variant = \"default\", style, textStyle, children, ...props }, ref) => {\n    styles.useVariants({ variant: variant === \"default\" ? undefined : variant })\n    const hasText = typeof children === \"string\" || typeof children === \"number\"\n\n    return (\n      <View ref={ref} style={[styles.container, style]} {...props}>\n        {hasText ? <Text style={[styles.label, textStyle]}>{children}</Text> : children}\n      </View>\n    )\n  },\n)\n\nBadge.displayName = \"Badge\"\n",
+      "type": "registry:ui"
+    }
+  ]
+}

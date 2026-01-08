@@ -1,0 +1,130 @@
+{
+  "name": "shadniwind",
+  "homepage": "https://github.com/deicod/shadniwind",
+  "items": [
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "Alert container with title and description subcomponents.",
+      "registryDependencies": [
+        "tokens"
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "Avatar with image loading states and fallback initials.",
+      "registryDependencies": [
+        "tokens"
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Badge component with default, secondary, destructive, and outline variants.",
+      "registryDependencies": [
+        "tokens"
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Button component with variants and pressed/disabled/loading states.",
+      "registryDependencies": [
+        "tokens"
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Card container and subcomponents.",
+      "registryDependencies": [
+        "tokens"
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "dependencies": [
+        "react-native-unistyles"
+      ],
+      "registryDependencies": [
+        "tokens"
+      ]
+    },
+    {
+      "name": "portal",
+      "type": "registry:lib",
+      "title": "Portal",
+      "description": "Portal provider and host primitives for overlays."
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "Progress bar with determinate and indeterminate modes.",
+      "registryDependencies": [
+        "tokens"
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "Horizontal or vertical separator line.",
+      "registryDependencies": [
+        "tokens"
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Loading skeleton with optional shimmer animation.",
+      "registryDependencies": [
+        "tokens"
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "Activity indicator wrapper.",
+      "registryDependencies": [
+        "tokens"
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Multiline text input with Unistyles variants.",
+      "registryDependencies": [
+        "tokens"
+      ]
+    },
+    {
+      "name": "tokens",
+      "type": "registry:lib",
+      "title": "Tokens",
+      "description": "Semantic tokens and Unistyles theme configuration.",
+      "dependencies": [
+        "react-native-unistyles"
+      ]
+    },
+    {
+      "name": "typography",
+      "type": "registry:ui",
+      "title": "Typography",
+      "description": "Typography presets with Unistyles variants.",
+      "registryDependencies": [
+        "tokens"
+      ]
+    }
+  ]
+}

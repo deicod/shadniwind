@@ -1,0 +1,14 @@
+{
+  "name": "skeleton",
+  "type": "registry:ui",
+  "title": "Skeleton",
+  "description": "Loading skeleton with optional shimmer animation.",
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "source": "ui/skeleton.tsx",
+      "path": "components/ui/skeleton.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

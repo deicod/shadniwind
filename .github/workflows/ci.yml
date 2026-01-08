@@ -1,0 +1,92 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build registry
+        if: ${{ hashFiles('scripts/build-registry.ts') != '' }}
+        run: npx --yes tsx scripts/build-registry.ts
+
+      - name: Validate registry schema
+        if: ${{ hashFiles('scripts/validate-registry.ts') != '' }}
+        run: npx --yes tsx scripts/validate-registry.ts
+
+      - name: Ensure generated artifacts are committed
+        if: ${{ hashFiles('scripts/build-registry.ts') != '' }}
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            echo "Working tree is dirty after registry build:"
+            git status --porcelain
+            exit 1
+          fi
+
+  deploy:
+    needs: ci
+    if: >-
+      github.ref == 'refs/heads/main' &&
+      github.event_name == 'push' &&
+      hashFiles('scripts/build-registry.ts') != ''
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build registry
+        run: npx --yes tsx scripts/build-registry.ts
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

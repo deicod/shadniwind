@@ -1,0 +1,14 @@
+{
+  "name": "button",
+  "type": "registry:ui",
+  "title": "Button",
+  "description": "Button component with variants and pressed/disabled/loading states.",
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "source": "ui/button.tsx",
+      "path": "components/ui/button.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "badge",
+  "type": "registry:ui",
+  "title": "Badge",
+  "description": "Badge component with default, secondary, destructive, and outline variants.",
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "source": "ui/badge.tsx",
+      "path": "components/ui/badge.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

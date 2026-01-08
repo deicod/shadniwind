@@ -1,0 +1,14 @@
+{
+  "name": "card",
+  "type": "registry:ui",
+  "title": "Card",
+  "description": "Card container and subcomponents.",
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "source": "ui/card.tsx",
+      "path": "components/ui/card.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "input",
+  "type": "registry:ui",
+  "dependencies": [
+    "react-native-unistyles"
+  ],
+  "registryDependencies": [
+    "tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/input.tsx",
+      "content": "import * as React from \"react\"\nimport {\n  TextInput,\n  type StyleProp,\n  type TextInputProps,\n  type TextStyle,\n} from \"react-native\"\nimport { StyleSheet, useUnistyles } from \"react-native-unistyles\"\n\nexport type InputProps = TextInputProps & {\n  disabled?: boolean\n  style?: StyleProp<TextStyle>\n}\n\nconst styles = StyleSheet.create((theme) => ({\n  input: {\n    height: theme.spacing[10],\n    width: \"100%\",\n    borderRadius: theme.radius.md,\n    borderWidth: 1,\n    borderColor: theme.colors.input,\n    backgroundColor: theme.colors.background,\n    paddingHorizontal: theme.spacing[3],\n    paddingVertical: theme.spacing[2],\n    fontSize: theme.typography.sizes.sm,\n    lineHeight: theme.typography.lineHeights.sm,\n    textAlignVertical: \"center\",\n    color: theme.colors.foreground,\n    variants: {\n      focused: {\n        true: {\n          borderColor: theme.colors.ring,\n          shadowColor: theme.colors.ring,\n          shadowOpacity: 0.35,\n          shadowRadius: 4,\n          shadowOffset: { width: 0, height: 0 },\n        },\n      },\n      disabled: {\n        true: {\n          opacity: 0.6,\n        },\n      },\n    },\n  },\n}))\n\nexport const Input = React.forwardRef<TextInput, InputProps>(\n  (\n    {\n      style,\n      editable,\n      disabled,\n      placeholderTextColor,\n      accessibilityState,\n      onFocus,\n      onBlur,\n      ...props\n    },\n    ref,\n  ) => {\n    const [isFocused, setIsFocused] = React.useState(false)\n    const { theme } = useUnistyles()\n    const isDisabled = disabled || editable === false\n\n    styles.useVariants({\n      focused: isFocused,\n      disabled: isDisabled,\n    })\n\n    const handleFocus = React.useCallback(\n      (event: Parameters<NonNullable<TextInputProps[\"onFocus\"]>>[0]) => {\n        setIsFocused(true)\n        onFocus?.(event)\n      },\n      [onFocus],\n    )\n\n    const handleBlur = React.useCallback(\n      (event: Parameters<NonNullable<TextInputProps[\"onBlur\"]>>[0]) => {\n        setIsFocused(false)\n        onBlur?.(event)\n      },\n      [onBlur],\n    )\n\n    return (\n      <TextInput\n        ref={ref}\n        style={[styles.input, style]}\n        editable={isDisabled ? false : editable}\n        placeholderTextColor={\n          placeholderTextColor ?? theme.colors.mutedForeground\n        }\n        accessibilityState={{ ...accessibilityState, disabled: isDisabled }}\n        onFocus={handleFocus}\n        onBlur={handleBlur}\n        {...props}\n      />\n    )\n  },\n)\n\nInput.displayName = \"Input\"\n",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -50,6 +50,7 @@ Key constraints from Unistyles v3:
 - React Native: 0.78+ with New Architecture enabled. :contentReference[oaicite:2]{index=2}
 - Expo: SDK 53+ and dev client / prebuild flow (no Expo Go). :contentReference[oaicite:3]{index=3}
 - Unistyles initialization must happen **before application code creates stylesheets** (i.e., before any `StyleSheet.create` runs). :contentReference[oaicite:4]{index=4}
+- Use Unistyles v3 APIs only (`StyleSheet.create` + `styles.useVariants`); avoid v2 `createStyleSheet`/`useStyles`.
 
 ### 3.2 Distribution constraints
 - Registry items must be installable into varied app structures.

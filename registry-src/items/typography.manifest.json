@@ -1,0 +1,14 @@
+{
+  "name": "typography",
+  "type": "registry:ui",
+  "title": "Typography",
+  "description": "Typography presets with Unistyles variants.",
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "source": "ui/typography.tsx",
+      "path": "components/ui/typography.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

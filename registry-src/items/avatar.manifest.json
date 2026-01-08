@@ -1,0 +1,14 @@
+{
+  "name": "avatar",
+  "type": "registry:ui",
+  "title": "Avatar",
+  "description": "Avatar with image loading states and fallback initials.",
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "source": "ui/avatar.tsx",
+      "path": "components/ui/avatar.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

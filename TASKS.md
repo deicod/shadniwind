@@ -22,19 +22,19 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 > **Agents: 1** | These tasks are sequential and must be done first by a single agent.
 
 ### 0.1 Repository Bootstrap [BLOCKER]
-- [ ] Initialize git repository
-- [ ] Create package.json with project metadata
-- [ ] Configure TypeScript (tsconfig.json) with strict mode
-- [ ] Setup Biome for linting and formatting
-- [ ] Create .gitignore
-- [ ] Create directory structure:
-  - [ ] `registry-src/shadniwind/lib/`
-  - [ ] `registry-src/shadniwind/primitives/`
-  - [ ] `registry-src/shadniwind/ui/`
-  - [ ] `registry-src/items/`
-  - [ ] `public/`
-  - [ ] `public/r/`
-  - [ ] `scripts/`
+- [x] Initialize git repository
+- [x] Create package.json with project metadata
+- [x] Configure TypeScript (tsconfig.json) with strict mode
+- [x] Setup Biome for linting and formatting
+- [x] Create .gitignore
+- [x] Create directory structure:
+  - [x] `registry-src/shadniwind/lib/`
+  - [x] `registry-src/shadniwind/primitives/`
+  - [x] `registry-src/shadniwind/ui/`
+  - [x] `registry-src/items/`
+  - [x] `public/`
+  - [x] `public/r/`
+  - [x] `scripts/`
 
 ---
 
@@ -43,27 +43,27 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 > **Agents: 3** | After Wave 0 completes, these 3 work streams can proceed in parallel.
 
 ### Stream 1A: Registry Generator [DEP: 0.1] [BLOCKER for all components]
-- [ ] Create `scripts/build-registry.ts`
-- [ ] Implement manifest reading from `registry-src/items/<name>.manifest.json`
-- [ ] Implement file content embedding from `registry-src/shadniwind/**`
-- [ ] Generate `public/r/<name>.json` for each item
-- [ ] Generate `public/registry.json` index
-- [ ] Add JSON schema validation (Ajv)
-- [ ] Add versioned paths (`/v1/registry.json`, `/v1/r/{name}.json`)
+- [x] Create `scripts/build-registry.ts`
+- [x] Implement manifest reading from `registry-src/items/<name>.manifest.json`
+- [x] Implement file content embedding from `registry-src/shadniwind/**`
+- [x] Generate `public/r/<name>.json` for each item
+- [x] Generate `public/registry.json` index
+- [x] Add JSON schema validation (Ajv)
+- [x] Add versioned paths (`/v1/registry.json`, `/v1/r/{name}.json`)
 
 ### Stream 1B: CI/CD Pipeline [DEP: 0.1] [PARALLEL]
-- [ ] Setup GitHub Actions workflow
-- [ ] Add lint check step
-- [ ] Add typecheck step
-- [ ] Add registry build step
-- [ ] Add schema validation step
-- [ ] Add dirty tree check (fail if generated outputs changed)
-- [ ] Configure GitHub Pages deployment
+- [x] Setup GitHub Actions workflow
+- [x] Add lint check step
+- [x] Add typecheck step
+- [x] Add registry build step
+- [x] Add schema validation step
+- [x] Add dirty tree check (fail if generated outputs changed)
+- [x] Configure GitHub Pages deployment
 
 ### Stream 1C: Documentation [DEP: 0.1] [PARALLEL]
-- [ ] Create README.md with hard requirements (RN 0.78+, Expo SDK 53+, New Arch, etc.)
-- [ ] Document installation contract and required install order
-- [ ] Document components.json consumer configuration
+- [x] Create README.md with hard requirements (RN 0.78+, Expo SDK 53+, New Arch, etc.)
+- [x] Document installation contract and required install order
+- [x] Document components.json consumer configuration
 
 ---
 
@@ -72,28 +72,28 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 > **Agents: 2** | After Stream 1A (Registry Generator) completes.
 
 ### Stream 2A: Tokens & Theme Layer [DEP: 1A] [BLOCKER for all components]
-- [ ] Create `lib/tokens.ts` with semantic token set:
-  - [ ] Colors (background, foreground, card, popover, primary, secondary, muted, accent, destructive, border, input, ring)
-  - [ ] Radius (sm, md, lg)
-  - [ ] Typography (font families, sizes, line heights, weights)
-  - [ ] Spacing (space helper or explicit scale)
-- [ ] Create `lib/unistyles.ts` with `StyleSheet.configure(...)` call
-- [ ] Create `lib/unistyles.d.ts` for TypeScript module augmentation
-- [ ] Define `light` and `dark` themes
-- [ ] Enable adaptive themes by default
-- [ ] Create manifest: `registry-src/items/tokens.manifest.json`
+- [x] Create `lib/tokens.ts` with semantic token set:
+  - [x] Colors (background, foreground, card, popover, primary, secondary, muted, accent, destructive, border, input, ring)
+  - [x] Radius (sm, md, lg)
+  - [x] Typography (font families, sizes, line heights, weights)
+  - [x] Spacing (space helper or explicit scale)
+- [x] Create `lib/unistyles.ts` with `StyleSheet.configure(...)` call
+- [x] Create `lib/unistyles.d.ts` for TypeScript module augmentation
+- [x] Define `light` and `dark` themes
+- [x] Enable adaptive themes by default
+- [x] Create manifest: `registry-src/items/tokens.manifest.json`
 
 ### Stream 2B: Portal Primitive [DEP: 1A] [BLOCKER for overlay components]
-- [ ] Create `primitives/portal/PortalProvider.tsx`
-- [ ] Create `primitives/portal/PortalHost.tsx`
-- [ ] Create `primitives/portal/Portal.tsx`
-- [ ] Create `primitives/portal/index.ts` exports
-- [ ] Implement multiple hosts by name
-- [ ] Implement multiple mounted nodes per host
-- [ ] Ensure updates propagate reliably
-- [ ] Add recommended root host placement (absolute, pointerEvents "box-none")
-- [ ] Create manifest: `registry-src/items/portal.manifest.json`
-- [ ] Write unit tests for portal primitive
+- [x] Create `primitives/portal/PortalProvider.tsx`
+- [x] Create `primitives/portal/PortalHost.tsx`
+- [x] Create `primitives/portal/Portal.tsx`
+- [x] Create `primitives/portal/index.ts` exports
+- [x] Implement multiple hosts by name
+- [x] Implement multiple mounted nodes per host
+- [x] Ensure updates propagate reliably
+- [x] Add recommended root host placement (absolute, pointerEvents "box-none")
+- [x] Create manifest: `registry-src/items/portal.manifest.json`
+- [x] Write unit tests for portal primitive
 
 ---
 
@@ -102,65 +102,65 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 > **Agents: Up to 15** | After Stream 2A (Tokens) completes. All Tier 1 components are independent.
 
 ### 3.1 Typography [DEP: 2A] [INDEPENDENT]
-- [ ] Create `ui/typography.tsx` with text presets (h1-h6, p, small, muted, etc.)
-- [ ] Add Unistyles variants
-- [ ] Create manifest: `registry-src/items/typography.manifest.json`
+- [x] Create `ui/typography.tsx` with text presets (h1-h6, p, small, muted, etc.)
+- [x] Add Unistyles variants
+- [x] Create manifest: `registry-src/items/typography.manifest.json`
 
 ### 3.2 Button [DEP: 2A] [INDEPENDENT]
-- [ ] Create `ui/button.tsx`
-- [ ] Implement variants: variant, size
-- [ ] Implement states: pressed, disabled, loading
-- [ ] Add web focus-visible ring
-- [ ] Create manifest: `registry-src/items/button.manifest.json`
+- [x] Create `ui/button.tsx`
+- [x] Implement variants: variant, size
+- [x] Implement states: pressed, disabled, loading
+- [x] Add web focus-visible ring
+- [x] Create manifest: `registry-src/items/button.manifest.json`
 
 ### 3.3 Input [DEP: 2A] [INDEPENDENT]
-- [ ] Create `ui/input.tsx`
-- [ ] Implement focus/disabled variants
-- [ ] Add web focus ring
-- [ ] Create manifest: `registry-src/items/input.manifest.json`
+- [x] Create `ui/input.tsx`
+- [x] Implement focus/disabled variants
+- [x] Add web focus ring
+- [x] Create manifest: `registry-src/items/input.manifest.json`
 
 ### 3.4 Textarea [DEP: 2A] [INDEPENDENT]
-- [ ] Create `ui/textarea.tsx` (multiline TextInput wrapper)
-- [ ] Create manifest: `registry-src/items/textarea.manifest.json`
+- [x] Create `ui/textarea.tsx` (multiline TextInput wrapper)
+- [x] Create manifest: `registry-src/items/textarea.manifest.json`
 
 ### 3.5 Card [DEP: 2A] [INDEPENDENT]
-- [ ] Create `ui/card.tsx` (Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter)
-- [ ] Create manifest: `registry-src/items/card.manifest.json`
+- [x] Create `ui/card.tsx` (Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter)
+- [x] Create manifest: `registry-src/items/card.manifest.json`
 
 ### 3.6 Badge [DEP: 2A] [INDEPENDENT]
-- [ ] Create `ui/badge.tsx`
-- [ ] Implement variant styles
-- [ ] Create manifest: `registry-src/items/badge.manifest.json`
+- [x] Create `ui/badge.tsx`
+- [x] Implement variant styles
+- [x] Create manifest: `registry-src/items/badge.manifest.json`
 
 ### 3.7 Alert [DEP: 2A] [INDEPENDENT]
-- [ ] Create `ui/alert.tsx`
-- [ ] Implement variant styles (default, destructive)
-- [ ] Create manifest: `registry-src/items/alert.manifest.json`
+- [x] Create `ui/alert.tsx`
+- [x] Implement variant styles (default, destructive)
+- [x] Create manifest: `registry-src/items/alert.manifest.json`
 
 ### 3.8 Separator [DEP: 2A] [INDEPENDENT]
-- [ ] Create `ui/separator.tsx`
-- [ ] Support horizontal/vertical orientation
-- [ ] Create manifest: `registry-src/items/separator.manifest.json`
+- [x] Create `ui/separator.tsx`
+- [x] Support horizontal/vertical orientation
+- [x] Create manifest: `registry-src/items/separator.manifest.json`
 
 ### 3.9 Avatar [DEP: 2A] [INDEPENDENT]
-- [ ] Create `ui/avatar.tsx`
-- [ ] Implement image loading states
-- [ ] Implement fallback initials
-- [ ] Create manifest: `registry-src/items/avatar.manifest.json`
+- [x] Create `ui/avatar.tsx`
+- [x] Implement image loading states
+- [x] Implement fallback initials
+- [x] Create manifest: `registry-src/items/avatar.manifest.json`
 
 ### 3.10 Skeleton [DEP: 2A] [INDEPENDENT]
-- [ ] Create `ui/skeleton.tsx`
-- [ ] Optional animated shimmer (dependency-free)
-- [ ] Create manifest: `registry-src/items/skeleton.manifest.json`
+- [x] Create `ui/skeleton.tsx`
+- [x] Optional animated shimmer (dependency-free)
+- [x] Create manifest: `registry-src/items/skeleton.manifest.json`
 
 ### 3.11 Spinner [DEP: 2A] [INDEPENDENT]
-- [ ] Create `ui/spinner.tsx` (activity indicator wrapper)
-- [ ] Create manifest: `registry-src/items/spinner.manifest.json`
+- [x] Create `ui/spinner.tsx` (activity indicator wrapper)
+- [x] Create manifest: `registry-src/items/spinner.manifest.json`
 
 ### 3.12 Progress [DEP: 2A] [INDEPENDENT]
-- [ ] Create `ui/progress.tsx`
-- [ ] Support determinate/indeterminate modes
-- [ ] Create manifest: `registry-src/items/progress.manifest.json`
+- [x] Create `ui/progress.tsx`
+- [x] Support determinate/indeterminate modes
+- [x] Create manifest: `registry-src/items/progress.manifest.json`
 
 ### 3.13 Empty [DEP: 2A] [INDEPENDENT]
 - [ ] Create `ui/empty.tsx` (empty-state component with content slots)

@@ -1,0 +1,14 @@
+{
+  "name": "separator",
+  "type": "registry:ui",
+  "title": "Separator",
+  "description": "Horizontal or vertical separator line.",
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "source": "ui/separator.tsx",
+      "path": "components/ui/separator.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

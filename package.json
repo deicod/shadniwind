@@ -1,0 +1,26 @@
+{
+  "name": "shadniwind",
+  "version": "0.0.0",
+  "description": "shadcn-style source-distributed UI components for React Native + React Native Web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "biome lint .",
+    "format": "biome format .",
+    "check": "biome check .",
+    "typecheck": "tsc --noEmit",
+    "build:registry": "tsx scripts/build-registry.ts",
+    "test": "node --test --import tsx tests/**/*.test.ts"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.11",
+    "@types/node": "^24.10.4",
+    "@types/react": "^19.2.7",
+    "ajv": "^8.17.1",
+    "react": "^19.2.3",
+    "react-native": "^0.83.1",
+    "react-native-unistyles": "^3.0.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}

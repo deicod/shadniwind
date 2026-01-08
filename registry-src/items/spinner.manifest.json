@@ -1,0 +1,14 @@
+{
+  "name": "spinner",
+  "type": "registry:ui",
+  "title": "Spinner",
+  "description": "Activity indicator wrapper.",
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "source": "ui/spinner.tsx",
+      "path": "components/ui/spinner.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

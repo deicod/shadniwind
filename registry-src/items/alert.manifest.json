@@ -1,0 +1,14 @@
+{
+  "name": "alert",
+  "type": "registry:ui",
+  "title": "Alert",
+  "description": "Alert container with title and description subcomponents.",
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "source": "ui/alert.tsx",
+      "path": "components/ui/alert.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

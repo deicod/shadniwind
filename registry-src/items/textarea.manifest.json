@@ -1,0 +1,14 @@
+{
+  "name": "textarea",
+  "type": "registry:ui",
+  "title": "Textarea",
+  "description": "Multiline text input with Unistyles variants.",
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "source": "ui/textarea.tsx",
+      "path": "components/ui/textarea.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}
