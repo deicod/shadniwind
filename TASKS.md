@@ -473,10 +473,10 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 10.3 Form RHF [DEP: 5.13] [INDEPENDENT]
-- [ ] Create `ui/form-rhf.tsx`
-- [ ] React Hook Form integration helpers
-- [ ] Typed wrappers
-- [ ] Create manifest
+- [x] Create `ui/form-rhf.tsx`
+- [x] React Hook Form integration helpers
+- [x] Typed wrappers
+- [x] Create manifest
 
 ### 10.4 Form TSF [DEP: 5.13] [INDEPENDENT]
 - [ ] Create `ui/form-tsf.tsx`

@@ -1,0 +1,19 @@
+{
+  "name": "form-rhf",
+  "type": "registry:ui",
+  "title": "Form RHF",
+  "description": "React Hook Form integration helpers with typed wrappers. Provides FormRHFProvider and FormRHFField for seamless form handling.",
+  "dependencies": [
+    "react-hook-form"
+  ],
+  "registryDependencies": [
+    "field"
+  ],
+  "files": [
+    {
+      "path": "components/ui/form-rhf.tsx",
+      "content": "import type * as React from \"react\"\n\nimport {\n  type Control,\n  type ControllerRenderProps,\n  type FieldPath,\n  type FieldValues,\n  FormProvider,\n  type UseFormReturn,\n  useController,\n} from \"react-hook-form\"\nimport { Field, type FieldProps } from \"./field.js\"\n\nexport type FormRHFProviderProps<\n  TFieldValues extends FieldValues = FieldValues,\n> = UseFormReturn<TFieldValues>\n\n/**\n * React Hook Form integration for Field component.\n *\n * Provides typed wrappers for react-hook-form Controller with Field.\n *\n * **Important:** Requires `react-hook-form` to be installed.\n * Install with: `npm install react-hook-form`\n *\n * @example\n * ```tsx\n * import { useForm } from 'react-hook-form'\n *\n * type FormData = {\n *   email: string\n *   password: string\n * }\n *\n * function LoginForm() {\n *   const form = useForm<FormData>()\n *\n *   return (\n *     <FormRHFProvider {...form}>\n *       <FormRHFField\n *         name=\"email\"\n *         label=\"Email\"\n *         render={({ field }) => (\n *           <Input {...field} placeholder=\"Enter email\" />\n *         )}\n *       />\n *     </FormRHFProvider>\n *   )\n * }\n * ```\n */\nexport function FormRHFProvider<\n  TFieldValues extends FieldValues = FieldValues,\n>({\n  children,\n  ...formMethods\n}: FormRHFProviderProps<TFieldValues> & { children: React.ReactNode }) {\n  return <FormProvider<TFieldValues> {...formMethods}>{children}</FormProvider>\n}\n\nexport type FormRHFFieldProps<\n  TFieldValues extends FieldValues = FieldValues,\n  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,\n> = Omit<FieldProps, \"error\" | \"children\"> & {\n  /**\n   * Field name from your form schema\n   */\n  name: TName\n  /**\n   * Form control from useForm()\n   */\n  control?: Control<TFieldValues>\n  /**\n   * Render function receiving field props\n   */\n  render: (props: {\n    field: ControllerRenderProps<TFieldValues, TName>\n  }) => React.ReactElement\n}\n\n/**\n * Typed Field component integrated with react-hook-form Controller.\n *\n * Automatically handles:\n * - Field registration\n * - Error display from validation\n * - Value binding\n * - onChange/onBlur handlers\n */\nexport function FormRHFField<\n  TFieldValues extends FieldValues = FieldValues,\n  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,\n>({\n  name,\n  control,\n  render,\n  label,\n  description,\n  info,\n  required,\n  disabled,\n  labelProps,\n  ...fieldProps\n}: FormRHFFieldProps<TFieldValues, TName>) {\n  const { field, fieldState } = useController({\n    name,\n    control,\n    disabled,\n  })\n\n  return (\n    <Field\n      label={label}\n      description={description}\n      error={fieldState.error?.message}\n      info={info}\n      required={required}\n      disabled={disabled}\n      labelProps={labelProps}\n      {...fieldProps}\n    >\n      {render({ field })}\n    </Field>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ]
+}

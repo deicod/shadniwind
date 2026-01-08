@@ -1,0 +1,15 @@
+{
+  "name": "form-rhf",
+  "type": "registry:ui",
+  "title": "Form RHF",
+  "description": "React Hook Form integration helpers with typed wrappers. Provides FormRHFProvider and FormRHFField for seamless form handling.",
+  "dependencies": ["react-hook-form"],
+  "registryDependencies": ["field"],
+  "files": [
+    {
+      "source": "ui/form-rhf.tsx",
+      "path": "components/ui/form-rhf.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}
