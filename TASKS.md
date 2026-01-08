@@ -248,9 +248,9 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 5.3 Toggle [DEP: 2A] [INDEPENDENT]
-- [ ] Create `ui/toggle.tsx`
-- [ ] aria-pressed on web
-- [ ] Create manifest
+- [x] Create `ui/toggle.tsx`
+- [x] aria-pressed on web
+- [x] Create manifest
 
 ### 5.4 Label [DEP: 2A] [INDEPENDENT]
 - [ ] Create `ui/label.tsx`

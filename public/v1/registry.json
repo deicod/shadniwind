@@ -239,6 +239,15 @@
       ]
     },
     {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "description": "A two-state button that can be toggled on or off with support for controlled/uncontrolled state and aria-pressed on web.",
+      "registryDependencies": [
+        "tokens"
+      ]
+    },
+    {
       "name": "tokens",
       "type": "registry:lib",
       "title": "Tokens",
