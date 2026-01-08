@@ -1,0 +1,14 @@
+{
+  "name": "table",
+  "type": "registry:ui",
+  "title": "Table",
+  "description": "Table component with subcomponents. Web: semantic HTML tables. Native: View-based approximation with limitations.",
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "source": "ui/table.tsx",
+      "path": "components/ui/table.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

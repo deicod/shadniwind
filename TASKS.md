@@ -287,11 +287,11 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 5.10 Table [DEP: 2A] [INDEPENDENT]
-- [ ] Create `ui/table.tsx`
-- [ ] Web: real table-like rendering
-- [ ] Native: list/grid approximation
-- [ ] Document limitations
-- [ ] Create manifest
+- [x] Create `ui/table.tsx`
+- [x] Web: real table-like rendering
+- [x] Native: list/grid approximation
+- [x] Document limitations
+- [x] Create manifest
 
 ### 5.11 Button Group [DEP: 3.2] [INDEPENDENT]
 - [ ] Create `ui/button-group.tsx`

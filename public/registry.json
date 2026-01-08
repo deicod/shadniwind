@@ -274,6 +274,15 @@
       ]
     },
     {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "Table component with subcomponents. Web: semantic HTML tables. Native: View-based approximation with limitations.",
+      "registryDependencies": [
+        "tokens"
+      ]
+    },
+    {
       "name": "textarea",
       "type": "registry:ui",
       "title": "Textarea",
