@@ -1,0 +1,14 @@
+{
+  "name": "pagination",
+  "type": "registry:ui",
+  "title": "Pagination",
+  "description": "Pagination component for navigating through pages of data. Presentational component that requires consumer to wire to data source/router.",
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "source": "ui/pagination.tsx",
+      "path": "components/ui/pagination.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

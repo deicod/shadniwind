@@ -133,6 +133,15 @@
       "description": "Dismiss layer and scrim/backdrop primitive for overlays."
     },
     {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Pagination component for navigating through pages of data. Presentational component that requires consumer to wire to data source/router.",
+      "registryDependencies": [
+        "tokens"
+      ]
+    },
+    {
       "name": "popover",
       "type": "registry:ui",
       "title": "Popover",
