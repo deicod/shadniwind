@@ -103,6 +103,19 @@
       "description": "Dismiss layer and scrim/backdrop primitive for overlays."
     },
     {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Displays rich content in a portal, triggered by a button.",
+      "registryDependencies": [
+        "tokens",
+        "portal",
+        "positioning",
+        "focus",
+        "overlay"
+      ]
+    },
+    {
       "name": "portal",
       "type": "registry:lib",
       "title": "Portal",

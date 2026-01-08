@@ -324,9 +324,9 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 6.2 Popover [DEP: 4.1, 4.2, 4.3] [INDEPENDENT]
-- [ ] Create `ui/popover.tsx`
-- [ ] Anchor measurement and collision handling
-- [ ] Create manifest
+- [x] Create `ui/popover.tsx`
+- [x] Anchor measurement and collision handling
+- [x] Create manifest
 
 ### 6.3 Toast [DEP: 4.1] [INDEPENDENT]
 - [ ] Create `ui/toast.tsx`

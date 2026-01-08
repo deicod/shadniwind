@@ -109,30 +109,38 @@ export const DismissLayer = React.forwardRef<View, DismissLayerProps>(
     }, [isDismissable, onDismiss])
 
     React.useEffect(() => {
-      if (Platform.OS !== "web" || !isDismissable) {
-        return
-      }
+      // Web: Escape key
+      if (Platform.OS === "web") {
+        if (!isDismissable) return
+        if (typeof document === "undefined") return
 
-      if (typeof document === "undefined") {
-        return
-      }
+        const handleKeyDown = (event: KeyboardEvent) => {
+          if (event.defaultPrevented) return
+          if (event.key !== "Escape" && event.key !== "Esc") return
 
-      const handleKeyDown = (event: KeyboardEvent) => {
-        if (event.defaultPrevented) {
-          return
+          onDismiss?.()
         }
 
-        if (event.key !== "Escape" && event.key !== "Esc") {
-          return
-        }
-
-        onDismiss?.()
+        document.addEventListener("keydown", handleKeyDown)
+        return () => document.removeEventListener("keydown", handleKeyDown)
       }
 
-      document.addEventListener("keydown", handleKeyDown)
+      // Native: Back button (Android)
+      if (Platform.OS === "android") {
+        if (!isDismissable) return
 
-      return () => {
-        document.removeEventListener("keydown", handleKeyDown)
+        const { BackHandler } = require("react-native")
+
+        const handleBackPress = () => {
+          onDismiss?.()
+          return true // Prevent default behavior (exit app)
+        }
+
+        const subscription = BackHandler.addEventListener(
+          "hardwareBackPress",
+          handleBackPress,
+        )
+        return () => subscription.remove()
       }
     }, [isDismissable, onDismiss])
 
