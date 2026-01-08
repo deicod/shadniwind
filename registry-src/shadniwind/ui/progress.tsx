@@ -35,7 +35,7 @@ const styles = StyleSheet.create((theme) => ({
   },
 }))
 
-type ProgressRef = React.ElementRef<typeof View>
+type ProgressRef = React.ComponentRef<typeof View>
 
 export const Progress = React.forwardRef<ProgressRef, ProgressProps>(
   (

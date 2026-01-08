@@ -141,7 +141,7 @@ export const Avatar = React.forwardRef<View, AvatarProps>(
 
 Avatar.displayName = "Avatar"
 
-type AvatarImageRef = React.ElementRef<typeof Image>
+type AvatarImageRef = React.ComponentRef<typeof Image>
 
 export const AvatarImage = React.forwardRef<AvatarImageRef, AvatarImageProps>(
   (
@@ -210,7 +210,7 @@ export const AvatarImage = React.forwardRef<AvatarImageRef, AvatarImageProps>(
 
 AvatarImage.displayName = "AvatarImage"
 
-type AvatarFallbackRef = React.ElementRef<typeof View>
+type AvatarFallbackRef = React.ComponentRef<typeof View>
 
 export const AvatarFallback = React.forwardRef<
   AvatarFallbackRef,

@@ -28,7 +28,7 @@ const styles = StyleSheet.create((_theme) => ({
   },
 }))
 
-type SpinnerRef = React.ElementRef<typeof ActivityIndicator>
+type SpinnerRef = React.ComponentRef<typeof ActivityIndicator>
 
 export const Spinner = React.forwardRef<SpinnerRef, SpinnerProps>(
   ({ variant = "default", color, style, ...props }, ref) => {

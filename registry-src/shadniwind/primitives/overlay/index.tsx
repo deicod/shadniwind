@@ -28,7 +28,7 @@ export type DismissLayerProps = ViewProps & {
 
 export type OverlayProps = DismissLayerProps
 
-type OverlayBackdropRef = React.ElementRef<typeof Pressable>
+type OverlayBackdropRef = React.ComponentRef<typeof Pressable>
 
 const styles = StyleSheet.create({
   container: {

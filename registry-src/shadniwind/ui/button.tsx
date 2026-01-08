@@ -198,7 +198,7 @@ const styles = StyleSheet.create((theme) => {
   }
 })
 
-type ButtonRef = React.ElementRef<typeof Pressable>
+type ButtonRef = React.ComponentRef<typeof Pressable>
 
 export const Button = forwardRef<ButtonRef, ButtonProps>(
   (

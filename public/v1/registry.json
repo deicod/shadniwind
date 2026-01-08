@@ -63,6 +63,18 @@
       ]
     },
     {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "A checkbox input with support for controlled/uncontrolled state, indeterminate state, and web accessibility.",
+      "dependencies": [
+        "lucide-react-native"
+      ],
+      "registryDependencies": [
+        "tokens"
+      ]
+    },
+    {
       "name": "empty",
       "type": "registry:ui",
       "title": "Empty",

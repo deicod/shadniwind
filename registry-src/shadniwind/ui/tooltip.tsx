@@ -87,7 +87,7 @@ export function Tooltip({
 }
 
 export const TooltipTrigger = React.forwardRef<
-  React.ElementRef<typeof Pressable>,
+  React.ComponentRef<typeof Pressable>,
   PressableProps & { asChild?: boolean }
 >(
   (

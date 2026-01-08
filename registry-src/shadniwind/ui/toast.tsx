@@ -258,7 +258,7 @@ export const Toast = React.forwardRef<View, ToastProps>(
 Toast.displayName = "Toast"
 
 export const ToastAction = React.forwardRef<
-  React.ElementRef<typeof Pressable>,
+  React.ComponentRef<typeof Pressable>,
   PressableProps
 >(({ style, ...props }, ref) => {
   return (
@@ -279,7 +279,7 @@ export const ToastAction = React.forwardRef<
 ToastAction.displayName = "ToastAction"
 
 export const ToastClose = React.forwardRef<
-  React.ElementRef<typeof Pressable>,
+  React.ComponentRef<typeof Pressable>,
   PressableProps
 >(({ style, ...props }, ref) => {
   const { dismiss } = useToast()

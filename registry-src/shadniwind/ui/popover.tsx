@@ -100,7 +100,7 @@ export function Popover({
 }
 
 export const PopoverTrigger = React.forwardRef<
-  React.ElementRef<typeof Pressable>,
+  React.ComponentRef<typeof Pressable>,
   PressableProps & { asChild?: boolean }
 >(({ children, asChild, onPress, ...props }, ref) => {
   const { open, onOpenChange, triggerRef } = usePopover()

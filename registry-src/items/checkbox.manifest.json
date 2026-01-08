@@ -1,0 +1,15 @@
+{
+  "name": "checkbox",
+  "type": "registry:ui",
+  "title": "Checkbox",
+  "description": "A checkbox input with support for controlled/uncontrolled state, indeterminate state, and web accessibility.",
+  "registryDependencies": ["tokens"],
+  "dependencies": ["lucide-react-native"],
+  "files": [
+    {
+      "source": "ui/checkbox.tsx",
+      "path": "components/ui/checkbox.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

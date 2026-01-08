@@ -236,10 +236,10 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 > **Agents: Up to 13** | After Wave 2A (Tokens) completes. These don't need overlay primitives.
 
 ### 5.1 Checkbox [DEP: 2A] [INDEPENDENT]
-- [ ] Create `ui/checkbox.tsx`
-- [ ] Native: Pressable + icon
-- [ ] Web: role/aria-checked + space toggle
-- [ ] Create manifest
+- [x] Create `ui/checkbox.tsx`
+- [x] Native: Pressable + icon
+- [x] Web: role/aria-checked + space toggle
+- [x] Create manifest
 
 ### 5.2 Switch [DEP: 2A] [INDEPENDENT]
 - [ ] Create `ui/switch.tsx`
