@@ -1,0 +1,14 @@
+{
+  "name": "label",
+  "type": "registry:ui",
+  "title": "Label",
+  "description": "Form label component with disabled state styling. Note: React Native does not support htmlFor or click-to-focus behavior.",
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "source": "ui/label.tsx",
+      "path": "components/ui/label.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

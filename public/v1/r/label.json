@@ -1,0 +1,16 @@
+{
+  "name": "label",
+  "type": "registry:ui",
+  "title": "Label",
+  "description": "Form label component with disabled state styling. Note: React Native does not support htmlFor or click-to-focus behavior.",
+  "registryDependencies": [
+    "tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/label.tsx",
+      "content": "import * as React from \"react\"\nimport { Text, type TextProps } from \"react-native\"\nimport { StyleSheet } from \"react-native-unistyles\"\n\n/**\n * Label component for form inputs.\n *\n * **Important differences from web:**\n * - React Native does not support `htmlFor` or click-to-focus behavior\n * - Labels should be placed directly adjacent to their associated inputs\n * - Use `accessibilityLabelledBy` on inputs if needed for screen readers\n * - Consider wrapping label + input in a container View for semantic grouping\n *\n * @example\n * ```tsx\n * <View>\n *   <Label>Email</Label>\n *   <Input placeholder=\"Enter email\" />\n * </View>\n * ```\n */\nexport type LabelProps = TextProps & {\n  /**\n   * Whether the label is for a disabled input.\n   * This will apply disabled styling (reduced opacity).\n   */\n  disabled?: boolean\n}\n\nexport const Label = React.forwardRef<\n  React.ComponentRef<typeof Text>,\n  LabelProps\n>(({ disabled = false, style, children, ...props }, ref) => {\n  const variantStyles = styles.useVariants({\n    disabled,\n  })\n\n  return (\n    <Text\n      ref={ref}\n      style={\n        [\n          styles.label,\n          variantStyles,\n          style,\n          // biome-ignore lint/suspicious/noExplicitAny: Style array type assertion\n        ] as any\n      }\n      {...props}\n    >\n      {children}\n    </Text>\n  )\n})\n\nLabel.displayName = \"Label\"\n\nconst styles = StyleSheet.create((theme) => ({\n  label: {\n    fontSize: theme.typography.sizes.sm,\n    fontWeight: theme.typography.weights.medium,\n    lineHeight: theme.typography.lineHeights.sm,\n    color: theme.colors.foreground,\n    marginBottom: 8,\n    variants: {\n      disabled: {\n        true: {\n          opacity: 0.5,\n        },\n      },\n    },\n  },\n}))\n",
+      "type": "registry:ui"
+    }
+  ]
+}
