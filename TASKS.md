@@ -376,10 +376,10 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 > **Agents: 6** | After Stream 4.4 (Roving Focus) completes.
 
 ### 8.1 Radio Group [DEP: 4.4] [INDEPENDENT]
-- [ ] Create `ui/radio-group.tsx`
-- [ ] Web: roving tab index
-- [ ] Native: simple selection list
-- [ ] Create manifest
+- [x] Create `ui/radio-group.tsx`
+- [x] Web: roving tab index
+- [x] Native: simple selection list
+- [x] Create manifest
 
 ### 8.2 Tabs [DEP: 4.4] [INDEPENDENT]
 - [ ] Create `ui/tabs.tsx`

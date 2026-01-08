@@ -1,6 +1,7 @@
 import * as React from "react"
 import { View } from "react-native"
 import type { RovingFocusGroupProps, RovingFocusItemProps } from "./types.js"
+import { composeRefs } from "./utils.js"
 
 const ITEM_DATA_ATTR = "data-roving-focus-item"
 const VALUE_DATA_ATTR = "data-roving-focus-value"
@@ -148,7 +149,6 @@ export const RovingFocusGroup = React.forwardRef<View, RovingFocusGroupProps>(
         }
       }
     }, [currentValue, handleValueChange])
-    // If we run when undefined, it will set it, then re-render with defined value.
 
     return (
       <RovingFocusContext.Provider
@@ -172,30 +172,36 @@ export const RovingFocusGroup = React.forwardRef<View, RovingFocusGroupProps>(
 RovingFocusGroup.displayName = "RovingFocusGroup"
 
 export const RovingFocusItem = React.forwardRef<View, RovingFocusItemProps>(
-  ({ value, disabled, children, ...props }, ref) => {
+  ({ value, disabled, children, asChild, ...props }, ref) => {
     const context = React.useContext(RovingFocusContext)
     const isSelected = context?.value === value
-    // tabindex is 0 if selected (or no selection and first?), -1 otherwise
-    // Simpler: 0 if selected. If nothing selected, maybe first one?
-    // Usually Roving Focus ensures one item is always tabbable.
-    // If context.value is undefined, make the first one tabbable?
-    // For now, let's assume uncontrolled defaultValue is set or controlled value is set.
-    // If nothing set, user tabs in -> we might not catch focus.
-    // robust impl checks if any item is active.
+    const tabIndex = (isSelected ? 0 : -1) as 0 | -1
 
-    const tabIndex = isSelected ? 0 : -1
+    const itemRef = React.useRef<View>(null)
+    const composedRefs = composeRefs(ref, itemRef)
+
+    const commonProps = {
+      [ITEM_DATA_ATTR]: true,
+      [VALUE_DATA_ATTR]: value,
+      disabled, // Web prop
+      tabIndex: disabled ? undefined : tabIndex,
+      focusable: !disabled,
+      ...props,
+    }
+
+    if (asChild && React.isValidElement(children)) {
+      return React.cloneElement(children as React.ReactElement<any>, {
+        ref: composeRefs(composedRefs, (children as any).ref),
+        ...commonProps,
+      })
+    }
 
     return (
       <View
-        ref={ref}
-        {...{ [ITEM_DATA_ATTR]: true, [VALUE_DATA_ATTR]: value }}
+        ref={composedRefs}
         accessibilityRole="button"
         accessibilityState={{ disabled: !!disabled }}
-        focusable={!disabled}
-        // @ts-expect-error - Web-only prop
-        disabled={disabled}
-        tabIndex={disabled ? undefined : tabIndex}
-        {...props}
+        {...commonProps}
       >
         {children}
       </View>

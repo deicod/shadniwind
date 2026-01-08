@@ -272,6 +272,19 @@
       ]
     },
     {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.",
+      "dependencies": [
+        "lucide-react-native"
+      ],
+      "registryDependencies": [
+        "tokens",
+        "roving-focus"
+      ]
+    },
+    {
       "name": "roving-focus",
       "type": "registry:lib",
       "title": "Roving Focus",

@@ -28,6 +28,11 @@
       "source": "primitives/roving-focus/index.ts",
       "path": "lib/roving-focus/index.ts",
       "type": "registry:lib"
+    },
+    {
+      "source": "primitives/roving-focus/utils.ts",
+      "path": "lib/roving-focus/utils.ts",
+      "type": "registry:lib"
     }
   ],
   "registryDependencies": []
