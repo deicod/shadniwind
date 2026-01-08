@@ -191,6 +191,19 @@
       ]
     },
     {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "A succinct message that is displayed temporarily.",
+      "dependencies": [
+        "lucide-react-native"
+      ],
+      "registryDependencies": [
+        "tokens",
+        "portal"
+      ]
+    },
+    {
       "name": "tokens",
       "type": "registry:lib",
       "title": "Tokens",

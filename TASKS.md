@@ -329,9 +329,9 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 6.3 Toast [DEP: 4.1] [INDEPENDENT]
-- [ ] Create `ui/toast.tsx`
-- [ ] Basic toast primitive
-- [ ] Create manifest
+- [x] Create `ui/toast.tsx`
+- [x] Basic toast primitive
+- [x] Create manifest
 
 ### 6.4 Sonner [DEP: 6.3]
 - [ ] Create `ui/sonner.tsx`

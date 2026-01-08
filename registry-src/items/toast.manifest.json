@@ -1,0 +1,15 @@
+{
+  "name": "toast",
+  "type": "registry:ui",
+  "title": "Toast",
+  "description": "A succinct message that is displayed temporarily.",
+  "registryDependencies": ["tokens", "portal"],
+  "dependencies": ["lucide-react-native"],
+  "files": [
+    {
+      "source": "ui/toast.tsx",
+      "path": "components/ui/toast.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}
