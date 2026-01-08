@@ -1,4 +1,4 @@
-// @ts-expect-error - Optional dependency
+
 import { Field } from "@tanstack/react-form"
 
 import { Field as UIField } from "./field.js"
