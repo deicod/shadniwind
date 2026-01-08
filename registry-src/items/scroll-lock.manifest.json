@@ -1,0 +1,34 @@
+{
+  "name": "scroll-lock",
+  "type": "registry:lib",
+  "title": "Scroll Lock",
+  "description": "Scroll Lock primitive for preventing body scroll on web.",
+  "files": [
+    {
+      "source": "primitives/scroll-lock/types.ts",
+      "path": "lib/scroll-lock/types.ts",
+      "type": "registry:lib"
+    },
+    {
+      "source": "primitives/scroll-lock/use-scroll-lock.ts",
+      "path": "lib/scroll-lock/use-scroll-lock.ts",
+      "type": "registry:lib"
+    },
+    {
+      "source": "primitives/scroll-lock/use-scroll-lock.web.ts",
+      "path": "lib/scroll-lock/use-scroll-lock.web.ts",
+      "type": "registry:lib"
+    },
+    {
+      "source": "primitives/scroll-lock/use-scroll-lock.native.ts",
+      "path": "lib/scroll-lock/use-scroll-lock.native.ts",
+      "type": "registry:lib"
+    },
+    {
+      "source": "primitives/scroll-lock/index.ts",
+      "path": "lib/scroll-lock/index.ts",
+      "type": "registry:lib"
+    }
+  ],
+  "registryDependencies": []
+}

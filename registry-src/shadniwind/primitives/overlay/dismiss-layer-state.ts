@@ -21,7 +21,8 @@ export function resolveDismissLayerState({
 }: ResolveDismissLayerStateOptions): DismissLayerState {
   const isDismissable = dismissable ?? Boolean(onDismiss)
   const shouldCapture = Boolean(scrim) || isDismissable
-  const backdropPointerEvents = scrimPointerEvents ?? (shouldCapture ? "auto" : "none")
+  const backdropPointerEvents =
+    scrimPointerEvents ?? (shouldCapture ? "auto" : "none")
 
   return {
     isDismissable,

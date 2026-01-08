@@ -35,7 +35,9 @@ test("PortalStore isolates hosts", () => {
   store.mount("modal", 2, "Omega")
 
   assert.deepStrictEqual(store.getSnapshot("root"), [{ key: 1, node: "Alpha" }])
-  assert.deepStrictEqual(store.getSnapshot("modal"), [{ key: 2, node: "Omega" }])
+  assert.deepStrictEqual(store.getSnapshot("modal"), [
+    { key: 2, node: "Omega" },
+  ])
 })
 
 test("PortalStore notifies subscribers on changes only", () => {

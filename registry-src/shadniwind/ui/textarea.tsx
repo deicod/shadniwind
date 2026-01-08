@@ -1,7 +1,7 @@
 import * as React from "react"
 import {
-  TextInput,
   type StyleProp,
+  TextInput,
   type TextInputProps,
   type TextStyle,
 } from "react-native"

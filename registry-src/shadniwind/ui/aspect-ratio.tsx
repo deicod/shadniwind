@@ -1,9 +1,9 @@
 import * as React from "react"
 import {
-  Platform,
-  View,
   type LayoutChangeEvent,
+  Platform,
   type StyleProp,
+  View,
   type ViewProps,
   type ViewStyle,
 } from "react-native"

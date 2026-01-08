@@ -1,11 +1,11 @@
 import * as React from "react"
 import {
   Platform,
-  Text,
-  View,
   type StyleProp,
+  Text,
   type TextProps,
   type TextStyle,
+  View,
   type ViewStyle,
 } from "react-native"
 import { StyleSheet } from "react-native-unistyles"
@@ -113,7 +113,14 @@ const styles = StyleSheet.create((theme) => ({
 
 export const Kbd = React.forwardRef<View, KbdProps>(
   (
-    { variant = "default", size = "default", style, textStyle, children, ...textProps },
+    {
+      variant = "default",
+      size = "default",
+      style,
+      textStyle,
+      children,
+      ...textProps
+    },
     ref,
   ) => {
     styles.useVariants({

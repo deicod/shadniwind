@@ -1,10 +1,23 @@
-import type { Alignment, Placement, Position, Rect, Side, Viewport } from "./types.js"
+import type {
+  Alignment,
+  Placement,
+  Position,
+  Rect,
+  Side,
+  Viewport,
+} from "./types.js"
 
 /**
  * Parse a placement string into side and alignment components.
  */
-export function parsePlacement(placement: Placement): { side: Side; alignment: Alignment } {
-  const [side, alignment = "center"] = placement.split("-") as [Side, Alignment | undefined]
+export function parsePlacement(placement: Placement): {
+  side: Side
+  alignment: Alignment
+} {
+  const [side, alignment = "center"] = placement.split("-") as [
+    Side,
+    Alignment | undefined,
+  ]
   return { side, alignment: alignment ?? "center" }
 }
 
@@ -40,7 +53,7 @@ export function computePosition(
   contentRect: Rect,
   placement: Placement,
   offset: number,
-  alignOffset: number
+  alignOffset: number,
 ): Position {
   const { side, alignment } = parsePlacement(placement)
 
@@ -87,7 +100,8 @@ export function computePosition(
         top = anchorRect.y + (anchorRect.height - contentRect.height) / 2
         break
       case "end":
-        top = anchorRect.y + anchorRect.height - contentRect.height - alignOffset
+        top =
+          anchorRect.y + anchorRect.height - contentRect.height - alignOffset
         break
     }
   }
@@ -102,7 +116,7 @@ export function detectOverflow(
   position: Position,
   contentRect: Rect,
   viewport: Viewport,
-  padding: number
+  padding: number,
 ): { top: boolean; bottom: boolean; left: boolean; right: boolean } {
   return {
     top: position.top < padding,
@@ -123,9 +137,15 @@ export function applyFlip(
   offset: number,
   alignOffset: number,
   viewport: Viewport,
-  padding: number
+  padding: number,
 ): { position: Position; placement: Placement; flipped: boolean } {
-  const position = computePosition(anchorRect, contentRect, placement, offset, alignOffset)
+  const position = computePosition(
+    anchorRect,
+    contentRect,
+    placement,
+    offset,
+    alignOffset,
+  )
   const overflow = detectOverflow(position, contentRect, viewport, padding)
 
   const { side, alignment } = parsePlacement(placement)
@@ -144,8 +164,19 @@ export function applyFlip(
   // Try flipped placement
   const flippedSide = getOppositeSide(side)
   const flippedPlacement = composePlacement(flippedSide, alignment)
-  const flippedPosition = computePosition(anchorRect, contentRect, flippedPlacement, offset, alignOffset)
-  const flippedOverflow = detectOverflow(flippedPosition, contentRect, viewport, padding)
+  const flippedPosition = computePosition(
+    anchorRect,
+    contentRect,
+    flippedPlacement,
+    offset,
+    alignOffset,
+  )
+  const flippedOverflow = detectOverflow(
+    flippedPosition,
+    contentRect,
+    viewport,
+    padding,
+  )
 
   // Check if flipped position is better (doesn't overflow on main axis)
   let useFlipped = false
@@ -155,7 +186,11 @@ export function applyFlip(
   if (flippedSide === "right" && !flippedOverflow.right) useFlipped = true
 
   if (useFlipped) {
-    return { position: flippedPosition, placement: flippedPlacement, flipped: true }
+    return {
+      position: flippedPosition,
+      placement: flippedPlacement,
+      flipped: true,
+    }
   }
 
   // Flipped is not better, keep original
@@ -169,10 +204,16 @@ export function constrainToViewport(
   position: Position,
   contentRect: Rect,
   viewport: Viewport,
-  padding: number
+  padding: number,
 ): Position {
   return {
-    top: Math.max(padding, Math.min(position.top, viewport.height - contentRect.height - padding)),
-    left: Math.max(padding, Math.min(position.left, viewport.width - contentRect.width - padding)),
+    top: Math.max(
+      padding,
+      Math.min(position.top, viewport.height - contentRect.height - padding),
+    ),
+    left: Math.max(
+      padding,
+      Math.min(position.left, viewport.width - contentRect.width - padding),
+    ),
   }
 }

@@ -2,8 +2,8 @@ import * as React from "react"
 import {
   Animated,
   Easing,
-  type View,
   type StyleProp,
+  type View,
   type ViewProps,
   type ViewStyle,
 } from "react-native"
@@ -60,7 +60,13 @@ export const Skeleton = React.forwardRef<SkeletonRef, SkeletonProps>(
       }
     }, [animate, opacity])
 
-    return <Animated.View ref={ref} style={[styles.skeleton, style, { opacity }]} {...props} />
+    return (
+      <Animated.View
+        ref={ref}
+        style={[styles.skeleton, style, { opacity }]}
+        {...props}
+      />
+    )
   },
 )
 

@@ -1,10 +1,10 @@
 import * as React from "react"
 import {
-  Text,
-  View,
   type StyleProp,
+  Text,
   type TextProps,
   type TextStyle,
+  View,
   type ViewProps,
   type ViewStyle,
 } from "react-native"

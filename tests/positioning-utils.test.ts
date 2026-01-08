@@ -10,21 +10,60 @@ import {
   getOppositeSide,
   parsePlacement,
 } from "../registry-src/shadniwind/primitives/positioning/positioning-utils.js"
-import type { Rect, Viewport } from "../registry-src/shadniwind/primitives/positioning/types.js"
+import type {
+  Rect,
+  Viewport,
+} from "../registry-src/shadniwind/primitives/positioning/types.js"
 
 test("parsePlacement extracts side and alignment from placement strings", () => {
-  assert.deepStrictEqual(parsePlacement("top"), { side: "top", alignment: "center" })
-  assert.deepStrictEqual(parsePlacement("bottom"), { side: "bottom", alignment: "center" })
-  assert.deepStrictEqual(parsePlacement("left"), { side: "left", alignment: "center" })
-  assert.deepStrictEqual(parsePlacement("right"), { side: "right", alignment: "center" })
-  assert.deepStrictEqual(parsePlacement("top-start"), { side: "top", alignment: "start" })
-  assert.deepStrictEqual(parsePlacement("top-end"), { side: "top", alignment: "end" })
-  assert.deepStrictEqual(parsePlacement("bottom-start"), { side: "bottom", alignment: "start" })
-  assert.deepStrictEqual(parsePlacement("bottom-end"), { side: "bottom", alignment: "end" })
-  assert.deepStrictEqual(parsePlacement("left-start"), { side: "left", alignment: "start" })
-  assert.deepStrictEqual(parsePlacement("left-end"), { side: "left", alignment: "end" })
-  assert.deepStrictEqual(parsePlacement("right-start"), { side: "right", alignment: "start" })
-  assert.deepStrictEqual(parsePlacement("right-end"), { side: "right", alignment: "end" })
+  assert.deepStrictEqual(parsePlacement("top"), {
+    side: "top",
+    alignment: "center",
+  })
+  assert.deepStrictEqual(parsePlacement("bottom"), {
+    side: "bottom",
+    alignment: "center",
+  })
+  assert.deepStrictEqual(parsePlacement("left"), {
+    side: "left",
+    alignment: "center",
+  })
+  assert.deepStrictEqual(parsePlacement("right"), {
+    side: "right",
+    alignment: "center",
+  })
+  assert.deepStrictEqual(parsePlacement("top-start"), {
+    side: "top",
+    alignment: "start",
+  })
+  assert.deepStrictEqual(parsePlacement("top-end"), {
+    side: "top",
+    alignment: "end",
+  })
+  assert.deepStrictEqual(parsePlacement("bottom-start"), {
+    side: "bottom",
+    alignment: "start",
+  })
+  assert.deepStrictEqual(parsePlacement("bottom-end"), {
+    side: "bottom",
+    alignment: "end",
+  })
+  assert.deepStrictEqual(parsePlacement("left-start"), {
+    side: "left",
+    alignment: "start",
+  })
+  assert.deepStrictEqual(parsePlacement("left-end"), {
+    side: "left",
+    alignment: "end",
+  })
+  assert.deepStrictEqual(parsePlacement("right-start"), {
+    side: "right",
+    alignment: "start",
+  })
+  assert.deepStrictEqual(parsePlacement("right-end"), {
+    side: "right",
+    alignment: "end",
+  })
 })
 
 test("getOppositeSide returns the opposite side", () => {
@@ -129,7 +168,12 @@ test("detectOverflow detects top overflow", () => {
   const padding = 8
 
   // Position above viewport
-  const overflow = detectOverflow({ top: 5, left: 100 }, content, viewport, padding)
+  const overflow = detectOverflow(
+    { top: 5, left: 100 },
+    content,
+    viewport,
+    padding,
+  )
   assert.strictEqual(overflow.top, true)
   assert.strictEqual(overflow.bottom, false)
 })
@@ -140,7 +184,12 @@ test("detectOverflow detects bottom overflow", () => {
   const padding = 8
 
   // Position would extend past viewport bottom
-  const overflow = detectOverflow({ top: 560, left: 100 }, content, viewport, padding)
+  const overflow = detectOverflow(
+    { top: 560, left: 100 },
+    content,
+    viewport,
+    padding,
+  )
   assert.strictEqual(overflow.top, false)
   assert.strictEqual(overflow.bottom, true) // 560 + 50 = 610 > 600 - 8 = 592
 })
@@ -150,7 +199,12 @@ test("detectOverflow detects left overflow", () => {
   const content: Rect = { x: 0, y: 0, width: 100, height: 50 }
   const padding = 8
 
-  const overflow = detectOverflow({ top: 100, left: 5 }, content, viewport, padding)
+  const overflow = detectOverflow(
+    { top: 100, left: 5 },
+    content,
+    viewport,
+    padding,
+  )
   assert.strictEqual(overflow.left, true)
   assert.strictEqual(overflow.right, false)
 })
@@ -161,7 +215,12 @@ test("detectOverflow detects right overflow", () => {
   const padding = 8
 
   // Position would extend past viewport right
-  const overflow = detectOverflow({ top: 100, left: 710 }, content, viewport, padding)
+  const overflow = detectOverflow(
+    { top: 100, left: 710 },
+    content,
+    viewport,
+    padding,
+  )
   assert.strictEqual(overflow.left, false)
   assert.strictEqual(overflow.right, true) // 710 + 100 = 810 > 800 - 8 = 792
 })
@@ -220,12 +279,22 @@ test("constrainToViewport clamps position to viewport bounds", () => {
   const padding = 8
 
   // Position out of bounds in top-left
-  const constrained1 = constrainToViewport({ top: -10, left: -20 }, content, viewport, padding)
+  const constrained1 = constrainToViewport(
+    { top: -10, left: -20 },
+    content,
+    viewport,
+    padding,
+  )
   assert.strictEqual(constrained1.top, padding)
   assert.strictEqual(constrained1.left, padding)
 
   // Position out of bounds in bottom-right
-  const constrained2 = constrainToViewport({ top: 580, left: 750 }, content, viewport, padding)
+  const constrained2 = constrainToViewport(
+    { top: 580, left: 750 },
+    content,
+    viewport,
+    padding,
+  )
   // Max top: 600 - 50 - 8 = 542, max left: 800 - 100 - 8 = 692
   assert.strictEqual(constrained2.top, 542)
   assert.strictEqual(constrained2.left, 692)

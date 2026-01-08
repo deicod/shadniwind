@@ -2,7 +2,16 @@
 // - use-positioning.native.ts for iOS/Android
 // - use-positioning.web.ts for web
 
-export { usePositioning } from "./use-positioning.js"
+// Re-export utilities for advanced usage
+export {
+  applyFlip,
+  composePlacement,
+  computePosition,
+  constrainToViewport,
+  detectOverflow,
+  getOppositeSide,
+  parsePlacement,
+} from "./positioning-utils.js"
 
 // Re-export types
 export type {
@@ -15,14 +24,4 @@ export type {
   UsePositioningOptions,
   Viewport,
 } from "./types.js"
-
-// Re-export utilities for advanced usage
-export {
-  applyFlip,
-  composePlacement,
-  computePosition,
-  constrainToViewport,
-  detectOverflow,
-  getOppositeSide,
-  parsePlacement,
-} from "./positioning-utils.js"
+export { usePositioning } from "./use-positioning.js"

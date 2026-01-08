@@ -1,0 +1,14 @@
+{
+  "name": "tooltip",
+  "type": "registry:ui",
+  "title": "Tooltip",
+  "description": "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+  "registryDependencies": ["tokens", "portal", "positioning"],
+  "files": [
+    {
+      "source": "ui/tooltip.tsx",
+      "path": "components/ui/tooltip.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

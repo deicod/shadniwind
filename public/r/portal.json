@@ -6,7 +6,7 @@
   "files": [
     {
       "path": "lib/portal/PortalProvider.tsx",
-      "content": "import type React from \"react\"\nimport { createContext, useContext, useRef } from \"react\"\n\nimport { PortalStore } from \"./portal-store.js\"\n\nconst PortalStoreContext = createContext<PortalStore | null>(null)\n\nexport type PortalProviderProps = {\n  children: React.ReactNode\n}\n\nexport function PortalProvider({ children }: PortalProviderProps) {\n  const storeRef = useRef<PortalStore | null>(null)\n\n  if (!storeRef.current) {\n    storeRef.current = new PortalStore()\n  }\n\n  return <PortalStoreContext.Provider value={storeRef.current}>{children}</PortalStoreContext.Provider>\n}\n\nexport function usePortalStore(): PortalStore {\n  const store = useContext(PortalStoreContext)\n\n  if (!store) {\n    throw new Error(\"PortalProvider is missing. Wrap your app with <PortalProvider>.\")\n  }\n\n  return store\n}\n",
+      "content": "import type React from \"react\"\nimport { createContext, useContext, useRef } from \"react\"\n\nimport { PortalStore } from \"./portal-store.js\"\n\nconst PortalStoreContext = createContext<PortalStore | null>(null)\n\nexport type PortalProviderProps = {\n  children: React.ReactNode\n}\n\nexport function PortalProvider({ children }: PortalProviderProps) {\n  const storeRef = useRef<PortalStore | null>(null)\n\n  if (!storeRef.current) {\n    storeRef.current = new PortalStore()\n  }\n\n  return (\n    <PortalStoreContext.Provider value={storeRef.current}>\n      {children}\n    </PortalStoreContext.Provider>\n  )\n}\n\nexport function usePortalStore(): PortalStore {\n  const store = useContext(PortalStoreContext)\n\n  if (!store) {\n    throw new Error(\n      \"PortalProvider is missing. Wrap your app with <PortalProvider>.\",\n    )\n  }\n\n  return store\n}\n",
       "type": "registry:lib"
     },
     {
@@ -26,7 +26,7 @@
     },
     {
       "path": "lib/portal/index.ts",
-      "content": "export { Portal } from \"./Portal.js\"\nexport type { PortalProps } from \"./Portal.js\"\nexport { PortalHost } from \"./PortalHost.js\"\nexport type { PortalHostProps } from \"./PortalHost.js\"\nexport { PortalProvider } from \"./PortalProvider.js\"\nexport type { PortalProviderProps } from \"./PortalProvider.js\"\n",
+      "content": "export type { PortalProps } from \"./Portal.js\"\nexport { Portal } from \"./Portal.js\"\nexport type { PortalHostProps } from \"./PortalHost.js\"\nexport { PortalHost } from \"./PortalHost.js\"\nexport type { PortalProviderProps } from \"./PortalProvider.js\"\nexport { PortalProvider } from \"./PortalProvider.js\"\n",
       "type": "registry:lib"
     }
   ]

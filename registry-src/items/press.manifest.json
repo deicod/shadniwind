@@ -1,0 +1,24 @@
+{
+  "name": "press",
+  "type": "registry:lib",
+  "title": "Press Utilities",
+  "description": "Utilities for handling press interactions and event composition.",
+  "files": [
+    {
+      "source": "primitives/press/types.ts",
+      "path": "lib/press/types.ts",
+      "type": "registry:lib"
+    },
+    {
+      "source": "primitives/press/utils.ts",
+      "path": "lib/press/utils.ts",
+      "type": "registry:lib"
+    },
+    {
+      "source": "primitives/press/index.ts",
+      "path": "lib/press/index.ts",
+      "type": "registry:lib"
+    }
+  ],
+  "registryDependencies": []
+}

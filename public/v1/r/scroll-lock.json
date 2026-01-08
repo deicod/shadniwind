@@ -1,0 +1,33 @@
+{
+  "name": "scroll-lock",
+  "type": "registry:lib",
+  "title": "Scroll Lock",
+  "description": "Scroll Lock primitive for preventing body scroll on web.",
+  "files": [
+    {
+      "path": "lib/scroll-lock/types.ts",
+      "content": "/**\n * usage:\n * useScrollLock(true) // locks scroll\n * useScrollLock(false) // unlocks scroll\n */\nexport type UseScrollLock = (lock: boolean) => void\n",
+      "type": "registry:lib"
+    },
+    {
+      "path": "lib/scroll-lock/use-scroll-lock.ts",
+      "content": "import { Platform } from \"react-native\"\nimport { useScrollLock as useScrollLockNative } from \"./use-scroll-lock.native.js\"\nimport { useScrollLock as useScrollLockWeb } from \"./use-scroll-lock.web.js\"\n\nexport const useScrollLock =\n  Platform.OS === \"web\" ? useScrollLockWeb : useScrollLockNative\n",
+      "type": "registry:lib"
+    },
+    {
+      "path": "lib/scroll-lock/use-scroll-lock.web.ts",
+      "content": "import * as React from \"react\"\n\nexport function useScrollLock(lock: boolean) {\n  React.useEffect(() => {\n    if (!lock) return\n\n    const originalStyle = window.getComputedStyle(document.body).overflow\n    document.body.style.overflow = \"hidden\"\n\n    return () => {\n      document.body.style.overflow = originalStyle\n    }\n  }, [lock])\n}\n",
+      "type": "registry:lib"
+    },
+    {
+      "path": "lib/scroll-lock/use-scroll-lock.native.ts",
+      "content": "export function useScrollLock(_lock: boolean) {\n  // no-op for native currently.\n  // In future could use StatusBar.setUpdate or native module.\n  return\n}\n",
+      "type": "registry:lib"
+    },
+    {
+      "path": "lib/scroll-lock/index.ts",
+      "content": "export * from \"./types.js\"\nexport * from \"./use-scroll-lock.js\"\n",
+      "type": "registry:lib"
+    }
+  ]
+}

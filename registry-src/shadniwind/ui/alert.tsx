@@ -1,10 +1,10 @@
 import * as React from "react"
 import {
-  Text,
-  View,
   type StyleProp,
+  Text,
   type TextProps,
   type TextStyle,
+  View,
   type ViewProps,
   type ViewStyle,
 } from "react-native"
@@ -85,7 +85,10 @@ const styles = StyleSheet.create((theme) => ({
 }))
 
 export const Alert = React.forwardRef<View, AlertProps>(
-  ({ variant = "default", style, children, accessibilityRole, ...props }, ref) => {
+  (
+    { variant = "default", style, children, accessibilityRole, ...props },
+    ref,
+  ) => {
     styles.useVariants({ variant: variant === "default" ? undefined : variant })
 
     return (

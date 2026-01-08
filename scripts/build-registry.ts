@@ -1,10 +1,13 @@
-import { mkdir, readFile, readdir, unlink, writeFile } from "node:fs/promises"
+import { mkdir, readdir, readFile, unlink, writeFile } from "node:fs/promises"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 import AjvModule, { type ErrorObject } from "ajv"
 
 const Ajv = AjvModule.default ?? AjvModule
-import draft07MetaSchema from "ajv/dist/refs/json-schema-draft-07.json" with { type: "json" }
+
+import draft07MetaSchema from "ajv/dist/refs/json-schema-draft-07.json" with {
+  type: "json",
+}
 
 const REGISTRY_NAME = "shadniwind"
 const REGISTRY_HOMEPAGE = "https://github.com/deicod/shadniwind"
@@ -93,7 +96,9 @@ function toPosixPath(input: string): string {
 }
 
 function hasParentTraversal(input: string): boolean {
-  return toPosixPath(input).split("/").some((segment) => segment === "..")
+  return toPosixPath(input)
+    .split("/")
+    .some((segment) => segment === "..")
 }
 
 function assertSafeRelativePath(input: string, label: string): string {
@@ -134,19 +139,28 @@ function getOptionalString(value: unknown, label: string): string | undefined {
   return value
 }
 
-function getOptionalStringArray(value: unknown, label: string): string[] | undefined {
+function getOptionalStringArray(
+  value: unknown,
+  label: string,
+): string[] | undefined {
   if (value === undefined) {
     return undefined
   }
 
-  if (!Array.isArray(value) || value.some((entry) => typeof entry !== "string")) {
+  if (
+    !Array.isArray(value) ||
+    value.some((entry) => typeof entry !== "string")
+  ) {
     throw new Error(`${label} must be an array of strings`)
   }
 
   return value
 }
 
-function getOptionalObject(value: unknown, label: string): Record<string, unknown> | undefined {
+function getOptionalObject(
+  value: unknown,
+  label: string,
+): Record<string, unknown> | undefined {
   if (value === undefined) {
     return undefined
   }
@@ -200,22 +214,37 @@ async function loadManifest(filePath: string): Promise<Manifest> {
       getRequiredString(entry.path, `manifest.files[${index}].path`),
       `manifest.files[${index}].path`,
     )
-    const fileType = getRequiredString(entry.type, `manifest.files[${index}].type`)
+    const fileType = getRequiredString(
+      entry.type,
+      `manifest.files[${index}].type`,
+    )
 
     if (!REGISTRY_TYPE_SET.has(fileType)) {
-      throw new Error(`manifest.files[${index}].type must be a valid registry type: ${fileType}`)
+      throw new Error(
+        `manifest.files[${index}].type must be a valid registry type: ${fileType}`,
+      )
     }
 
-    const targetValue = getOptionalString(entry.target, `manifest.files[${index}].target`)
-    if ((fileType === "registry:file" || fileType === "registry:page") && !targetValue) {
-      throw new Error(`manifest.files[${index}].target is required for ${fileType}`)
+    const targetValue = getOptionalString(
+      entry.target,
+      `manifest.files[${index}].target`,
+    )
+    if (
+      (fileType === "registry:file" || fileType === "registry:page") &&
+      !targetValue
+    ) {
+      throw new Error(
+        `manifest.files[${index}].target is required for ${fileType}`,
+      )
     }
 
     return {
       source,
       path: filePathValue,
       type: fileType as RegistryType,
-      target: targetValue ? assertSafeRelativePath(targetValue, `manifest.files[${index}].target`) : undefined,
+      target: targetValue
+        ? assertSafeRelativePath(targetValue, `manifest.files[${index}].target`)
+        : undefined,
     }
   })
 
@@ -225,9 +254,18 @@ async function loadManifest(filePath: string): Promise<Manifest> {
     title: getOptionalString(raw.title, "manifest.title"),
     description: getOptionalString(raw.description, "manifest.description"),
     author: getOptionalString(raw.author, "manifest.author"),
-    dependencies: getOptionalStringArray(raw.dependencies, "manifest.dependencies"),
-    devDependencies: getOptionalStringArray(raw.devDependencies, "manifest.devDependencies"),
-    registryDependencies: getOptionalStringArray(raw.registryDependencies, "manifest.registryDependencies"),
+    dependencies: getOptionalStringArray(
+      raw.dependencies,
+      "manifest.dependencies",
+    ),
+    devDependencies: getOptionalStringArray(
+      raw.devDependencies,
+      "manifest.devDependencies",
+    ),
+    registryDependencies: getOptionalStringArray(
+      raw.registryDependencies,
+      "manifest.registryDependencies",
+    ),
     files,
     docs: getOptionalString(raw.docs, "manifest.docs"),
     categories: getOptionalStringArray(raw.categories, "manifest.categories"),
@@ -301,7 +339,9 @@ async function buildRegistryItem(manifest: Manifest): Promise<RegistryItem> {
     manifest.files.map(async (file) => {
       const sourcePath = path.resolve(SOURCE_DIR, file.source)
       if (!sourcePath.startsWith(SOURCE_DIR + path.sep)) {
-        throw new Error(`Source path escapes registry source root: ${file.source}`)
+        throw new Error(
+          `Source path escapes registry source root: ${file.source}`,
+        )
       }
 
       const content = await readFile(sourcePath, "utf8")
@@ -334,7 +374,10 @@ async function clearJsonOutputs(dirPath: string): Promise<void> {
         .map((entry) => unlink(path.join(dirPath, entry.name))),
     )
   } catch (error) {
-    if (error instanceof Error && (error as NodeJS.ErrnoException).code === "ENOENT") {
+    if (
+      error instanceof Error &&
+      (error as NodeJS.ErrnoException).code === "ENOENT"
+    ) {
       return
     }
     throw error
@@ -355,12 +398,18 @@ function formatAjvErrors(errors: ErrorObject[] | null | undefined): string {
     .join("\n")
 }
 
-function assertValid(valid: boolean, errors: ErrorObject[] | null | undefined, label: string) {
+function assertValid(
+  valid: boolean,
+  errors: ErrorObject[] | null | undefined,
+  label: string,
+) {
   if (valid) {
     return
   }
 
-  throw new Error(`Schema validation failed for ${label}:\n${formatAjvErrors(errors)}`)
+  throw new Error(
+    `Schema validation failed for ${label}:\n${formatAjvErrors(errors)}`,
+  )
 }
 
 async function main() {
@@ -398,8 +447,10 @@ async function main() {
 
   manifests.sort((a, b) => a.name.localeCompare(b.name))
 
-  const registryItemSchema = await readJsonFile<Record<string, unknown>>(ITEM_SCHEMA_PATH)
-  const registrySchema = await readJsonFile<Record<string, unknown>>(REGISTRY_SCHEMA_PATH)
+  const registryItemSchema =
+    await readJsonFile<Record<string, unknown>>(ITEM_SCHEMA_PATH)
+  const registrySchema =
+    await readJsonFile<Record<string, unknown>>(REGISTRY_SCHEMA_PATH)
   const ajv = new Ajv({ allErrors: true, strict: false })
 
   const draft07Meta = {
@@ -409,7 +460,10 @@ async function main() {
   }
 
   ajv.addMetaSchema(draft07Meta)
-  ajv.addSchema(registryItemSchema, "https://ui.shadcn.com/schema/registry-item.json")
+  ajv.addSchema(
+    registryItemSchema,
+    "https://ui.shadcn.com/schema/registry-item.json",
+  )
 
   const validateItem = ajv.compile(registryItemSchema)
   const validateRegistry = ajv.compile(registrySchema)

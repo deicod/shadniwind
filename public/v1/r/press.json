@@ -1,0 +1,23 @@
+{
+  "name": "press",
+  "type": "registry:lib",
+  "title": "Press Utilities",
+  "description": "Utilities for handling press interactions and event composition.",
+  "files": [
+    {
+      "path": "lib/press/types.ts",
+      "content": "import type { PressableProps, StyleProp, ViewStyle } from \"react-native\"\n\nexport interface PressableStateCallbackType {\n  readonly pressed: boolean\n}\n\nexport type StyleCallback = (\n  state: PressableStateCallbackType,\n) => StyleProp<ViewStyle>\n\nexport type PressUtils = (props: PressableProps) => PressableProps\n",
+      "type": "registry:lib"
+    },
+    {
+      "path": "lib/press/utils.ts",
+      "content": "/**\n * Composes multiple event handlers into a single handler.\n * Executed in order. If a handler prevents default, subsequent handlers may still run\n * depending on logic, but here we simply run them all.\n */\nexport function composeEventHandlers<E>(\n  originalEventHandler?: (event: E) => void,\n  ourEventHandler?: (event: E) => void,\n  { checkForDefaultPrevented = true } = {},\n) {\n  return function handleEvent(event: E) {\n    originalEventHandler?.(event)\n\n    if (\n      checkForDefaultPrevented === false ||\n      !(event as unknown as { defaultPrevented: boolean })?.defaultPrevented\n    ) {\n      return ourEventHandler?.(event)\n    }\n  }\n}\n",
+      "type": "registry:lib"
+    },
+    {
+      "path": "lib/press/index.ts",
+      "content": "export * from \"./types.js\"\nexport * from \"./utils.js\"\n",
+      "type": "registry:lib"
+    }
+  ]
+}

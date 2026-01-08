@@ -4,9 +4,9 @@ import {
   ActivityIndicator,
   Platform,
   Pressable,
-  Text,
   type PressableProps,
   type StyleProp,
+  Text,
   type TextStyle,
   type ViewStyle,
 } from "react-native"
@@ -306,7 +306,11 @@ export const Button = forwardRef<ButtonRef, ButtonProps>(
             style={hasText ? (styles.spinner as ViewStyle) : undefined}
           />
         ) : null}
-        {hasText ? <Text style={[styles.label as TextStyle, textStyle]}>{children}</Text> : (children as React.ReactNode)}
+        {hasText ? (
+          <Text style={[styles.label as TextStyle, textStyle]}>{children}</Text>
+        ) : (
+          (children as React.ReactNode)
+        )}
       </Pressable>
     )
   },

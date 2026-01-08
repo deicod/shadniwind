@@ -2,10 +2,10 @@ import * as React from "react"
 import {
   Platform,
   Pressable,
-  StyleSheet,
-  View,
   type PressableProps,
   type StyleProp,
+  StyleSheet,
+  View,
   type ViewProps,
   type ViewStyle,
 } from "react-native"
@@ -43,7 +43,10 @@ const styles = StyleSheet.create({
   },
 })
 
-export const OverlayBackdrop = React.forwardRef<OverlayBackdropRef, OverlayBackdropProps>(
+export const OverlayBackdrop = React.forwardRef<
+  OverlayBackdropRef,
+  OverlayBackdropProps
+>(
   (
     {
       visible = true,
@@ -56,7 +59,8 @@ export const OverlayBackdrop = React.forwardRef<OverlayBackdropRef, OverlayBackd
     ref,
   ) => {
     const elementsHidden = accessibilityElementsHidden ?? !accessible
-    const importance = importantForAccessibility ?? (accessible ? undefined : "no")
+    const importance =
+      importantForAccessibility ?? (accessible ? undefined : "no")
 
     return (
       <Pressable
@@ -154,8 +158,10 @@ export const DismissLayer = React.forwardRef<View, DismissLayerProps>(
 
 DismissLayer.displayName = "DismissLayer"
 
-export const Overlay = React.forwardRef<View, OverlayProps>(({ scrim = true, ...props }, ref) => {
-  return <DismissLayer ref={ref} scrim={scrim} {...props} />
-})
+export const Overlay = React.forwardRef<View, OverlayProps>(
+  ({ scrim = true, ...props }, ref) => {
+    return <DismissLayer ref={ref} scrim={scrim} {...props} />
+  },
+)
 
 Overlay.displayName = "Overlay"

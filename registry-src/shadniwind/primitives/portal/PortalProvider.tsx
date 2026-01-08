@@ -16,14 +16,20 @@ export function PortalProvider({ children }: PortalProviderProps) {
     storeRef.current = new PortalStore()
   }
 
-  return <PortalStoreContext.Provider value={storeRef.current}>{children}</PortalStoreContext.Provider>
+  return (
+    <PortalStoreContext.Provider value={storeRef.current}>
+      {children}
+    </PortalStoreContext.Provider>
+  )
 }
 
 export function usePortalStore(): PortalStore {
   const store = useContext(PortalStoreContext)
 
   if (!store) {
-    throw new Error("PortalProvider is missing. Wrap your app with <PortalProvider>.")
+    throw new Error(
+      "PortalProvider is missing. Wrap your app with <PortalProvider>.",
+    )
   }
 
   return store

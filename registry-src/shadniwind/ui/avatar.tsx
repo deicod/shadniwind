@@ -1,12 +1,12 @@
 import * as React from "react"
 import {
   Image,
-  Text,
-  View,
   type ImageProps,
   type ImageStyle,
   type StyleProp,
+  Text,
   type TextStyle,
+  View,
   type ViewProps,
   type ViewStyle,
 } from "react-native"
@@ -212,44 +212,46 @@ AvatarImage.displayName = "AvatarImage"
 
 type AvatarFallbackRef = React.ElementRef<typeof View>
 
-export const AvatarFallback = React.forwardRef<AvatarFallbackRef, AvatarFallbackProps>(
-  ({ delayMs = 0, name, style, textStyle, children, ...props }, ref) => {
-    const context = React.useContext(AvatarContext)
-    const size = context?.size ?? DEFAULT_SIZE
-    const status = context?.status ?? "idle"
-    const [visible, setVisible] = React.useState(delayMs === 0)
+export const AvatarFallback = React.forwardRef<
+  AvatarFallbackRef,
+  AvatarFallbackProps
+>(({ delayMs = 0, name, style, textStyle, children, ...props }, ref) => {
+  const context = React.useContext(AvatarContext)
+  const size = context?.size ?? DEFAULT_SIZE
+  const status = context?.status ?? "idle"
+  const [visible, setVisible] = React.useState(delayMs === 0)
 
-    const variantStyles = avatarStyles.useVariants({ size }) as
-      | typeof avatarStyles
-      | undefined
-    const styles = variantStyles ?? avatarStyles
+  const variantStyles = avatarStyles.useVariants({ size }) as
+    | typeof avatarStyles
+    | undefined
+  const styles = variantStyles ?? avatarStyles
 
-    React.useEffect(() => {
-      if (delayMs === 0) {
-        setVisible(true)
-        return
-      }
-      const timer = setTimeout(() => setVisible(true), delayMs)
-      return () => clearTimeout(timer)
-    }, [delayMs])
-
-    if (status === "loaded" || !visible) {
-      return null
+  React.useEffect(() => {
+    if (delayMs === 0) {
+      setVisible(true)
+      return
     }
+    const timer = setTimeout(() => setVisible(true), delayMs)
+    return () => clearTimeout(timer)
+  }, [delayMs])
 
-    const content = children ?? (name ? getInitials(name) : null)
-    const isTextContent = typeof content === "string" || typeof content === "number"
+  if (status === "loaded" || !visible) {
+    return null
+  }
 
-    return (
-      <View ref={ref} style={[styles.fallback, style]} {...props}>
-        {isTextContent ? (
-          <Text style={[styles.fallbackText, textStyle]}>{content}</Text>
-        ) : (
-          content
-        )}
-      </View>
-    )
-  },
-)
+  const content = children ?? (name ? getInitials(name) : null)
+  const isTextContent =
+    typeof content === "string" || typeof content === "number"
+
+  return (
+    <View ref={ref} style={[styles.fallback, style]} {...props}>
+      {isTextContent ? (
+        <Text style={[styles.fallbackText, textStyle]}>{content}</Text>
+      ) : (
+        content
+      )}
+    </View>
+  )
+})
 
 AvatarFallback.displayName = "AvatarFallback"

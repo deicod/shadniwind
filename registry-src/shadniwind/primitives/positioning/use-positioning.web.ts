@@ -1,13 +1,26 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 
-import { applyFlip, computePosition, constrainToViewport } from "./positioning-utils.js"
-import type { Placement, Position, PositioningResult, Rect, UsePositioningOptions, Viewport } from "./types.js"
+import {
+  applyFlip,
+  computePosition,
+  constrainToViewport,
+} from "./positioning-utils.js"
+import type {
+  Placement,
+  Position,
+  PositioningResult,
+  Rect,
+  UsePositioningOptions,
+  Viewport,
+} from "./types.js"
 
 /**
  * Hook for positioning floating content relative to an anchor element.
  * Web implementation using getBoundingClientRect.
  */
-export function usePositioning(options: UsePositioningOptions): PositioningResult {
+export function usePositioning(
+  options: UsePositioningOptions,
+): PositioningResult {
   const {
     anchorRef,
     contentRef,
@@ -20,7 +33,8 @@ export function usePositioning(options: UsePositioningOptions): PositioningResul
   } = options
 
   const [position, setPosition] = useState<Position>({ top: 0, left: 0 })
-  const [actualPlacement, setActualPlacement] = useState<Placement>(requestedPlacement)
+  const [actualPlacement, setActualPlacement] =
+    useState<Placement>(requestedPlacement)
   const [isPositioned, setIsPositioned] = useState(false)
 
   // Track mount state to prevent updates after unmount
@@ -67,7 +81,10 @@ export function usePositioning(options: UsePositioningOptions): PositioningResul
           return ref
         }
         // React Native Web stores DOM node differently
-        if (ref?._nativeTag && typeof ref._nativeTag.getBoundingClientRect === "function") {
+        if (
+          ref?._nativeTag &&
+          typeof ref._nativeTag.getBoundingClientRect === "function"
+        ) {
           return ref._nativeTag
         }
         return null
@@ -79,51 +96,74 @@ export function usePositioning(options: UsePositioningOptions): PositioningResul
       if (!anchorEl || !contentEl) {
         // Fall back to measureInWindow if available (hybrid approach)
         if (typeof anchor.measureInWindow === "function") {
-          anchor.measureInWindow((x: number, y: number, width: number, height: number) => {
-            if (!isMountedRef.current) return
-
-            if (width === 0 && height === 0) {
-              return
-            }
-
-            content.measureInWindow((_cx: number, _cy: number, cw: number, ch: number) => {
+          anchor.measureInWindow(
+            (x: number, y: number, width: number, height: number) => {
               if (!isMountedRef.current) return
 
-              if (cw === 0 && ch === 0) {
+              if (width === 0 && height === 0) {
                 return
               }
 
-              const anchorRect: Rect = { x, y, width, height }
-              const contentRect: Rect = { x: 0, y: 0, width: cw, height: ch }
-              const viewport: Viewport = { width: window.innerWidth, height: window.innerHeight }
+              content.measureInWindow(
+                (_cx: number, _cy: number, cw: number, ch: number) => {
+                  if (!isMountedRef.current) return
 
-              let computedPosition: Position
-              let finalPlacement: Placement
+                  if (cw === 0 && ch === 0) {
+                    return
+                  }
 
-              if (flip) {
-                const result = applyFlip(
-                  anchorRect,
-                  contentRect,
-                  requestedPlacement,
-                  offset,
-                  alignOffset,
-                  viewport,
-                  collisionPadding
-                )
-                computedPosition = result.position
-                finalPlacement = result.placement
-              } else {
-                computedPosition = computePosition(anchorRect, contentRect, requestedPlacement, offset, alignOffset)
-                finalPlacement = requestedPlacement
-              }
+                  const anchorRect: Rect = { x, y, width, height }
+                  const contentRect: Rect = {
+                    x: 0,
+                    y: 0,
+                    width: cw,
+                    height: ch,
+                  }
+                  const viewport: Viewport = {
+                    width: window.innerWidth,
+                    height: window.innerHeight,
+                  }
 
-              computedPosition = constrainToViewport(computedPosition, contentRect, viewport, collisionPadding)
+                  let computedPosition: Position
+                  let finalPlacement: Placement
 
-              setPosition(computedPosition)
-              setActualPlacement(finalPlacement)
-              setIsPositioned(true)
-            })
-          })
+                  if (flip) {
+                    const result = applyFlip(
+                      anchorRect,
+                      contentRect,
+                      requestedPlacement,
+                      offset,
+                      alignOffset,
+                      viewport,
+                      collisionPadding,
+                    )
+                    computedPosition = result.position
+                    finalPlacement = result.placement
+                  } else {
+                    computedPosition = computePosition(
+                      anchorRect,
+                      contentRect,
+                      requestedPlacement,
+                      offset,
+                      alignOffset,
+                    )
+                    finalPlacement = requestedPlacement
+                  }
+
+                  computedPosition = constrainToViewport(
+                    computedPosition,
+                    contentRect,
+                    viewport,
+                    collisionPadding,
+                  )
+
+                  setPosition(computedPosition)
+                  setActualPlacement(finalPlacement)
+                  setIsPositioned(true)
+                },
+              )
+            },
+          )
           return
         }
         return
@@ -169,22 +209,42 @@ export function usePositioning(options: UsePositioningOptions): PositioningResul
         offset,
         alignOffset,
         viewport,
-        collisionPadding
+        collisionPadding,
       )
       computedPosition = result.position
       finalPlacement = result.placement
     } else {
-      computedPosition = computePosition(anchorRect, contentRect, requestedPlacement, offset, alignOffset)
+      computedPosition = computePosition(
+        anchorRect,
+        contentRect,
+        requestedPlacement,
+        offset,
+        alignOffset,
+      )
       finalPlacement = requestedPlacement
     }
 
     // Constrain to viewport as final fallback
-    computedPosition = constrainToViewport(computedPosition, contentRect, viewport, collisionPadding)
+    computedPosition = constrainToViewport(
+      computedPosition,
+      contentRect,
+      viewport,
+      collisionPadding,
+    )
 
     setPosition(computedPosition)
     setActualPlacement(finalPlacement)
     setIsPositioned(true)
-  }, [open, anchorRef, contentRef, requestedPlacement, offset, alignOffset, flip, collisionPadding])
+  }, [
+    open,
+    anchorRef,
+    contentRef,
+    requestedPlacement,
+    offset,
+    alignOffset,
+    flip,
+    collisionPadding,
+  ])
 
   // Measure when open state changes
   useEffect(() => {
@@ -211,7 +271,10 @@ export function usePositioning(options: UsePositioningOptions): PositioningResul
     }
 
     window.addEventListener("resize", handleResize, { passive: true })
-    window.addEventListener("scroll", handleScroll, { passive: true, capture: true })
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+      capture: true,
+    })
 
     return () => {
       window.removeEventListener("resize", handleResize)

@@ -1,0 +1,14 @@
+{
+  "name": "a11y",
+  "type": "registry:lib",
+  "title": "A11y Utilities",
+  "description": "Accessibility utilities for mapping aria attributes and roles.",
+  "files": [
+    {
+      "source": "primitives/a11y/index.ts",
+      "path": "lib/a11y/index.ts",
+      "type": "registry:lib"
+    }
+  ],
+  "registryDependencies": []
+}

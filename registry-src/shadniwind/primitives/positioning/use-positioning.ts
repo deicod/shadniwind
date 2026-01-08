@@ -4,4 +4,5 @@ import { usePositioning as usePositioningNative } from "./use-positioning.native
 import { usePositioning as usePositioningWeb } from "./use-positioning.web.js"
 
 // Runtime platform selection keeps NodeNext extension requirements while preserving platform behavior.
-export const usePositioning = Platform.OS === "web" ? usePositioningWeb : usePositioningNative
+export const usePositioning =
+  Platform.OS === "web" ? usePositioningWeb : usePositioningNative

@@ -2,9 +2,9 @@ import * as React from "react"
 import {
   Animated,
   Easing,
-  View,
   type LayoutChangeEvent,
   type StyleProp,
+  View,
   type ViewProps,
   type ViewStyle,
 } from "react-native"
@@ -57,7 +57,8 @@ export const Progress = React.forwardRef<ProgressRef, ProgressProps>(
     const [width, setWidth] = React.useState(0)
     const translateX = React.useRef(new Animated.Value(0)).current
 
-    const isIndeterminate = indeterminate ?? (value === undefined || value === null)
+    const isIndeterminate =
+      indeterminate ?? (value === undefined || value === null)
     const clampedValue = React.useMemo(() => {
       if (typeof value !== "number" || Number.isNaN(value)) {
         return min
@@ -135,7 +136,9 @@ export const Progress = React.forwardRef<ProgressRef, ProgressProps>(
         style={[styles.root, style]}
         {...props}
       >
-        <Animated.View style={[styles.indicator, indicatorStyles, indicatorStyle]} />
+        <Animated.View
+          style={[styles.indicator, indicatorStyles, indicatorStyle]}
+        />
       </View>
     )
   },

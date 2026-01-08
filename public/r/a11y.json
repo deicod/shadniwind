@@ -1,0 +1,13 @@
+{
+  "name": "a11y",
+  "type": "registry:lib",
+  "title": "A11y Utilities",
+  "description": "Accessibility utilities for mapping aria attributes and roles.",
+  "files": [
+    {
+      "path": "lib/a11y/index.ts",
+      "content": "import { Platform } from \"react-native\"\n\nexport function ariaAttr(condition: boolean | undefined): boolean | undefined {\n  return condition ? true : undefined\n}\n\nexport const nativeRole = Platform.select({\n  web: (role: string) => role as unknown,\n  default: (role: string) => role as unknown,\n})\n",
+      "type": "registry:lib"
+    }
+  ]
+}

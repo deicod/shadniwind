@@ -1,10 +1,10 @@
 import * as React from "react"
 import {
-  Text,
-  View,
   type StyleProp,
+  Text,
   type TextProps,
   type TextStyle,
+  View,
   type ViewProps,
   type ViewStyle,
 } from "react-native"
@@ -70,21 +70,27 @@ const styles = StyleSheet.create((theme) => ({
   },
 }))
 
-export const Card = React.forwardRef<View, CardProps>(({ style, ...props }, ref) => {
-  return <View ref={ref} style={[styles.card, style]} {...props} />
-})
+export const Card = React.forwardRef<View, CardProps>(
+  ({ style, ...props }, ref) => {
+    return <View ref={ref} style={[styles.card, style]} {...props} />
+  },
+)
 
 Card.displayName = "Card"
 
-export const CardHeader = React.forwardRef<View, CardHeaderProps>(({ style, ...props }, ref) => {
-  return <View ref={ref} style={[styles.header, style]} {...props} />
-})
+export const CardHeader = React.forwardRef<View, CardHeaderProps>(
+  ({ style, ...props }, ref) => {
+    return <View ref={ref} style={[styles.header, style]} {...props} />
+  },
+)
 
 CardHeader.displayName = "CardHeader"
 
-export const CardTitle = React.forwardRef<Text, CardTitleProps>(({ style, ...props }, ref) => {
-  return <Text ref={ref} style={[styles.title, style]} {...props} />
-})
+export const CardTitle = React.forwardRef<Text, CardTitleProps>(
+  ({ style, ...props }, ref) => {
+    return <Text ref={ref} style={[styles.title, style]} {...props} />
+  },
+)
 
 CardTitle.displayName = "CardTitle"
 
@@ -96,14 +102,18 @@ export const CardDescription = React.forwardRef<Text, CardDescriptionProps>(
 
 CardDescription.displayName = "CardDescription"
 
-export const CardContent = React.forwardRef<View, CardContentProps>(({ style, ...props }, ref) => {
-  return <View ref={ref} style={[styles.content, style]} {...props} />
-})
+export const CardContent = React.forwardRef<View, CardContentProps>(
+  ({ style, ...props }, ref) => {
+    return <View ref={ref} style={[styles.content, style]} {...props} />
+  },
+)
 
 CardContent.displayName = "CardContent"
 
-export const CardFooter = React.forwardRef<View, CardFooterProps>(({ style, ...props }, ref) => {
-  return <View ref={ref} style={[styles.footer, style]} {...props} />
-})
+export const CardFooter = React.forwardRef<View, CardFooterProps>(
+  ({ style, ...props }, ref) => {
+    return <View ref={ref} style={[styles.footer, style]} {...props} />
+  },
+)
 
 CardFooter.displayName = "CardFooter"

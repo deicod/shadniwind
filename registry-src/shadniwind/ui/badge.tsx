@@ -1,9 +1,9 @@
 import * as React from "react"
 import {
-  Text,
-  View,
   type StyleProp,
+  Text,
   type TextStyle,
+  View,
   type ViewProps,
   type ViewStyle,
 } from "react-native"
@@ -80,7 +80,11 @@ export const Badge = React.forwardRef<View, BadgeProps>(
 
     return (
       <View ref={ref} style={[styles.container, style]} {...props}>
-        {hasText ? <Text style={[styles.label, textStyle]}>{children}</Text> : children}
+        {hasText ? (
+          <Text style={[styles.label, textStyle]}>{children}</Text>
+        ) : (
+          children
+        )}
       </View>
     )
   },

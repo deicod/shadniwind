@@ -200,34 +200,34 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 4.3 Focus Primitive [DEP: 2A] [INDEPENDENT]
-- [ ] Create `primitives/focus/index.tsx`
-- [ ] Web: focus trap and restore
-- [ ] Native: minimal/no-op implementation
-- [ ] Create `.web.tsx` and `.native.tsx` variants
-- [ ] Create manifest
+- [x] Create `primitives/focus/index.tsx`
+- [x] Web: focus trap and restore
+- [x] Native: minimal/no-op implementation
+- [x] Create `.web.tsx` and `.native.tsx` variants
+- [x] Create manifest
 
 ### 4.4 Roving Focus Primitive [DEP: 2A] [INDEPENDENT]
-- [ ] Create `primitives/roving-focus/index.tsx`
-- [ ] Web: keyboard navigation for menus/tabs/listbox
-- [ ] Native: simplified or no-op
-- [ ] Create manifest
+- [x] Create `primitives/roving-focus/index.tsx`
+- [x] Web: keyboard navigation for menus/tabs/listbox
+- [x] Native: simplified or no-op
+- [x] Create manifest
 
 ### 4.5 Scroll Lock Primitive [DEP: 2A] [INDEPENDENT]
-- [ ] Create `primitives/scroll-lock/index.tsx`
-- [ ] Web: scroll lock implementation
-- [ ] Native: best-effort implementation
-- [ ] Create manifest
+- [x] Create `primitives/scroll-lock/index.tsx`
+- [x] Web: scroll lock implementation
+- [x] Native: best-effort implementation
+- [x] Create manifest
 
 ### 4.6 Press Utilities [DEP: 2A] [INDEPENDENT]
-- [ ] Create `primitives/press/index.tsx`
-- [ ] Compose handlers utility
-- [ ] Pressed/disabled patterns
-- [ ] Create manifest
+- [x] Create `primitives/press/index.tsx`
+- [x] Compose handlers utility
+- [x] Pressed/disabled patterns
+- [x] Create manifest
 
 ### 4.7 A11y Utilities [DEP: 2A] [INDEPENDENT]
-- [ ] Create `primitives/a11y/index.tsx`
-- [ ] Role/aria prop mappings for RN Web
-- [ ] Create manifest
+- [x] Create `primitives/a11y/index.tsx`
+- [x] Role/aria prop mappings for RN Web
+- [x] Create manifest
 
 ---
 
@@ -318,10 +318,10 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 > **Agents: 4** | After Wave 4 (Overlay Primitives) completes.
 
 ### 6.1 Tooltip [DEP: 4.1, 4.2] [INDEPENDENT]
-- [ ] Create `ui/tooltip.tsx`
-- [ ] Web: hover/focus trigger
-- [ ] Native: long-press or press with delay
-- [ ] Create manifest
+- [x] Create `ui/tooltip.tsx`
+- [x] Web: hover/focus trigger
+- [x] Native: long-press or press with delay
+- [x] Create manifest
 
 ### 6.2 Popover [DEP: 4.1, 4.2, 4.3] [INDEPENDENT]
 - [ ] Create `ui/popover.tsx`

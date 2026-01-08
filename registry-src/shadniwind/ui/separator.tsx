@@ -1,5 +1,10 @@
 import * as React from "react"
-import { View, type StyleProp, type ViewProps, type ViewStyle } from "react-native"
+import {
+  type StyleProp,
+  View,
+  type ViewProps,
+  type ViewStyle,
+} from "react-native"
 import { StyleSheet } from "react-native-unistyles"
 
 type SeparatorOrientation = "horizontal" | "vertical"
@@ -30,7 +35,16 @@ const separatorStyles = StyleSheet.create((theme) => ({
 }))
 
 export const Separator = React.forwardRef<View, SeparatorProps>(
-  ({ orientation = "horizontal", decorative = true, style, accessibilityRole, ...props }, ref) => {
+  (
+    {
+      orientation = "horizontal",
+      decorative = true,
+      style,
+      accessibilityRole,
+      ...props
+    },
+    ref,
+  ) => {
     const variantStyles = separatorStyles.useVariants({
       orientation,
     }) as typeof separatorStyles | undefined
@@ -43,8 +57,12 @@ export const Separator = React.forwardRef<View, SeparatorProps>(
         ref={ref}
         style={[styles.separator, style]}
         accessibilityRole={isDecorative ? undefined : accessibilityRole}
-        accessibilityElementsHidden={isDecorative ? true : props.accessibilityElementsHidden}
-        importantForAccessibility={isDecorative ? "no" : props.importantForAccessibility}
+        accessibilityElementsHidden={
+          isDecorative ? true : props.accessibilityElementsHidden
+        }
+        importantForAccessibility={
+          isDecorative ? "no" : props.importantForAccessibility
+        }
         accessible={isDecorative ? false : props.accessible}
         {...props}
       />

@@ -3,6 +3,12 @@
   "homepage": "https://github.com/deicod/shadniwind",
   "items": [
     {
+      "name": "a11y",
+      "type": "registry:lib",
+      "title": "A11y Utilities",
+      "description": "Accessibility utilities for mapping aria attributes and roles."
+    },
+    {
       "name": "alert",
       "type": "registry:ui",
       "title": "Alert",
@@ -66,6 +72,12 @@
       ]
     },
     {
+      "name": "focus",
+      "type": "registry:lib",
+      "title": "Focus",
+      "description": "Focus primitive for trapping and restoring focus."
+    },
+    {
       "name": "input",
       "type": "registry:ui",
       "dependencies": [
@@ -103,6 +115,12 @@
       "description": "Positioning primitive for floating content with anchor measurement, placement, and collision handling."
     },
     {
+      "name": "press",
+      "type": "registry:lib",
+      "title": "Press Utilities",
+      "description": "Utilities for handling press interactions and event composition."
+    },
+    {
       "name": "progress",
       "type": "registry:ui",
       "title": "Progress",
@@ -110,6 +128,18 @@
       "registryDependencies": [
         "tokens"
       ]
+    },
+    {
+      "name": "roving-focus",
+      "type": "registry:lib",
+      "title": "Roving Focus",
+      "description": "Roving Focus primitive for managing focus in a list or grid."
+    },
+    {
+      "name": "scroll-lock",
+      "type": "registry:lib",
+      "title": "Scroll Lock",
+      "description": "Scroll Lock primitive for preventing body scroll on web."
     },
     {
       "name": "separator",
@@ -154,6 +184,17 @@
       "description": "Semantic tokens and Unistyles theme configuration.",
       "dependencies": [
         "react-native-unistyles"
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+      "registryDependencies": [
+        "tokens",
+        "portal",
+        "positioning"
       ]
     },
     {
