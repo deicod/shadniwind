@@ -127,6 +127,15 @@
       ]
     },
     {
+      "name": "input-group",
+      "type": "registry:ui",
+      "title": "Input Group",
+      "description": "Composable input group with text addons, icons, and button attachments. Layout wrapper for enhancing inputs.",
+      "registryDependencies": [
+        "tokens"
+      ]
+    },
+    {
       "name": "kbd",
       "type": "registry:ui",
       "title": "Kbd",

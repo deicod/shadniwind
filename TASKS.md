@@ -300,9 +300,9 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 5.12 Input Group [DEP: 3.3] [INDEPENDENT]
-- [ ] Create `ui/input-group.tsx`
-- [ ] Addons, icons, button attachments
-- [ ] Create manifest
+- [x] Create `ui/input-group.tsx`
+- [x] Addons, icons, button attachments
+- [x] Create manifest
 
 ### 5.13 Form Core [DEP: 2A, 5.4] [INDEPENDENT]
 - [ ] Create `ui/form-core.tsx`
