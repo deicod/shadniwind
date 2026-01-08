@@ -54,20 +54,6 @@ export const AspectRatio = React.forwardRef<View, AspectRatioProps>(
   ({ ratio = 1, style, children, onLayout, ...props }, ref) => {
     const resolvedRatio = resolveRatio(ratio)
 
-    // Web: Use CSS aspect-ratio property
-    if (Platform.OS === "web") {
-      return (
-        <View
-          ref={ref}
-          style={[styles.container, { aspectRatio: resolvedRatio }, style]}
-          onLayout={onLayout}
-          {...props}
-        >
-          <View style={styles.content}>{children}</View>
-        </View>
-      )
-    }
-
     // Native: Use onLayout measurement trick
     const [width, setWidth] = React.useState<number | null>(null)
 
@@ -81,6 +67,20 @@ export const AspectRatio = React.forwardRef<View, AspectRatioProps>(
     )
 
     const calculatedHeight = width !== null ? width / resolvedRatio : undefined
+
+    // Web: Use CSS aspect-ratio property
+    if (Platform.OS === "web") {
+      return (
+        <View
+          ref={ref}
+          style={[styles.container, { aspectRatio: resolvedRatio }, style]}
+          onLayout={onLayout}
+          {...props}
+        >
+          <View style={styles.content}>{children}</View>
+        </View>
+      )
+    }
 
     return (
       <View

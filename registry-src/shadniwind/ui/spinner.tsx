@@ -14,7 +14,7 @@ export type SpinnerProps = ActivityIndicatorProps & {
   style?: StyleProp<ViewStyle>
 }
 
-const styles = StyleSheet.create((theme) => ({
+const styles = StyleSheet.create((_theme) => ({
   spinner: {
     variants: {
       variant: {

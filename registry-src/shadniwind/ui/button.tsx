@@ -1,4 +1,5 @@
-import React, { forwardRef, useMemo, useState } from "react"
+import type React from "react"
+import { forwardRef, useEffect, useMemo, useState } from "react"
 import {
   ActivityIndicator,
   Platform,
@@ -211,6 +212,8 @@ export const Button = forwardRef<ButtonRef, ButtonProps>(
       children,
       onFocus,
       onBlur,
+      onPressIn,
+      onPressOut,
       accessibilityRole,
       ...props
     },
@@ -218,6 +221,7 @@ export const Button = forwardRef<ButtonRef, ButtonProps>(
   ) => {
     const { theme } = useUnistyles()
     const [focusVisible, setFocusVisible] = useState(false)
+    const [pressed, setPressed] = useState(false)
     const isDisabled = disabled || loading
     const hasText = typeof children === "string" || typeof children === "number"
 
@@ -229,7 +233,16 @@ export const Button = forwardRef<ButtonRef, ButtonProps>(
       focusVisible,
     }
 
-    styles.useVariants(baseVariants)
+    styles.useVariants({
+      ...baseVariants,
+      pressed: pressed && !isDisabled ? true : undefined,
+    })
+
+    useEffect(() => {
+      if (isDisabled) {
+        setPressed(false)
+      }
+    }, [isDisabled])
 
     const spinnerColor = useMemo(() => {
       switch (variant) {
@@ -242,7 +255,6 @@ export const Button = forwardRef<ButtonRef, ButtonProps>(
           return theme.colors.secondaryForeground
         case "link":
           return theme.colors.primary
-        case "default":
         default:
           return theme.colors.primaryForeground
       }
@@ -262,6 +274,18 @@ export const Button = forwardRef<ButtonRef, ButtonProps>(
       onBlur?.(event)
     }
 
+    const handlePressIn: PressableProps["onPressIn"] = (event) => {
+      if (!isDisabled) {
+        setPressed(true)
+      }
+      onPressIn?.(event)
+    }
+
+    const handlePressOut: PressableProps["onPressOut"] = (event) => {
+      setPressed(false)
+      onPressOut?.(event)
+    }
+
     return (
       <Pressable
         ref={ref}
@@ -270,13 +294,9 @@ export const Button = forwardRef<ButtonRef, ButtonProps>(
         disabled={isDisabled}
         onFocus={handleFocus}
         onBlur={handleBlur}
-        style={({ pressed }) => {
-          styles.useVariants({
-            ...baseVariants,
-            pressed: pressed && !isDisabled ? true : undefined,
-          })
-          return [styles.container as ViewStyle, style]
-        }}
+        onPressIn={handlePressIn}
+        onPressOut={handlePressOut}
+        style={[styles.container as ViewStyle, style]}
         {...props}
       >
         {loading ? (

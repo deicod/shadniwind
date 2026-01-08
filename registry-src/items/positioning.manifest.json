@@ -1,0 +1,39 @@
+{
+  "name": "positioning",
+  "type": "registry:lib",
+  "title": "Positioning",
+  "description": "Positioning primitive for floating content with anchor measurement, placement, and collision handling.",
+  "files": [
+    {
+      "source": "primitives/positioning/types.ts",
+      "path": "lib/positioning/types.ts",
+      "type": "registry:lib"
+    },
+    {
+      "source": "primitives/positioning/positioning-utils.ts",
+      "path": "lib/positioning/positioning-utils.ts",
+      "type": "registry:lib"
+    },
+    {
+      "source": "primitives/positioning/use-positioning.ts",
+      "path": "lib/positioning/use-positioning.ts",
+      "type": "registry:lib"
+    },
+    {
+      "source": "primitives/positioning/use-positioning.native.ts",
+      "path": "lib/positioning/use-positioning.native.ts",
+      "type": "registry:lib"
+    },
+    {
+      "source": "primitives/positioning/use-positioning.web.ts",
+      "path": "lib/positioning/use-positioning.web.ts",
+      "type": "registry:lib"
+    },
+    {
+      "source": "primitives/positioning/index.ts",
+      "path": "lib/positioning/index.ts",
+      "type": "registry:lib"
+    }
+  ],
+  "registryDependencies": []
+}

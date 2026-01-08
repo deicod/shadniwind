@@ -85,10 +85,22 @@
       ]
     },
     {
+      "name": "overlay",
+      "type": "registry:lib",
+      "title": "Overlay",
+      "description": "Dismiss layer and scrim/backdrop primitive for overlays."
+    },
+    {
       "name": "portal",
       "type": "registry:lib",
       "title": "Portal",
       "description": "Portal provider and host primitives for overlays."
+    },
+    {
+      "name": "positioning",
+      "type": "registry:lib",
+      "title": "Positioning",
+      "description": "Positioning primitive for floating content with anchor measurement, placement, and collision handling."
     },
     {
       "name": "progress",

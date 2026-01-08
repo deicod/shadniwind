@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useRef } from "react"
+import type React from "react"
+import { createContext, useContext, useRef } from "react"
 
 import { PortalStore } from "./portal-store.js"
 

@@ -2,7 +2,7 @@ import * as React from "react"
 import {
   Animated,
   Easing,
-  View,
+  type View,
   type StyleProp,
   type ViewProps,
   type ViewStyle,

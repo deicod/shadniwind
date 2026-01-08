@@ -171,6 +171,10 @@ export const AvatarImage = React.forwardRef<AvatarImageRef, AvatarImageProps>(
       if (!setStatus) {
         return
       }
+      if (!source) {
+        setStatus("idle")
+        return
+      }
       setStatus("loading")
     }, [setStatus, source])
 

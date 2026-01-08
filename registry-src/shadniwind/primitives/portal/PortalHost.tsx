@@ -1,4 +1,4 @@
-import React, { Fragment, useSyncExternalStore } from "react"
+import { Fragment, useSyncExternalStore } from "react"
 import { StyleSheet, View, type ViewProps } from "react-native"
 
 import { usePortalStore } from "./PortalProvider.js"

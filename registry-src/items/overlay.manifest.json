@@ -1,0 +1,13 @@
+{
+  "name": "overlay",
+  "type": "registry:lib",
+  "title": "Overlay",
+  "description": "Dismiss layer and scrim/backdrop primitive for overlays.",
+  "files": [
+    {
+      "source": "primitives/overlay/index.tsx",
+      "path": "lib/overlay/index.tsx",
+      "type": "registry:lib"
+    }
+  ]
+}
