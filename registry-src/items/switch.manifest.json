@@ -1,0 +1,14 @@
+{
+  "name": "switch",
+  "type": "registry:ui",
+  "title": "Switch",
+  "description": "A toggle switch with animated knob transition, controlled/uncontrolled state support, and web accessibility.",
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "source": "ui/switch.tsx",
+      "path": "components/ui/switch.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

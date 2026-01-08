@@ -242,10 +242,10 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 5.2 Switch [DEP: 2A] [INDEPENDENT]
-- [ ] Create `ui/switch.tsx`
-- [ ] Web: role=switch
-- [ ] Native: Pressable/animated knob
-- [ ] Create manifest
+- [x] Create `ui/switch.tsx`
+- [x] Web: role=switch
+- [x] Native: Pressable/animated knob
+- [x] Create manifest
 
 ### 5.3 Toggle [DEP: 2A] [INDEPENDENT]
 - [ ] Create `ui/toggle.tsx`
