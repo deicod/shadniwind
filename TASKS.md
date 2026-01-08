@@ -294,10 +294,10 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 5.11 Button Group [DEP: 3.2] [INDEPENDENT]
-- [ ] Create `ui/button-group.tsx`
-- [ ] Grouping + separators + consistent radii
-- [ ] Optional roving focus on web
-- [ ] Create manifest
+- [x] Create `ui/button-group.tsx`
+- [x] Grouping + separators + consistent radii
+- [x] Optional roving focus on web
+- [x] Create manifest
 
 ### 5.12 Input Group [DEP: 3.3] [INDEPENDENT]
 - [ ] Create `ui/input-group.tsx`

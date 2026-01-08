@@ -63,6 +63,15 @@
       ]
     },
     {
+      "name": "button-group",
+      "type": "registry:ui",
+      "title": "Button Group",
+      "description": "Groups related buttons together with automatic border radius handling and optional separators. Supports horizontal/vertical orientation.",
+      "registryDependencies": [
+        "tokens"
+      ]
+    },
+    {
       "name": "card",
       "type": "registry:ui",
       "title": "Card",

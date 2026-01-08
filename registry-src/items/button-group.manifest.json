@@ -1,0 +1,14 @@
+{
+  "name": "button-group",
+  "type": "registry:ui",
+  "title": "Button Group",
+  "description": "Groups related buttons together with automatic border radius handling and optional separators. Supports horizontal/vertical orientation.",
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "source": "ui/button-group.tsx",
+      "path": "components/ui/button-group.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}
