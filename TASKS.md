@@ -467,10 +467,10 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 10.2 Item [DEP: 5.13] [INDEPENDENT]
-- [ ] Create `ui/item.tsx`
-- [ ] FormItem-like wrapper
-- [ ] Part of form-core
-- [ ] Create manifest
+- [x] Create `ui/item.tsx`
+- [x] FormItem-like wrapper
+- [x] Part of form-core
+- [x] Create manifest
 
 ### 10.3 Form RHF [DEP: 5.13] [INDEPENDENT]
 - [ ] Create `ui/form-rhf.tsx`

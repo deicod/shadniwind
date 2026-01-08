@@ -1,0 +1,14 @@
+{
+  "name": "item",
+  "type": "registry:ui",
+  "title": "Item",
+  "description": "Generic item container with spacing variants. FormItem-like wrapper for vertically stacked items in forms or lists.",
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "source": "ui/item.tsx",
+      "path": "components/ui/item.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "item",
+  "type": "registry:ui",
+  "title": "Item",
+  "description": "Generic item container with spacing variants. FormItem-like wrapper for vertically stacked items in forms or lists.",
+  "registryDependencies": [
+    "tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/item.tsx",
+      "content": "import * as React from \"react\"\nimport { View, type ViewProps } from \"react-native\"\nimport { StyleSheet } from \"react-native-unistyles\"\n\nexport type ItemProps = ViewProps & {\n  /**\n   * Spacing size between items\n   * @default \"default\"\n   */\n  spacing?: \"compact\" | \"default\" | \"relaxed\"\n}\n\n/**\n * Item component - generic container for form items or list items.\n *\n * Provides consistent spacing for vertically stacked items.\n * Similar to FormItem but more generic - can be used outside forms.\n *\n * @example\n * ```tsx\n * <View>\n *   <Item>\n *     <Label>Username</Label>\n *     <Input />\n *   </Item>\n *   <Item>\n *     <Label>Email</Label>\n *     <Input />\n *   </Item>\n * </View>\n * ```\n */\nexport const Item = React.forwardRef<\n  React.ComponentRef<typeof View>,\n  ItemProps\n>(({ spacing = \"default\", style, ...props }, ref) => {\n  styles.useVariants({\n    spacing: spacing === \"default\" ? undefined : spacing,\n  })\n\n  return <View ref={ref} style={[styles.item, style]} {...props} />\n})\n\nItem.displayName = \"Item\"\n\nconst styles = StyleSheet.create((_theme) => ({\n  item: {\n    marginBottom: 16, // Default spacing\n    variants: {\n      spacing: {\n        compact: {\n          marginBottom: 8,\n        },\n        relaxed: {\n          marginBottom: 24,\n        },\n      },\n    } as const,\n  },\n}))\n",
+      "type": "registry:ui"
+    }
+  ]
+}

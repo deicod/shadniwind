@@ -154,6 +154,15 @@
       ]
     },
     {
+      "name": "item",
+      "type": "registry:ui",
+      "title": "Item",
+      "description": "Generic item container with spacing variants. FormItem-like wrapper for vertically stacked items in forms or lists.",
+      "registryDependencies": [
+        "tokens"
+      ]
+    },
+    {
       "name": "kbd",
       "type": "registry:ui",
       "title": "Kbd",
