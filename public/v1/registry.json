@@ -179,6 +179,15 @@
       "description": "Roving Focus primitive for managing focus in a list or grid."
     },
     {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll Area",
+      "description": "A styled ScrollView wrapper. On web, scrollbars can be styled with CSS. On native, uses platform defaults.",
+      "registryDependencies": [
+        "tokens"
+      ]
+    },
+    {
       "name": "scroll-lock",
       "type": "registry:lib",
       "title": "Scroll Lock",

@@ -1,0 +1,14 @@
+{
+  "name": "scroll-area",
+  "type": "registry:ui",
+  "title": "Scroll Area",
+  "description": "A styled ScrollView wrapper. On web, scrollbars can be styled with CSS. On native, uses platform defaults.",
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "source": "ui/scroll-area.tsx",
+      "path": "components/ui/scroll-area.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

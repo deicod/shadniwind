@@ -1,0 +1,16 @@
+{
+  "name": "scroll-area",
+  "type": "registry:ui",
+  "title": "Scroll Area",
+  "description": "A styled ScrollView wrapper. On web, scrollbars can be styled with CSS. On native, uses platform defaults.",
+  "registryDependencies": [
+    "tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/scroll-area.tsx",
+      "content": "import * as React from \"react\"\nimport { ScrollView, type ScrollViewProps } from \"react-native\"\nimport { StyleSheet } from \"react-native-unistyles\"\n\nexport type ScrollAreaProps = ScrollViewProps\n\n/**\n * Scroll Area component - a styled wrapper around ScrollView.\n *\n * On web, you can optionally style scrollbars using CSS.\n * On native, uses the platform's default scrollbars.\n *\n * @example\n * ```tsx\n * <ScrollArea style={{ maxHeight: 300 }}>\n *   <View>\n *     {/* Your scrollable content *\\/}\n *   </View>\n * </ScrollArea>\n * ```\n */\nexport const ScrollArea = React.forwardRef<\n  React.ComponentRef<typeof ScrollView>,\n  ScrollAreaProps\n>(({ style, children, ...props }, ref) => {\n  return (\n    <ScrollView\n      ref={ref}\n      style={[styles.scrollArea, style]}\n      showsVerticalScrollIndicator={true}\n      showsHorizontalScrollIndicator={true}\n      {...props}\n    >\n      {children}\n    </ScrollView>\n  )\n})\n\nScrollArea.displayName = \"ScrollArea\"\n\nconst styles = StyleSheet.create((_theme) => ({\n  scrollArea: {\n    width: \"100%\",\n  },\n}))\n",
+      "type": "registry:ui"
+    }
+  ]
+}
