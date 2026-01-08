@@ -184,12 +184,12 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 > **Agents: Up to 7** | After Stream 2B (Portal) completes. All primitives are independent.
 
 ### 4.1 Overlay Primitive [DEP: 2B] [INDEPENDENT]
-- [ ] Create `primitives/overlay/index.tsx`
-- [ ] Implement dismiss layer
-- [ ] Implement scrim/backdrop
-- [ ] Implement outside-press detection
-- [ ] Platform-specific files (`.native.tsx`, `.web.tsx`) as needed
-- [ ] Create manifest
+- [x] Create `primitives/overlay/index.tsx`
+- [x] Implement dismiss layer
+- [x] Implement scrim/backdrop
+- [x] Implement outside-press detection
+- [x] Platform-specific files (`.native.tsx`, `.web.tsx`) as needed
+- [x] Create manifest
 
 ### 4.2 Positioning Primitive [DEP: 2B] [INDEPENDENT]
 - [x] Create `primitives/positioning/index.tsx`
