@@ -479,9 +479,9 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 10.4 Form TSF [DEP: 5.13] [INDEPENDENT]
-- [ ] Create `ui/form-tsf.tsx`
-- [ ] TanStack Form integration helpers
-- [ ] Create manifest
+- [x] Create `ui/form-tsf.tsx`
+- [x] TanStack Form integration helpers
+- [x] Create manifest
 
 ---
 

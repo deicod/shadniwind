@@ -147,6 +147,18 @@
       ]
     },
     {
+      "name": "form-tsf",
+      "type": "registry:ui",
+      "title": "Form TSF",
+      "description": "TanStack Form integration helpers. Provides wrappers for @tanstack/react-form.",
+      "dependencies": [
+        "@tanstack/react-form"
+      ],
+      "registryDependencies": [
+        "field"
+      ]
+    },
+    {
       "name": "input",
       "type": "registry:ui",
       "dependencies": [
