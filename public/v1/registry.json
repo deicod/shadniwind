@@ -406,6 +406,17 @@
       ]
     },
     {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "title": "Toggle Group",
+      "description": "A set of two-state buttons that can be toggled on or off.",
+      "registryDependencies": [
+        "tokens",
+        "roving-focus",
+        "toggle"
+      ]
+    },
+    {
       "name": "tokens",
       "type": "registry:lib",
       "title": "Tokens",

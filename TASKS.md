@@ -388,10 +388,10 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 8.3 Toggle Group [DEP: 4.4] [INDEPENDENT]
-- [ ] Create `ui/toggle-group.tsx`
-- [ ] Multi/single selection
-- [ ] Roving focus on web
-- [ ] Create manifest
+- [x] Create `ui/toggle-group.tsx`
+- [x] Multi/single selection
+- [x] Roving focus on web
+- [x] Create manifest
 
 ### 8.4 Accordion [DEP: 5.5, 4.4] [INDEPENDENT]
 - [ ] Create `ui/accordion.tsx`
