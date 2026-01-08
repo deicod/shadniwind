@@ -305,11 +305,11 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 5.13 Form Core [DEP: 2A, 5.4] [INDEPENDENT]
-- [ ] Create `ui/form-core.tsx`
-- [ ] Presentational wrappers
-- [ ] Consistent spacing/label/error display
-- [ ] No form library dependency
-- [ ] Create manifest
+- [x] Create `ui/form-core.tsx`
+- [x] Presentational wrappers
+- [x] Consistent spacing/label/error display
+- [x] No form library dependency
+- [x] Create manifest
 
 ---
 

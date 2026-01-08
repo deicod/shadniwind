@@ -23,7 +23,7 @@ export type InputGroupProps = ViewProps
  * <InputGroup>
  *   <InputGroupAddon>https://</InputGroupAddon>
  *   <InputGroupInput>
- *     <Input 
+ *     <Input
  *       placeholder="example.com"
  *       style={{ borderWidth: 0, borderRadius: 0 }}
  *     />
@@ -32,7 +32,7 @@ export type InputGroupProps = ViewProps
  *
  * <InputGroup>
  *   <InputGroupInput>
- *     <Input 
+ *     <Input
  *       placeholder="Search..."
  *       style={{ borderWidth: 0, borderRadius: 0 }}
  *     />
@@ -112,21 +112,21 @@ export type InputGroupInputProps = ViewProps
 
 /**
  * Input wrapper for InputGroup.
- * 
+ *
  * **Important:** Use this wrapper around your Input component
  * to ensure proper flex behavior.
- * 
+ *
  * **Note:** You must remove borders from the Input to avoid double borders:
  * ```tsx
  * <Input style={{ borderWidth: 0, borderRadius: 0 }} />
  * ```
- * 
+ *
  * @example
  * ```tsx
  * <InputGroup>
  *   <InputGroupAddon>$</InputGroupAddon>
  *   <InputGroupInput>
- *     <Input 
+ *     <Input
  *       placeholder="0.00"
  *       style={{ borderWidth: 0, borderRadius: 0 }}
  *     />
@@ -138,13 +138,7 @@ export const InputGroupInput = React.forwardRef<
   React.ComponentRef<typeof View>,
   InputGroupInputProps
 >(({ style, ...props }, ref) => {
-  return (
-    <View
-      ref={ref}
-      style={[styles.inputWrapper, style]}
-      {...props}
-    />
-  )
+  return <View ref={ref} style={[styles.inputWrapper, style]} {...props} />
 })
 
 InputGroupInput.displayName = "InputGroupInput"

@@ -1,0 +1,14 @@
+{
+  "name": "form-core",
+  "type": "registry:ui",
+  "title": "Form Core",
+  "description": "Presentational form components for consistent layout, labels, descriptions, and error display. No form state management. Use with form libraries.",
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "source": "ui/form-core.tsx",
+      "path": "components/ui/form-core.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}
