@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Platform, Pressable, type PressableProps, Text, View, type ViewProps } from "react-native"
+import { Platform, Pressable, type PressableProps, type StyleProp, Text, View, type ViewProps, type ViewStyle } from "react-native"
 import { StyleSheet, useUnistyles } from "react-native-unistyles"
 import * as RovingFocusGroup from "../primitives/roving-focus/index.js"
 
@@ -46,9 +46,10 @@ export interface TabsListProps extends ViewProps {}
 
 export const TabsList = React.forwardRef<View, TabsListProps>(
   ({ style, ...props }, ref) => {
+    const context = React.useContext(TabsContext)
+
     // On web, we want RovingFocusGroup for keyboard nav
     if (Platform.OS === "web") {
-      const context = React.useContext(TabsContext)
 
       return (
         <RovingFocusGroup.RovingFocusGroup
@@ -82,7 +83,7 @@ export const TabsTrigger = React.forwardRef<View, TabsTriggerProps>(
     const context = React.useContext(TabsContext)
     const isActive = context.value === value
 
-    const { theme } = useUnistyles()
+    const { theme: _theme } = useUnistyles()
     const variantStyles = styles.useVariants({
       active: isActive,
       disabled: !!disabled,
@@ -113,7 +114,8 @@ export const TabsTrigger = React.forwardRef<View, TabsTriggerProps>(
             variantStyles,
             pressed && !isActive && !disabled && { opacity: 0.7 },
             typeof style === "function" ? style({ pressed }) : style,
-          ] as any
+            typeof style === "function" ? style({ pressed }) : style,
+          ] as unknown as StyleProp<ViewStyle>
         }
         {...props}
       >

@@ -1,4 +1,4 @@
-import * as React from "react"
+import type * as React from "react"
 
 export function composeRefs<T>(...refs: (React.Ref<T> | undefined)[]) {
   return (node: T) => {

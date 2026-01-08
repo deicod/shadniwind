@@ -1,4 +1,4 @@
-// @ts-ignore - Optional dependency
+// @ts-expect-error - Optional dependency
 import { Field } from "@tanstack/react-form"
 
 import { Field as UIField } from "./field.js"
@@ -55,6 +55,7 @@ import { Field as UIField } from "./field.js"
  * uses simplified types. For Full type safety, usage of `<form.Field>` directly
  * with our `<Field>` component may be preferred in complex cases.
  */
+// biome-ignore lint/suspicious/noExplicitAny: loose types for optional dependency
 export function FormTSFField(props: any) {
   const {
     label,
@@ -69,6 +70,7 @@ export function FormTSFField(props: any) {
 
   return (
     <Field {...fieldProps}>
+      {/* biome-ignore lint/suspicious/noExplicitAny: loose types for optional dependency */}
       {(field: any) => {
         // TanStack Form errors can be arrays or strings
         const errorMap = field.state.meta.errors

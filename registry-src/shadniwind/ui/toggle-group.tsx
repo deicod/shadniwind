@@ -202,7 +202,7 @@ export const ToggleGroupItem = React.forwardRef<View, ToggleGroupItemProps>(
 
 ToggleGroupItem.displayName = "ToggleGroupItem"
 
-const styles = StyleSheet.create((theme) => ({
+const styles = StyleSheet.create((_theme) => ({
   group: {
     flexDirection: "row",
     alignItems: "center",

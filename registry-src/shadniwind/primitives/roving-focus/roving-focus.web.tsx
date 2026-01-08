@@ -190,8 +190,8 @@ export const RovingFocusItem = React.forwardRef<View, RovingFocusItemProps>(
     }
 
     if (asChild && React.isValidElement(children)) {
-      return React.cloneElement(children as React.ReactElement<any>, {
-        ref: composeRefs(composedRefs, (children as any).ref),
+      return React.cloneElement(children as React.ReactElement<{ ref: unknown }>, {
+        ref: composeRefs(composedRefs, (children as unknown as { ref: React.Ref<View> }).ref),
         ...commonProps,
       })
     }

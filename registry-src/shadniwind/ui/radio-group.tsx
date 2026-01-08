@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Platform, Pressable, type PressableProps, View, type ViewProps } from "react-native"
+import { Pressable, type PressableProps, type StyleProp, View, type ViewProps, type ViewStyle } from "react-native"
 import { StyleSheet, useUnistyles } from "react-native-unistyles"
 // @ts-expect-error - lucide-react-native is a peer dependency
 import { Circle } from "lucide-react-native"
@@ -60,7 +60,7 @@ export const RadioGroup = React.forwardRef<View, RadioGroupProps>(
           value={currentValue}
           onValueChange={handleValueChange}
           {...props}
-          ref={ref as any}
+          ref={ref}
           style={[styles.group, style]}
         >
           {props.children}
@@ -92,7 +92,7 @@ export const RadioGroupItem = React.forwardRef<View, RadioGroupItemProps>(
     return (
       <RovingFocusGroup.RovingFocusItem value={value} disabled={isDisabled} asChild>
         <Pressable
-          ref={ref as any}
+          ref={ref}
           role="radio"
           aria-checked={checked}
           aria-disabled={isDisabled}
@@ -113,7 +113,7 @@ export const RadioGroupItem = React.forwardRef<View, RadioGroupItemProps>(
               variantStyles,
               pressed && !isDisabled && styles.itemPressed,
               typeof style === "function" ? style({ pressed }) : style,
-            ] as any
+            ] as unknown as StyleProp<ViewStyle>
           }
           {...props}
         >
