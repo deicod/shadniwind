@@ -5,6 +5,11 @@
   "description": "Dismiss layer and scrim/backdrop primitive for overlays.",
   "files": [
     {
+      "source": "primitives/overlay/dismiss-layer-state.ts",
+      "path": "lib/overlay/dismiss-layer-state.ts",
+      "type": "registry:lib"
+    },
+    {
       "source": "primitives/overlay/index.tsx",
       "path": "lib/overlay/index.tsx",
       "type": "registry:lib"

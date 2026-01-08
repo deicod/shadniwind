@@ -1,5 +1,6 @@
 import * as React from "react"
 import {
+  Platform,
   Pressable,
   StyleSheet,
   View,
@@ -8,6 +9,8 @@ import {
   type ViewProps,
   type ViewStyle,
 } from "react-native"
+
+import { resolveDismissLayerState } from "./dismiss-layer-state.js"
 
 export type OverlayBackdropProps = Omit<PressableProps, "style"> & {
   style?: StyleProp<ViewStyle>
@@ -85,8 +88,13 @@ export const DismissLayer = React.forwardRef<View, DismissLayerProps>(
     },
     ref,
   ) => {
-    const isDismissable = dismissable ?? Boolean(onDismiss)
-    const shouldCapture = scrim || isDismissable
+    const { pointerEvents: scrimPointerEvents, ...scrimRest } = scrimProps ?? {}
+    const { isDismissable, backdropPointerEvents } = resolveDismissLayerState({
+      dismissable,
+      onDismiss,
+      scrim,
+      scrimPointerEvents,
+    })
 
     const handlePress = React.useCallback(() => {
       if (!isDismissable) {
@@ -96,8 +104,33 @@ export const DismissLayer = React.forwardRef<View, DismissLayerProps>(
       onDismiss?.()
     }, [isDismissable, onDismiss])
 
-    const { pointerEvents: scrimPointerEvents, ...scrimRest } = scrimProps ?? {}
-    const backdropPointerEvents = scrimPointerEvents ?? (shouldCapture ? "auto" : "none")
+    React.useEffect(() => {
+      if (Platform.OS !== "web" || !isDismissable) {
+        return
+      }
+
+      if (typeof document === "undefined") {
+        return
+      }
+
+      const handleKeyDown = (event: KeyboardEvent) => {
+        if (event.defaultPrevented) {
+          return
+        }
+
+        if (event.key !== "Escape" && event.key !== "Esc") {
+          return
+        }
+
+        onDismiss?.()
+      }
+
+      document.addEventListener("keydown", handleKeyDown)
+
+      return () => {
+        document.removeEventListener("keydown", handleKeyDown)
+      }
+    }, [isDismissable, onDismiss])
 
     return (
       <View

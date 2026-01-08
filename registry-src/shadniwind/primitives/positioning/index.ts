@@ -2,7 +2,7 @@
 // - use-positioning.native.ts for iOS/Android
 // - use-positioning.web.ts for web
 
-export { usePositioning } from "./use-positioning"
+export { usePositioning } from "./use-positioning.js"
 
 // Re-export types
 export type {
