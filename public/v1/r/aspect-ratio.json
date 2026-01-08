@@ -1,0 +1,16 @@
+{
+  "name": "aspect-ratio",
+  "type": "registry:ui",
+  "title": "Aspect Ratio",
+  "description": "Maintains aspect ratio of children content. Uses CSS aspect-ratio on web, layout measurement on native.",
+  "registryDependencies": [
+    "tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/aspect-ratio.tsx",
+      "content": "import * as React from \"react\"\nimport {\n  Platform,\n  View,\n  type LayoutChangeEvent,\n  type StyleProp,\n  type ViewProps,\n  type ViewStyle,\n} from \"react-native\"\nimport { StyleSheet } from \"react-native-unistyles\"\n\nconst RATIO_MAP: Record<string, number> = {\n  \"1:1\": 1,\n  \"16:9\": 16 / 9,\n  \"4:3\": 4 / 3,\n  \"3:2\": 3 / 2,\n  \"21:9\": 21 / 9,\n}\n\nexport type AspectRatioPreset = \"1:1\" | \"16:9\" | \"4:3\" | \"3:2\" | \"21:9\"\n\nexport type AspectRatioProps = Omit<ViewProps, \"style\"> & {\n  /**\n   * The aspect ratio as width/height.\n   * Can be a number (e.g., 16/9 = 1.777) or a preset string.\n   * @default 1\n   */\n  ratio?: number | AspectRatioPreset\n  style?: StyleProp<ViewStyle>\n}\n\nfunction resolveRatio(ratio: AspectRatioProps[\"ratio\"]): number {\n  if (ratio === undefined) return 1\n  if (typeof ratio === \"number\") return ratio\n  return RATIO_MAP[ratio] ?? 1\n}\n\nconst styles = StyleSheet.create((_theme) => ({\n  container: {\n    width: \"100%\",\n    position: \"relative\",\n    overflow: \"hidden\",\n  },\n  content: {\n    position: \"absolute\",\n    top: 0,\n    left: 0,\n    right: 0,\n    bottom: 0,\n  },\n}))\n\nexport const AspectRatio = React.forwardRef<View, AspectRatioProps>(\n  ({ ratio = 1, style, children, onLayout, ...props }, ref) => {\n    const resolvedRatio = resolveRatio(ratio)\n\n    // Web: Use CSS aspect-ratio property\n    if (Platform.OS === \"web\") {\n      return (\n        <View\n          ref={ref}\n          style={[styles.container, { aspectRatio: resolvedRatio }, style]}\n          onLayout={onLayout}\n          {...props}\n        >\n          <View style={styles.content}>{children}</View>\n        </View>\n      )\n    }\n\n    // Native: Use onLayout measurement trick\n    const [width, setWidth] = React.useState<number | null>(null)\n\n    const handleLayout = React.useCallback(\n      (event: LayoutChangeEvent) => {\n        const { width: measuredWidth } = event.nativeEvent.layout\n        setWidth(measuredWidth)\n        onLayout?.(event)\n      },\n      [onLayout],\n    )\n\n    const calculatedHeight = width !== null ? width / resolvedRatio : undefined\n\n    return (\n      <View\n        ref={ref}\n        style={[\n          styles.container,\n          calculatedHeight !== undefined && { height: calculatedHeight },\n          style,\n        ]}\n        onLayout={handleLayout}\n        {...props}\n      >\n        {width !== null && <View style={styles.content}>{children}</View>}\n      </View>\n    )\n  },\n)\n\nAspectRatio.displayName = \"AspectRatio\"\n",
+      "type": "registry:ui"
+    }
+  ]
+}

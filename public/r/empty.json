@@ -1,0 +1,16 @@
+{
+  "name": "empty",
+  "type": "registry:ui",
+  "title": "Empty",
+  "description": "Empty state component with icon, title, description, and action slots for displaying placeholder content in lists and views.",
+  "registryDependencies": [
+    "tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/empty.tsx",
+      "content": "import * as React from \"react\"\nimport {\n  Text,\n  View,\n  type StyleProp,\n  type TextProps,\n  type TextStyle,\n  type ViewProps,\n  type ViewStyle,\n} from \"react-native\"\nimport { StyleSheet } from \"react-native-unistyles\"\n\nexport type EmptyProps = Omit<ViewProps, \"style\"> & {\n  style?: StyleProp<ViewStyle>\n}\n\nexport type EmptyIconProps = Omit<ViewProps, \"style\"> & {\n  style?: StyleProp<ViewStyle>\n}\n\nexport type EmptyTitleProps = Omit<TextProps, \"style\"> & {\n  style?: StyleProp<TextStyle>\n}\n\nexport type EmptyDescriptionProps = Omit<TextProps, \"style\"> & {\n  style?: StyleProp<TextStyle>\n}\n\nexport type EmptyActionProps = Omit<ViewProps, \"style\"> & {\n  style?: StyleProp<ViewStyle>\n}\n\nconst styles = StyleSheet.create((theme) => ({\n  container: {\n    alignItems: \"center\",\n    justifyContent: \"center\",\n    padding: theme.spacing[6],\n    gap: theme.spacing[3],\n  },\n  icon: {\n    marginBottom: theme.spacing[1],\n  },\n  title: {\n    color: theme.colors.foreground,\n    fontFamily: theme.typography.families.sans,\n    fontSize: theme.typography.sizes.lg,\n    lineHeight: theme.typography.lineHeights.lg,\n    fontWeight: theme.typography.weights.semibold,\n    textAlign: \"center\",\n  },\n  description: {\n    color: theme.colors.mutedForeground,\n    fontFamily: theme.typography.families.sans,\n    fontSize: theme.typography.sizes.sm,\n    lineHeight: theme.typography.lineHeights.md,\n    textAlign: \"center\",\n    maxWidth: 280,\n  },\n  action: {\n    marginTop: theme.spacing[1],\n    flexDirection: \"row\",\n    gap: theme.spacing[2],\n  },\n}))\n\nexport const Empty = React.forwardRef<View, EmptyProps>(\n  ({ style, children, ...props }, ref) => {\n    return (\n      <View ref={ref} style={[styles.container, style]} {...props}>\n        {children}\n      </View>\n    )\n  },\n)\n\nEmpty.displayName = \"Empty\"\n\nexport const EmptyIcon = React.forwardRef<View, EmptyIconProps>(\n  ({ style, children, ...props }, ref) => {\n    return (\n      <View ref={ref} style={[styles.icon, style]} {...props}>\n        {children}\n      </View>\n    )\n  },\n)\n\nEmptyIcon.displayName = \"EmptyIcon\"\n\nexport const EmptyTitle = React.forwardRef<Text, EmptyTitleProps>(\n  ({ style, ...props }, ref) => {\n    return <Text ref={ref} style={[styles.title, style]} {...props} />\n  },\n)\n\nEmptyTitle.displayName = \"EmptyTitle\"\n\nexport const EmptyDescription = React.forwardRef<Text, EmptyDescriptionProps>(\n  ({ style, ...props }, ref) => {\n    return <Text ref={ref} style={[styles.description, style]} {...props} />\n  },\n)\n\nEmptyDescription.displayName = \"EmptyDescription\"\n\nexport const EmptyAction = React.forwardRef<View, EmptyActionProps>(\n  ({ style, children, ...props }, ref) => {\n    return (\n      <View ref={ref} style={[styles.action, style]} {...props}>\n        {children}\n      </View>\n    )\n  },\n)\n\nEmptyAction.displayName = \"EmptyAction\"\n",
+      "type": "registry:ui"
+    }
+  ]
+}

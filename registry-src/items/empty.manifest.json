@@ -1,0 +1,14 @@
+{
+  "name": "empty",
+  "type": "registry:ui",
+  "title": "Empty",
+  "description": "Empty state component with icon, title, description, and action slots for displaying placeholder content in lists and views.",
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "source": "ui/empty.tsx",
+      "path": "components/ui/empty.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

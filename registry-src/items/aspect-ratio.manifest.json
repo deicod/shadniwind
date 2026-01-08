@@ -1,0 +1,14 @@
+{
+  "name": "aspect-ratio",
+  "type": "registry:ui",
+  "title": "Aspect Ratio",
+  "description": "Maintains aspect ratio of children content. Uses CSS aspect-ratio on web, layout measurement on native.",
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "source": "ui/aspect-ratio.tsx",
+      "path": "components/ui/aspect-ratio.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

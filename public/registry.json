@@ -12,6 +12,15 @@
       ]
     },
     {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "title": "Aspect Ratio",
+      "description": "Maintains aspect ratio of children content. Uses CSS aspect-ratio on web, layout measurement on native.",
+      "registryDependencies": [
+        "tokens"
+      ]
+    },
+    {
       "name": "avatar",
       "type": "registry:ui",
       "title": "Avatar",
@@ -48,11 +57,29 @@
       ]
     },
     {
+      "name": "empty",
+      "type": "registry:ui",
+      "title": "Empty",
+      "description": "Empty state component with icon, title, description, and action slots for displaying placeholder content in lists and views.",
+      "registryDependencies": [
+        "tokens"
+      ]
+    },
+    {
       "name": "input",
       "type": "registry:ui",
       "dependencies": [
         "react-native-unistyles"
       ],
+      "registryDependencies": [
+        "tokens"
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "Keyboard shortcut display component with monospace styling. Supports modifier key symbols and multiple sizes.",
       "registryDependencies": [
         "tokens"
       ]

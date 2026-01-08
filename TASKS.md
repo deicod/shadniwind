@@ -163,19 +163,19 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest: `registry-src/items/progress.manifest.json`
 
 ### 3.13 Empty [DEP: 2A] [INDEPENDENT]
-- [ ] Create `ui/empty.tsx` (empty-state component with content slots)
-- [ ] Create manifest: `registry-src/items/empty.manifest.json`
+- [x] Create `ui/empty.tsx` (empty-state component with content slots)
+- [x] Create manifest: `registry-src/items/empty.manifest.json`
 
 ### 3.14 Aspect Ratio [DEP: 2A] [INDEPENDENT]
-- [ ] Create `ui/aspect-ratio.tsx`
-- [ ] Web: CSS aspect-ratio
-- [ ] Native: layout trick with measured width/height
-- [ ] Create manifest: `registry-src/items/aspect-ratio.manifest.json`
+- [x] Create `ui/aspect-ratio.tsx`
+- [x] Web: CSS aspect-ratio
+- [x] Native: layout trick with measured width/height
+- [x] Create manifest: `registry-src/items/aspect-ratio.manifest.json`
 
 ### 3.15 Kbd [DEP: 2A] [INDEPENDENT]
-- [ ] Create `ui/kbd.tsx`
-- [ ] Web-first; native render as pill text
-- [ ] Create manifest: `registry-src/items/kbd.manifest.json`
+- [x] Create `ui/kbd.tsx`
+- [x] Web-first; native render as pill text
+- [x] Create manifest: `registry-src/items/kbd.manifest.json`
 
 ---
 
