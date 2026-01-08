@@ -1,0 +1,14 @@
+{
+  "name": "breadcrumb",
+  "type": "registry:ui",
+  "title": "Breadcrumb",
+  "description": "Presentational breadcrumb navigation component. Uses Pressable with role=link and aria-current. Consumer must handle navigation via onItemPress.",
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "source": "ui/breadcrumb.tsx",
+      "path": "components/ui/breadcrumb.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

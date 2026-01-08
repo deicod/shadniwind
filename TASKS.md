@@ -275,10 +275,10 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 5.8 Breadcrumb [DEP: 2A] [INDEPENDENT]
-- [ ] Create `ui/breadcrumb.tsx`
-- [ ] Web: links + aria-current
-- [ ] Native: navigation integration left to consumer
-- [ ] Create manifest
+- [x] Create `ui/breadcrumb.tsx`
+- [x] Web: links + aria-current
+- [x] Native: navigation integration left to consumer
+- [x] Create manifest
 
 ### 5.9 Native Select [DEP: 2A] [INDEPENDENT]
 - [ ] Create `ui/native-select.tsx`
