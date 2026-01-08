@@ -1,0 +1,14 @@
+{
+  "name": "collapsible",
+  "type": "registry:ui",
+  "title": "Collapsible",
+  "description": "An interactive component which expands/collapses content with animated height transitions. Single-item accordion pattern.",
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "source": "ui/collapsible.tsx",
+      "path": "components/ui/collapsible.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

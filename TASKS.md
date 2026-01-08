@@ -258,9 +258,9 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 5.5 Collapsible [DEP: 2A] [INDEPENDENT]
-- [ ] Create `ui/collapsible.tsx`
-- [ ] Single-item accordion
-- [ ] Create manifest
+- [x] Create `ui/collapsible.tsx`
+- [x] Single-item accordion
+- [x] Create manifest
 
 ### 5.6 Scroll Area [DEP: 2A] [INDEPENDENT]
 - [ ] Create `ui/scroll-area.tsx`
