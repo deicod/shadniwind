@@ -382,10 +382,10 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 8.2 Tabs [DEP: 4.4] [INDEPENDENT]
-- [ ] Create `ui/tabs.tsx`
-- [ ] Web semantics with roving focus
-- [ ] Native: simpler but consistent API
-- [ ] Create manifest
+- [x] Create `ui/tabs.tsx`
+- [x] Web semantics with roving focus
+- [x] Native: simpler but consistent API
+- [x] Create manifest
 
 ### 8.3 Toggle Group [DEP: 4.4] [INDEPENDENT]
 - [ ] Create `ui/toggle-group.tsx`

@@ -365,6 +365,16 @@
       ]
     },
     {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "A set of sections of content—known as tab panels—that are displayed one at a time.",
+      "registryDependencies": [
+        "tokens",
+        "roving-focus"
+      ]
+    },
+    {
       "name": "textarea",
       "type": "registry:ui",
       "title": "Textarea",

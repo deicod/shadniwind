@@ -1,0 +1,14 @@
+{
+  "name": "tabs",
+  "type": "registry:ui",
+  "title": "Tabs",
+  "description": "A set of sections of content—known as tab panels—that are displayed one at a time.",
+  "registryDependencies": ["tokens", "roving-focus"],
+  "files": [
+    {
+      "source": "ui/tabs.tsx",
+      "path": "components/ui/tabs.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}
