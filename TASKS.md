@@ -334,11 +334,11 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 6.4 Sonner [DEP: 6.3]
-- [ ] Create `ui/sonner.tsx`
-- [ ] Toast queue management
-- [ ] Stacking behavior
-- [ ] Dismiss functionality
-- [ ] Create manifest
+- [x] Create `ui/sonner.tsx`
+- [x] Toast queue management
+- [x] Stacking behavior
+- [x] Dismiss functionality
+- [x] Create manifest
 
 ---
 

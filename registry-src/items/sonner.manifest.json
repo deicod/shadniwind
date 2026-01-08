@@ -1,0 +1,15 @@
+{
+  "name": "sonner",
+  "type": "registry:ui",
+  "title": "Sonner",
+  "description": "An opinionated toast component for React Native.",
+  "registryDependencies": ["tokens", "portal"],
+  "dependencies": ["lucide-react-native", "react-native-unistyles"],
+  "files": [
+    {
+      "source": "ui/sonner.tsx",
+      "path": "components/ui/sonner.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

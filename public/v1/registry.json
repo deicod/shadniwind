@@ -173,6 +173,20 @@
       ]
     },
     {
+      "name": "sonner",
+      "type": "registry:ui",
+      "title": "Sonner",
+      "description": "An opinionated toast component for React Native.",
+      "dependencies": [
+        "lucide-react-native",
+        "react-native-unistyles"
+      ],
+      "registryDependencies": [
+        "tokens",
+        "portal"
+      ]
+    },
+    {
       "name": "spinner",
       "type": "registry:ui",
       "title": "Spinner",
