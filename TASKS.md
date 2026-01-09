@@ -424,10 +424,10 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 9.2 Combobox [DEP: 4.1, 4.2, 4.3, 4.4] [INDEPENDENT]
-- [ ] Create `ui/combobox.tsx`
-- [ ] Typeahead, listbox semantics, IME handling
-- [ ] Document native vs web differences
-- [ ] Create manifest
+- [x] Create `ui/combobox.tsx`
+- [x] Typeahead, listbox semantics, IME handling
+- [x] Document native vs web differences
+- [x] Create manifest
 
 ### 9.3 Dropdown Menu [DEP: 4.1, 4.2, 4.4] [INDEPENDENT]
 - [ ] Create `ui/dropdown-menu.tsx`

@@ -1,0 +1,21 @@
+{
+  "name": "combobox",
+  "type": "registry:ui",
+  "title": "Combobox",
+  "description": "Provides a searchable list of options in an input-driven overlay.",
+  "registryDependencies": [
+    "tokens",
+    "portal",
+    "positioning",
+    "focus",
+    "overlay",
+    "roving-focus"
+  ],
+  "files": [
+    {
+      "source": "ui/combobox.tsx",
+      "path": "components/ui/combobox.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}
