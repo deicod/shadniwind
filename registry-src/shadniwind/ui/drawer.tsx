@@ -2,6 +2,8 @@ import * as React from "react"
 import {
   Animated,
   Easing,
+  PanResponder,
+  type PanResponderGestureState,
   Platform,
   Pressable,
   type PressableProps,
@@ -20,6 +22,9 @@ import { DismissLayer } from "../primitives/overlay/index.js"
 import { Portal } from "../primitives/portal/index.js"
 import { composeEventHandlers } from "../primitives/press/index.js"
 import { useScrollLock } from "../primitives/scroll-lock/index.js"
+
+const CLOSE_THRESHOLD = 0.35
+const VELOCITY_THRESHOLD = 0.7
 
 type DrawerContextValue = {
   open: boolean
@@ -252,11 +257,14 @@ export const DrawerContent = React.forwardRef<View, DrawerContentProps>(
     } = useDrawer()
     const { width, height } = useWindowDimensions()
     const translate = React.useRef(new Animated.Value(open ? 0 : 1)).current
+    const dragValue = React.useRef(new Animated.Value(0)).current
     const [mounted, setMounted] = React.useState(open)
     const prevOpenRef = React.useRef(open)
 
     React.useEffect(() => {
       translate.stopAnimation()
+      dragValue.stopAnimation()
+      dragValue.setValue(0)
       const wasOpen = prevOpenRef.current
 
       if (open && !wasOpen) {
@@ -284,7 +292,7 @@ export const DrawerContent = React.forwardRef<View, DrawerContentProps>(
       }
 
       prevOpenRef.current = open
-    }, [open, translate])
+    }, [open, translate, dragValue])
 
     const isVisible = mounted
     useScrollLock(isVisible && modal)
@@ -316,6 +324,11 @@ export const DrawerContent = React.forwardRef<View, DrawerContentProps>(
     )
 
     const animatedStyle = React.useMemo(() => {
+      const progress = Animated.diffClamp(
+        Animated.add(translate, dragValue),
+        0,
+        1,
+      )
       const distance =
         side === "left" || side === "right" ? width : height
       if (side === "left" || side === "right") {
@@ -323,7 +336,7 @@ export const DrawerContent = React.forwardRef<View, DrawerContentProps>(
         return {
           transform: [
             {
-              translateX: translate.interpolate({
+              translateX: progress.interpolate({
                 inputRange: [0, 1],
                 outputRange: [0, direction * distance],
               }),
@@ -336,18 +349,94 @@ export const DrawerContent = React.forwardRef<View, DrawerContentProps>(
       return {
         transform: [
           {
-            translateY: translate.interpolate({
+            translateY: progress.interpolate({
               inputRange: [0, 1],
               outputRange: [0, direction * distance],
             }),
           },
         ],
       }
-    }, [height, side, translate, width])
-
-    if (!isVisible) return null
+    }, [height, side, translate, dragValue, width])
 
     const isDismissable = dismissable ?? modal
+    const isPanEnabled =
+      Platform.OS !== "web" && isDismissable && open && (width > 0 || height > 0)
+
+    const getDragProgress = React.useCallback(
+      (gestureState: PanResponderGestureState) => {
+        const distance =
+          side === "left" || side === "right" ? width : height
+        if (distance <= 0) return 0
+        const delta =
+          side === "left" || side === "right"
+            ? gestureState.dx
+            : gestureState.dy
+        const signedDelta =
+          side === "left" || side === "top" ? -delta : delta
+        return Math.max(0, Math.min(1, signedDelta / distance))
+      },
+      [height, side, width],
+    )
+
+    const panResponder = React.useMemo(
+      () =>
+        PanResponder.create({
+          onStartShouldSetPanResponder: () => false,
+          onMoveShouldSetPanResponder: (_event, gestureState) => {
+            if (!isPanEnabled) return false
+            const delta =
+              side === "left" || side === "right"
+                ? gestureState.dx
+                : gestureState.dy
+            const signedDelta =
+              side === "left" || side === "top" ? -delta : delta
+            return signedDelta > 4
+          },
+          onPanResponderGrant: () => {
+            dragValue.stopAnimation()
+          },
+          onPanResponderMove: (_event, gestureState) => {
+            if (!isPanEnabled) return
+            const progress = getDragProgress(gestureState)
+            dragValue.setValue(progress)
+          },
+          onPanResponderRelease: (_event, gestureState) => {
+            if (!isPanEnabled) return
+            const progress = getDragProgress(gestureState)
+            const velocity =
+              side === "left" || side === "right"
+                ? gestureState.vx
+                : gestureState.vy
+            const signedVelocity =
+              side === "left" || side === "top" ? -velocity : velocity
+            const shouldClose =
+              progress > CLOSE_THRESHOLD ||
+              signedVelocity > VELOCITY_THRESHOLD
+
+            if (shouldClose) {
+              handleDismiss()
+            }
+
+            Animated.timing(dragValue, {
+              toValue: 0,
+              duration: 180,
+              easing: Easing.out(Easing.cubic),
+              useNativeDriver: true,
+            }).start()
+          },
+          onPanResponderTerminate: () => {
+            Animated.timing(dragValue, {
+              toValue: 0,
+              duration: 180,
+              easing: Easing.out(Easing.cubic),
+              useNativeDriver: true,
+            }).start()
+          },
+        }),
+      [dragValue, getDragProgress, handleDismiss, isPanEnabled, side],
+    )
+
+    if (!isVisible) return null
 
     return (
       <Portal>
@@ -374,6 +463,7 @@ export const DrawerContent = React.forwardRef<View, DrawerContentProps>(
                   // biome-ignore lint/suspicious/noExplicitAny: Animated style arrays are dynamic.
                 ] as any
               }
+              {...(isPanEnabled ? panResponder.panHandlers : {})}
               {...props}
             >
               {children}
