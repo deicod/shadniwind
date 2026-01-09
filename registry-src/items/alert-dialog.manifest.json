@@ -1,0 +1,21 @@
+{
+  "name": "alert-dialog",
+  "type": "registry:ui",
+  "title": "Alert Dialog",
+  "description": "A modal dialog that requires an explicit action to close.",
+  "registryDependencies": [
+    "tokens",
+    "portal",
+    "overlay",
+    "focus",
+    "scroll-lock",
+    "press"
+  ],
+  "files": [
+    {
+      "source": "ui/alert-dialog.tsx",
+      "path": "components/ui/alert-dialog.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

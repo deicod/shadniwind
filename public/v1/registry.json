@@ -28,6 +28,20 @@
       ]
     },
     {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog",
+      "description": "A modal dialog that requires an explicit action to close.",
+      "registryDependencies": [
+        "tokens",
+        "portal",
+        "overlay",
+        "focus",
+        "scroll-lock",
+        "press"
+      ]
+    },
+    {
       "name": "aspect-ratio",
       "type": "registry:ui",
       "title": "Aspect Ratio",

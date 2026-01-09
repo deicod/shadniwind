@@ -17,6 +17,7 @@
 - `npm run typecheck`: TypeScript typecheck (`tsc --noEmit`).
 - `npm run build:registry`: generate registry artifacts into `public/`.
 - `npm test`: run `node --test` with the `tsx` loader on `tests/**/*.test.ts`.
+- Always run `npm run lint` and `npm run typecheck` after every change.
 
 ## Coding Style & Naming Conventions
 - Formatting is enforced by Biome: 2-space indentation, double quotes, trailing commas, and semicolons as needed.

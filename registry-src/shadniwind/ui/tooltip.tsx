@@ -102,19 +102,22 @@ export const TooltipTrigger = React.forwardRef<
       onHoverOut,
       onFocus,
       onBlur,
+      disabled,
       ...props
     },
     ref,
   ) => {
     const { onOpenChange, triggerRef, delayDuration } = useTooltip()
+    const isDisabled = !!disabled
     const timeoutRef = React.useRef<NodeJS.Timeout | undefined>(undefined)
 
     const handleOpen = React.useCallback(() => {
+      if (isDisabled) return
       clearTimeout(timeoutRef.current)
       timeoutRef.current = setTimeout(() => {
         onOpenChange(true)
       }, delayDuration)
-    }, [delayDuration, onOpenChange])
+    }, [delayDuration, isDisabled, onOpenChange])
 
     const handleClose = React.useCallback(() => {
       clearTimeout(timeoutRef.current)
@@ -170,11 +173,12 @@ export const TooltipTrigger = React.forwardRef<
     // Native: Long Press usually triggers tooltip, or press
     const handleLongPress = React.useCallback(
       (e: unknown) => {
+        if (isDisabled) return
         onOpenChange(true)
         // @ts-expect-error - Event type mismatch
         onLongPress?.(e)
       },
-      [onOpenChange, onLongPress],
+      [isDisabled, onOpenChange, onLongPress],
     )
 
     // Clean up timeout
@@ -207,6 +211,7 @@ export const TooltipTrigger = React.forwardRef<
         onFocus: handleFocus,
         onBlur: handleBlur,
         onLongPress: handleLongPress,
+        disabled,
         ...props, // merge other props
       })
     }
@@ -219,6 +224,7 @@ export const TooltipTrigger = React.forwardRef<
         onFocus={handleFocus}
         onBlur={handleBlur}
         onLongPress={handleLongPress}
+        disabled={disabled}
         {...props}
       >
         {children}

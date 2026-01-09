@@ -96,16 +96,18 @@ export type DialogTriggerProps = PressableProps & { asChild?: boolean }
 export const DialogTrigger = React.forwardRef<
   React.ComponentRef<typeof Pressable>,
   DialogTriggerProps
->(({ children, asChild, onPress, ...props }, ref) => {
+>(({ children, asChild, onPress, disabled, ...props }, ref) => {
   const { open, onOpenChange, triggerRef } = useDialog()
+  const isDisabled = !!disabled
 
   const handlePress = React.useCallback(
     (event: unknown) => {
+      if (isDisabled) return
       onOpenChange(!open)
       // @ts-expect-error - React Native event type
       onPress?.(event)
     },
-    [open, onOpenChange, onPress],
+    [isDisabled, open, onOpenChange, onPress],
   )
 
   React.useEffect(() => {
@@ -119,22 +121,23 @@ export const DialogTrigger = React.forwardRef<
   }, [ref, triggerRef])
 
   if (asChild && React.isValidElement(children)) {
+    const child = children as React.ReactElement<{
+      onPress?: (event: unknown) => void
+    }>
+    const childOnPress = isDisabled ? undefined : child.props.onPress
     // biome-ignore lint/suspicious/noExplicitAny: Cloning logic
-    return React.cloneElement(children as React.ReactElement<any>, {
+    return React.cloneElement(child as React.ReactElement<any>, {
       ref: triggerRef,
-      onPress: composeEventHandlers(
-        // @ts-expect-error - onPress check
-        children.props.onPress,
-        handlePress,
-      ),
+      onPress: composeEventHandlers(childOnPress, handlePress),
       role: Platform.OS === "web" ? "button" : undefined,
       "aria-expanded": Platform.OS === "web" ? open : undefined,
       "aria-haspopup": Platform.OS === "web" ? "dialog" : undefined,
       accessibilityRole: "button",
       accessibilityState: {
         expanded: open,
-        disabled: props.disabled,
+        disabled: isDisabled,
       },
+      disabled,
       ...props,
     })
   }
@@ -148,8 +151,9 @@ export const DialogTrigger = React.forwardRef<
       accessibilityRole="button"
       accessibilityState={{
         expanded: open,
-        disabled: props.disabled,
+        disabled: isDisabled,
       }}
+      disabled={disabled}
       onPress={handlePress}
       {...props}
     >
@@ -165,28 +169,34 @@ export type DialogCloseProps = PressableProps & { asChild?: boolean }
 export const DialogClose = React.forwardRef<
   React.ComponentRef<typeof Pressable>,
   DialogCloseProps
->(({ children, asChild, onPress, ...props }, ref) => {
+>(({ children, asChild, onPress, disabled, ...props }, ref) => {
   const { onOpenChange } = useDialog()
+  const isDisabled = !!disabled
 
   const handlePress = React.useCallback(
     (event: unknown) => {
+      if (isDisabled) return
       onOpenChange(false)
       // @ts-expect-error - React Native event type
       onPress?.(event)
     },
-    [onOpenChange, onPress],
+    [isDisabled, onOpenChange, onPress],
   )
 
   if (asChild && React.isValidElement(children)) {
+    const child = children as React.ReactElement<{
+      onPress?: (event: unknown) => void
+    }>
+    const childOnPress = isDisabled ? undefined : child.props.onPress
     // biome-ignore lint/suspicious/noExplicitAny: Cloning logic
-    return React.cloneElement(children as React.ReactElement<any>, {
+    return React.cloneElement(child as React.ReactElement<any>, {
       ref,
-      onPress: composeEventHandlers(
-        // @ts-expect-error - onPress check
-        children.props.onPress,
-        handlePress,
-      ),
+      onPress: composeEventHandlers(childOnPress, handlePress),
       accessibilityRole: "button",
+      accessibilityState: {
+        disabled: isDisabled,
+      },
+      disabled,
       ...props,
     })
   }
@@ -195,6 +205,8 @@ export const DialogClose = React.forwardRef<
     <Pressable
       ref={ref}
       accessibilityRole="button"
+      accessibilityState={{ disabled: isDisabled }}
+      disabled={disabled}
       onPress={handlePress}
       {...props}
     >
@@ -255,7 +267,7 @@ export const DialogContent = React.forwardRef<View, DialogContentProps>(
           ;(ref as { current: View | null }).current = node
         }
       },
-      [ref],
+      [ref, contentRef],
     )
 
     if (!open) return null
@@ -277,9 +289,15 @@ export const DialogContent = React.forwardRef<View, DialogContentProps>(
               aria-modal={Platform.OS === "web" ? modal : undefined}
               aria-labelledby={Platform.OS === "web" ? titleId : undefined}
               aria-describedby={Platform.OS === "web" ? descriptionId : undefined}
-              accessibilityRole={Platform.OS === "web" ? "dialog" : undefined}
               accessibilityViewIsModal={modal}
-              style={[styles.content, variantStyles, style]}
+              style={
+                [
+                  styles.content,
+                  variantStyles,
+                  style,
+                  // biome-ignore lint/suspicious/noExplicitAny: Style array may include variant styles.
+                ] as any
+              }
               {...props}
             >
               {children}

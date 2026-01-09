@@ -353,10 +353,10 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 7.2 Alert Dialog [DEP: 4.1, 4.3, 4.5] [INDEPENDENT]
-- [ ] Create `ui/alert-dialog.tsx`
-- [ ] Web: focus trap/restore
-- [ ] Native: modal-like behavior
-- [ ] Create manifest
+- [x] Create `ui/alert-dialog.tsx`
+- [x] Web: focus trap/restore
+- [x] Native: modal-like behavior
+- [x] Create manifest
 
 ### 7.3 Sheet [DEP: 4.1, 4.3, 4.5] [INDEPENDENT]
 - [ ] Create `ui/sheet.tsx`

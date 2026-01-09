@@ -102,16 +102,18 @@ export function Popover({
 export const PopoverTrigger = React.forwardRef<
   React.ComponentRef<typeof Pressable>,
   PressableProps & { asChild?: boolean }
->(({ children, asChild, onPress, ...props }, ref) => {
+>(({ children, asChild, onPress, disabled, ...props }, ref) => {
   const { open, onOpenChange, triggerRef } = usePopover()
+  const isDisabled = !!disabled
 
   const handlePress = React.useCallback(
     (e: unknown) => {
+      if (isDisabled) return
       onOpenChange(!open)
       // @ts-expect-error - React Native event type
       onPress?.(e)
     },
-    [open, onOpenChange, onPress],
+    [isDisabled, open, onOpenChange, onPress],
   )
 
   // Sync ref
@@ -126,20 +128,26 @@ export const PopoverTrigger = React.forwardRef<
   }, [ref, triggerRef])
 
   if (asChild && React.isValidElement(children)) {
+    const child = children as React.ReactElement<{
+      onPress?: (event: unknown) => void
+    }>
+    const childOnPress = isDisabled ? undefined : child.props.onPress
     // biome-ignore lint/suspicious/noExplicitAny: Cloning logic
-    return React.cloneElement(children as React.ReactElement<any>, {
+    return React.cloneElement(child as React.ReactElement<any>, {
       ref: triggerRef,
-      onPress: composeEventHandlers(
-        // @ts-expect-error - onPress check
-        children.props.onPress,
-        handlePress,
-      ),
+      onPress: composeEventHandlers(childOnPress, handlePress),
+      disabled,
       ...props,
     })
   }
 
   return (
-    <Pressable ref={triggerRef} onPress={handlePress} {...props}>
+    <Pressable
+      ref={triggerRef}
+      disabled={disabled}
+      onPress={handlePress}
+      {...props}
+    >
       {children}
     </Pressable>
   )
