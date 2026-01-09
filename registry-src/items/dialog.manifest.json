@@ -1,0 +1,21 @@
+{
+  "name": "dialog",
+  "type": "registry:ui",
+  "title": "Dialog",
+  "description": "A modal dialog that traps focus on web and locks scroll while open.",
+  "registryDependencies": [
+    "tokens",
+    "portal",
+    "overlay",
+    "focus",
+    "scroll-lock",
+    "press"
+  ],
+  "files": [
+    {
+      "source": "ui/dialog.tsx",
+      "path": "components/ui/dialog.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

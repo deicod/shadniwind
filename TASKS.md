@@ -347,10 +347,10 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 > **Agents: 4** | After Wave 4 (Overlay Primitives) completes.
 
 ### 7.1 Dialog [DEP: 4.1, 4.3, 4.5] [INDEPENDENT]
-- [ ] Create `ui/dialog.tsx`
-- [ ] Web: focus trap/restore
-- [ ] Scroll lock integration
-- [ ] Create manifest
+- [x] Create `ui/dialog.tsx`
+- [x] Web: focus trap/restore
+- [x] Scroll lock integration
+- [x] Create manifest
 
 ### 7.2 Alert Dialog [DEP: 4.1, 4.3, 4.5] [INDEPENDENT]
 - [ ] Create `ui/alert-dialog.tsx`

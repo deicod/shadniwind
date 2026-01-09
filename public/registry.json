@@ -112,6 +112,20 @@
       ]
     },
     {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "A modal dialog that traps focus on web and locks scroll while open.",
+      "registryDependencies": [
+        "tokens",
+        "portal",
+        "overlay",
+        "focus",
+        "scroll-lock",
+        "press"
+      ]
+    },
+    {
       "name": "empty",
       "type": "registry:ui",
       "title": "Empty",
