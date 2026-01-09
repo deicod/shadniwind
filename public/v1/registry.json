@@ -334,6 +334,16 @@
       ]
     },
     {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "A slider component for selecting values from a range with single/multi-thumb support, step values, full keyboard navigation on web, and theme-based styling.",
+      "registryDependencies": [
+        "tokens",
+        "roving-focus"
+      ]
+    },
+    {
       "name": "sonner",
       "type": "registry:ui",
       "title": "Sonner",

@@ -363,8 +363,10 @@ export const Slider = React.forwardRef<SliderRef, SliderProps>(
       ],
     )
 
+    const thumbCount = values.length
+
     const animatedThumbPositions = React.useMemo(() => {
-      return thumbPositions.current.map((pos) =>
+      return thumbPositions.current.slice(0, thumbCount).map((pos) =>
         pos.interpolate({
           inputRange: [min, max],
           outputRange: [0, isVertical ? trackLayout.height : trackLayout.width],
@@ -377,7 +379,7 @@ export const Slider = React.forwardRef<SliderRef, SliderProps>(
       isVertical,
       trackLayout.height,
       trackLayout.width,
-      values.length,
+      thumbCount,
     ])
 
     const renderTrackFills = () => {
