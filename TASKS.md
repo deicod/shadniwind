@@ -406,10 +406,10 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 8.6 Input OTP [DEP: 4.3, 4.4] [INDEPENDENT]
-- [ ] Create `ui/input-otp.tsx`
-- [ ] Handle paste, autofill hints, numeric keyboard
-- [ ] Platform-specific UX
-- [ ] Create manifest
+- [x] Create `ui/input-otp.tsx`
+- [x] Handle paste, autofill hints, numeric keyboard
+- [x] Platform-specific UX
+- [x] Create manifest
 
 ---
 

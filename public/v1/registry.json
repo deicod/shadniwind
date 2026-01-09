@@ -188,6 +188,19 @@
       ]
     },
     {
+      "name": "input-otp",
+      "type": "registry:ui",
+      "title": "Input OTP",
+      "description": "One-time password input with auto-complete, paste support, and separator patterns",
+      "dependencies": [
+        "react-native-unistyles"
+      ],
+      "registryDependencies": [
+        "tokens",
+        "roving-focus"
+      ]
+    },
+    {
       "name": "item",
       "type": "registry:ui",
       "title": "Item",

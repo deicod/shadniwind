@@ -1,0 +1,31 @@
+{
+  "name": "input-otp",
+  "type": "registry:ui",
+  "title": "Input OTP",
+  "description": "One-time password input with auto-complete, paste support, and separator patterns",
+  "keywords": ["otp", "pin", "verification", "auth", "password", "input"],
+  "dependencies": ["react-native-unistyles"],
+  "registryDependencies": ["tokens", "roving-focus"],
+  "files": [
+    {
+      "path": "components/ui/input-otp.tsx",
+      "type": "registry:ui",
+      "source": "ui/input-otp.tsx"
+    },
+    {
+      "path": "components/ui/input-otp.web.tsx",
+      "type": "registry:ui",
+      "source": "ui/input-otp.web.tsx"
+    },
+    {
+      "path": "components/ui/input-otp.native.tsx",
+      "type": "registry:ui",
+      "source": "ui/input-otp.native.tsx"
+    },
+    {
+      "path": "components/ui/input-otp.types.ts",
+      "type": "registry:ui",
+      "source": "ui/input-otp.types.ts"
+    }
+  ]
+}
