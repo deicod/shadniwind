@@ -418,10 +418,10 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 > **Agents: 6** | After Waves 4 and 8 complete.
 
 ### 9.1 Select [DEP: 4.1, 4.2, 4.3, 4.4] [INDEPENDENT]
-- [ ] Create `ui/select.tsx`
-- [ ] Typeahead on web
-- [ ] Native: overlay list
-- [ ] Create manifest
+- [x] Create `ui/select.tsx`
+- [x] Typeahead on web
+- [x] Native: overlay list
+- [x] Create manifest
 
 ### 9.2 Combobox [DEP: 4.1, 4.2, 4.3, 4.4] [INDEPENDENT]
 - [ ] Create `ui/combobox.tsx`
