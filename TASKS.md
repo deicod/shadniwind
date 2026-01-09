@@ -364,10 +364,10 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 7.4 Drawer [DEP: 4.1, 4.3, 4.5] [INDEPENDENT]
-- [ ] Create `ui/drawer.tsx`
+- [x] Create `ui/drawer.tsx`
 - [ ] Native: pan gestures (may need gesture primitive)
-- [ ] Web: slide-in + focus management
-- [ ] Create manifest
+- [x] Web: slide-in + focus management
+- [x] Create manifest
 
 ---
 

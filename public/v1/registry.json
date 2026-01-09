@@ -140,6 +140,20 @@
       ]
     },
     {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "A modal drawer that slides in from the edge of the screen.",
+      "registryDependencies": [
+        "tokens",
+        "portal",
+        "overlay",
+        "focus",
+        "scroll-lock",
+        "press"
+      ]
+    },
+    {
       "name": "empty",
       "type": "registry:ui",
       "title": "Empty",
