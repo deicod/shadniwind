@@ -394,10 +394,10 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 8.4 Accordion [DEP: 5.5, 4.4] [INDEPENDENT]
-- [ ] Create `ui/accordion.tsx`
-- [ ] Native: controlled collapsibles
-- [ ] Web: keyboard semantics
-- [ ] Create manifest
+- [x] Create `ui/accordion.tsx`
+- [x] Native: controlled collapsibles
+- [x] Web: keyboard semantics
+- [x] Create manifest
 
 ### 8.5 Slider [DEP: 4.4] [INDEPENDENT]
 - [ ] Create `ui/slider.tsx`
