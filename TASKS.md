@@ -400,10 +400,10 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 8.5 Slider [DEP: 4.4] [INDEPENDENT]
-- [ ] Create `ui/slider.tsx`
-- [ ] Native: gesture-driven
-- [ ] Web: arrow keys and aria-valuenow
-- [ ] Create manifest
+- [x] Create `ui/slider.tsx`
+- [x] Native: gesture-driven
+- [x] Web: arrow keys and aria-valuenow
+- [x] Create manifest
 
 ### 8.6 Input OTP [DEP: 4.3, 4.4] [INDEPENDENT]
 - [ ] Create `ui/input-otp.tsx`
