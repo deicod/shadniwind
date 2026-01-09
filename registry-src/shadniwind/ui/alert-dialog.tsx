@@ -188,7 +188,13 @@ export const AlertDialogContent = React.forwardRef<View, AlertDialogContentProps
     useScrollLock(open)
     const variantStyles = styles.useVariants({
       size: size === "default" ? undefined : size,
-    })
+    }) as unknown
+    const contentVariantStyle =
+      variantStyles &&
+      typeof variantStyles === "object" &&
+      "content" in variantStyles
+        ? (variantStyles as typeof styles).content
+        : variantStyles
 
     const handleDismiss = React.useCallback(() => {
       onOpenChange(false)
@@ -228,7 +234,7 @@ export const AlertDialogContent = React.forwardRef<View, AlertDialogContentProps
               style={
                 [
                   styles.content,
-                  variantStyles,
+                  contentVariantStyle,
                   style,
                   // biome-ignore lint/suspicious/noExplicitAny: Style array may include variant styles.
                 ] as any

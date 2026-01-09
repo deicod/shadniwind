@@ -359,9 +359,9 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 7.3 Sheet [DEP: 4.1, 4.3, 4.5] [INDEPENDENT]
-- [ ] Create `ui/sheet.tsx`
-- [ ] Dialog variant (right/left/bottom positions)
-- [ ] Create manifest
+- [x] Create `ui/sheet.tsx`
+- [x] Dialog variant (right/left/bottom positions)
+- [x] Create manifest
 
 ### 7.4 Drawer [DEP: 4.1, 4.3, 4.5] [INDEPENDENT]
 - [ ] Create `ui/drawer.tsx`

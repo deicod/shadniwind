@@ -1,0 +1,21 @@
+{
+  "name": "sheet",
+  "type": "registry:ui",
+  "title": "Sheet",
+  "description": "A dialog variant that slides in from the edge of the screen.",
+  "registryDependencies": [
+    "tokens",
+    "portal",
+    "overlay",
+    "focus",
+    "scroll-lock",
+    "press"
+  ],
+  "files": [
+    {
+      "source": "ui/sheet.tsx",
+      "path": "components/ui/sheet.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

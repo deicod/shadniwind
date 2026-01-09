@@ -18,7 +18,7 @@ import { Portal } from "../primitives/portal/index.js"
 import { composeEventHandlers } from "../primitives/press/index.js"
 import { useScrollLock } from "../primitives/scroll-lock/index.js"
 
-type DialogContextValue = {
+type SheetContextValue = {
   open: boolean
   onOpenChange: (open: boolean) => void
   triggerRef: React.RefObject<View | null>
@@ -28,19 +28,19 @@ type DialogContextValue = {
   modal: boolean
 }
 
-const DialogContext = React.createContext<DialogContextValue | undefined>(
+const SheetContext = React.createContext<SheetContextValue | undefined>(
   undefined,
 )
 
-function useDialog() {
-  const context = React.useContext(DialogContext)
+function useSheet() {
+  const context = React.useContext(SheetContext)
   if (!context) {
-    throw new Error("Dialog components must be used within a Dialog")
+    throw new Error("Sheet components must be used within a Sheet")
   }
   return context
 }
 
-export type DialogProps = {
+export type SheetProps = {
   children: React.ReactNode
   defaultOpen?: boolean
   open?: boolean
@@ -48,13 +48,13 @@ export type DialogProps = {
   modal?: boolean
 }
 
-export function Dialog({
+export function Sheet({
   children,
   defaultOpen = false,
   open: openProp,
   onOpenChange,
   modal = true,
-}: DialogProps) {
+}: SheetProps) {
   const [open, setOpen] = React.useState(defaultOpen)
   const triggerRef = React.useRef<View>(null)
   const contentRef = React.useRef<View>(null)
@@ -75,7 +75,7 @@ export function Dialog({
   )
 
   return (
-    <DialogContext.Provider
+    <SheetContext.Provider
       value={{
         open: !!isOpen,
         onOpenChange: handleOpenChange,
@@ -87,17 +87,17 @@ export function Dialog({
       }}
     >
       {children}
-    </DialogContext.Provider>
+    </SheetContext.Provider>
   )
 }
 
-export type DialogTriggerProps = PressableProps & { asChild?: boolean }
+export type SheetTriggerProps = PressableProps & { asChild?: boolean }
 
-export const DialogTrigger = React.forwardRef<
+export const SheetTrigger = React.forwardRef<
   React.ComponentRef<typeof Pressable>,
-  DialogTriggerProps
+  SheetTriggerProps
 >(({ children, asChild, onPress, disabled, ...props }, ref) => {
-  const { open, onOpenChange, triggerRef } = useDialog()
+  const { open, onOpenChange, triggerRef } = useSheet()
   const isDisabled = !!disabled
 
   const handlePress = React.useCallback(
@@ -162,15 +162,15 @@ export const DialogTrigger = React.forwardRef<
   )
 })
 
-DialogTrigger.displayName = "DialogTrigger"
+SheetTrigger.displayName = "SheetTrigger"
 
-export type DialogCloseProps = PressableProps & { asChild?: boolean }
+export type SheetCloseProps = PressableProps & { asChild?: boolean }
 
-export const DialogClose = React.forwardRef<
+export const SheetClose = React.forwardRef<
   React.ComponentRef<typeof Pressable>,
-  DialogCloseProps
+  SheetCloseProps
 >(({ children, asChild, onPress, disabled, ...props }, ref) => {
-  const { onOpenChange } = useDialog()
+  const { onOpenChange } = useSheet()
   const isDisabled = !!disabled
 
   const handlePress = React.useCallback(
@@ -215,24 +215,24 @@ export const DialogClose = React.forwardRef<
   )
 })
 
-DialogClose.displayName = "DialogClose"
+SheetClose.displayName = "SheetClose"
 
-export type DialogContentSize = "default" | "sm" | "lg" | "fullscreen"
+export type SheetSide = "right" | "left" | "bottom" | "top"
 
-export type DialogContentProps = ViewProps & {
-  size?: DialogContentSize
+export type SheetContentProps = ViewProps & {
+  side?: SheetSide
   overlayStyle?: StyleProp<ViewStyle>
   dismissable?: boolean
   onDismiss?: () => void
 }
 
-export const DialogContent = React.forwardRef<View, DialogContentProps>(
+export const SheetContent = React.forwardRef<View, SheetContentProps>(
   (
     {
       children,
       style,
       overlayStyle,
-      size = "default",
+      side = "right",
       dismissable,
       onDismiss,
       ...props
@@ -246,11 +246,11 @@ export const DialogContent = React.forwardRef<View, DialogContentProps>(
       titleId,
       descriptionId,
       modal,
-    } = useDialog()
+    } = useSheet()
 
     useScrollLock(open && modal)
     const variantStyles = styles.useVariants({
-      size: size === "default" ? undefined : size,
+      side,
     }) as unknown
     const contentVariantStyle =
       variantStyles &&
@@ -288,7 +288,7 @@ export const DialogContent = React.forwardRef<View, DialogContentProps>(
           scrim={modal}
           scrimStyle={[styles.overlay, overlayStyle]}
         >
-          <FocusScope trapped={modal} loop={true} style={styles.center}>
+          <FocusScope trapped={modal} loop={true} style={styles.container}>
             <View
               ref={setContentRef}
               role={Platform.OS === "web" ? "dialog" : undefined}
@@ -315,54 +315,54 @@ export const DialogContent = React.forwardRef<View, DialogContentProps>(
   },
 )
 
-DialogContent.displayName = "DialogContent"
+SheetContent.displayName = "SheetContent"
 
-export type DialogHeaderProps = ViewProps & {
+export type SheetHeaderProps = ViewProps & {
   style?: StyleProp<ViewStyle>
 }
 
-export const DialogHeader = React.forwardRef<View, DialogHeaderProps>(
+export const SheetHeader = React.forwardRef<View, SheetHeaderProps>(
   ({ style, ...props }, ref) => {
     return <View ref={ref} style={[styles.header, style]} {...props} />
   },
 )
 
-DialogHeader.displayName = "DialogHeader"
+SheetHeader.displayName = "SheetHeader"
 
-export type DialogFooterProps = ViewProps & {
+export type SheetFooterProps = ViewProps & {
   style?: StyleProp<ViewStyle>
 }
 
-export const DialogFooter = React.forwardRef<View, DialogFooterProps>(
+export const SheetFooter = React.forwardRef<View, SheetFooterProps>(
   ({ style, ...props }, ref) => {
     return <View ref={ref} style={[styles.footer, style]} {...props} />
   },
 )
 
-DialogFooter.displayName = "DialogFooter"
+SheetFooter.displayName = "SheetFooter"
 
-export type DialogTitleProps = TextProps & {
+export type SheetTitleProps = TextProps & {
   style?: StyleProp<TextStyle>
 }
 
-export const DialogTitle = React.forwardRef<Text, DialogTitleProps>(
+export const SheetTitle = React.forwardRef<Text, SheetTitleProps>(
   ({ style, ...props }, ref) => {
-    const { titleId } = useDialog()
+    const { titleId } = useSheet()
     return (
       <Text ref={ref} nativeID={titleId} style={[styles.title, style]} {...props} />
     )
   },
 )
 
-DialogTitle.displayName = "DialogTitle"
+SheetTitle.displayName = "SheetTitle"
 
-export type DialogDescriptionProps = TextProps & {
+export type SheetDescriptionProps = TextProps & {
   style?: StyleProp<TextStyle>
 }
 
-export const DialogDescription = React.forwardRef<Text, DialogDescriptionProps>(
+export const SheetDescription = React.forwardRef<Text, SheetDescriptionProps>(
   ({ style, ...props }, ref) => {
-    const { descriptionId } = useDialog()
+    const { descriptionId } = useSheet()
     return (
       <Text
         ref={ref}
@@ -374,21 +374,17 @@ export const DialogDescription = React.forwardRef<Text, DialogDescriptionProps>(
   },
 )
 
-DialogDescription.displayName = "DialogDescription"
+SheetDescription.displayName = "SheetDescription"
 
 const styles = StyleSheet.create((theme) => ({
   overlay: {
     backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
-  center: {
+  container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    padding: theme.spacing[4],
   },
   content: {
-    width: "100%",
-    maxWidth: 480,
+    position: "absolute",
     borderRadius: theme.radius.lg,
     borderWidth: 1,
     borderColor: theme.colors.border,
@@ -399,19 +395,46 @@ const styles = StyleSheet.create((theme) => ({
     shadowRadius: 10,
     elevation: 4,
     variants: {
-      size: {
-        sm: {
-          maxWidth: 360,
+      side: {
+        right: {
+          top: 0,
+          bottom: 0,
+          right: 0,
+          width: "80%",
+          maxWidth: 480,
+          borderRightWidth: 0,
+          borderTopRightRadius: 0,
+          borderBottomRightRadius: 0,
         },
-        lg: {
-          maxWidth: 640,
+        left: {
+          top: 0,
+          bottom: 0,
+          left: 0,
+          width: "80%",
+          maxWidth: 480,
+          borderLeftWidth: 0,
+          borderTopLeftRadius: 0,
+          borderBottomLeftRadius: 0,
         },
-        fullscreen: {
-          maxWidth: "100%",
-          width: "100%",
-          height: "100%",
-          borderRadius: 0,
-          padding: theme.spacing[8],
+        bottom: {
+          left: 0,
+          right: 0,
+          bottom: 0,
+          height: "60%",
+          maxHeight: 640,
+          borderBottomWidth: 0,
+          borderBottomLeftRadius: 0,
+          borderBottomRightRadius: 0,
+        },
+        top: {
+          left: 0,
+          right: 0,
+          top: 0,
+          height: "60%",
+          maxHeight: 640,
+          borderTopWidth: 0,
+          borderTopLeftRadius: 0,
+          borderTopRightRadius: 0,
         },
       },
     },

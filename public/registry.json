@@ -366,6 +366,20 @@
       ]
     },
     {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "A dialog variant that slides in from the edge of the screen.",
+      "registryDependencies": [
+        "tokens",
+        "portal",
+        "overlay",
+        "focus",
+        "scroll-lock",
+        "press"
+      ]
+    },
+    {
       "name": "skeleton",
       "type": "registry:ui",
       "title": "Skeleton",
