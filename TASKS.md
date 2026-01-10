@@ -514,17 +514,17 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 12.3 Data Table [DEP: 5.10] [INDEPENDENT]
-- [ ] Create `ui/data-table.tsx`
-- [ ] Web-first features
-- [ ] Native: "list"/"grid" approximation
-- [ ] Document scope and limitations
-- [ ] Create manifest
+- [x] Create `ui/data-table.tsx`
+- [x] Web-first features
+- [x] Native: "list"/"grid" approximation
+- [x] Document scope and limitations
+- [x] Create manifest
 
 ### 12.4 Chart [DEP: 2A] [INDEPENDENT]
-- [ ] Create `ui/chart.tsx`
-- [ ] SVG-based cross-platform recommended
-- [ ] Document limitations
-- [ ] Create manifest
+- [x] Create `ui/chart.tsx`
+- [x] SVG-based cross-platform recommended
+- [x] Document limitations
+- [x] Create manifest
 
 ### 12.5 Carousel [DEP: 2A] [INDEPENDENT]
 - [ ] Create `ui/carousel.tsx`

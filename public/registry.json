@@ -114,6 +114,18 @@
       ]
     },
     {
+      "name": "chart",
+      "type": "registry:ui",
+      "title": "Chart",
+      "description": "SVG-based chart component for simple line, area, and bar charts.",
+      "dependencies": [
+        "react-native-svg"
+      ],
+      "registryDependencies": [
+        "tokens"
+      ]
+    },
+    {
       "name": "checkbox",
       "type": "registry:ui",
       "title": "Checkbox",
@@ -171,6 +183,15 @@
         "overlay",
         "roving-focus",
         "press"
+      ]
+    },
+    {
+      "name": "data-table",
+      "type": "registry:ui",
+      "title": "Data Table",
+      "description": "Tabular data display with sorting and basic row interactions.",
+      "registryDependencies": [
+        "tokens"
       ]
     },
     {

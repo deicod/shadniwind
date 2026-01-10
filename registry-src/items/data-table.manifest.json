@@ -1,0 +1,14 @@
+{
+  "name": "data-table",
+  "type": "registry:ui",
+  "title": "Data Table",
+  "description": "Tabular data display with sorting and basic row interactions.",
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "source": "ui/data-table.tsx",
+      "path": "components/ui/data-table.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

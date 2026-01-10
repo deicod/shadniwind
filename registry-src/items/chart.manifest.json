@@ -1,0 +1,15 @@
+{
+  "name": "chart",
+  "type": "registry:ui",
+  "title": "Chart",
+  "description": "SVG-based chart component for simple line, area, and bar charts.",
+  "dependencies": ["react-native-svg"],
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "source": "ui/chart.tsx",
+      "path": "components/ui/chart.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}
