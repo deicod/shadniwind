@@ -436,10 +436,10 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 9.4 Context Menu [DEP: 4.1, 4.2, 4.4] [INDEPENDENT]
-- [ ] Create `ui/context-menu.tsx`
-- [ ] Web: right-click + keyboard
-- [ ] Native: long-press trigger
-- [ ] Create manifest
+- [x] Create `ui/context-menu.tsx`
+- [x] Web: right-click + keyboard
+- [x] Native: long-press trigger
+- [x] Create manifest
 
 ### 9.5 Command [DEP: 4.1, 4.4] [INDEPENDENT]
 - [ ] Create `ui/command.tsx`

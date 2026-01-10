@@ -140,6 +140,21 @@
       ]
     },
     {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "Context Menu",
+      "description": "Displays a context menu on right click or long press.",
+      "registryDependencies": [
+        "tokens",
+        "portal",
+        "positioning",
+        "focus",
+        "overlay",
+        "roving-focus",
+        "press"
+      ]
+    },
+    {
       "name": "dialog",
       "type": "registry:ui",
       "title": "Dialog",
