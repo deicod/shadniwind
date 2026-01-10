@@ -114,6 +114,15 @@
       ]
     },
     {
+      "name": "carousel",
+      "type": "registry:ui",
+      "title": "Carousel",
+      "description": "Swipeable carousel with snapping and keyboard navigation on web.",
+      "registryDependencies": [
+        "tokens"
+      ]
+    },
+    {
       "name": "chart",
       "type": "registry:ui",
       "title": "Chart",

@@ -527,11 +527,11 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 12.5 Carousel [DEP: 2A] [INDEPENDENT]
-- [ ] Create `ui/carousel.tsx`
-- [ ] Native gestures
-- [ ] Web: arrow keys
-- [ ] Snapping behavior
-- [ ] Create manifest
+- [x] Create `ui/carousel.tsx`
+- [x] Native gestures
+- [x] Web: arrow keys
+- [x] Snapping behavior
+- [x] Create manifest
 
 ### 12.6 Navigation Menu [DEP: 4.1, 4.2, 4.4] [INDEPENDENT]
 - [ ] Create `ui/navigation-menu.tsx`

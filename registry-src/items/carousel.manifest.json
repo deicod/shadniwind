@@ -1,0 +1,14 @@
+{
+  "name": "carousel",
+  "type": "registry:ui",
+  "title": "Carousel",
+  "description": "Swipeable carousel with snapping and keyboard navigation on web.",
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "source": "ui/carousel.tsx",
+      "path": "components/ui/carousel.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}
