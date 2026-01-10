@@ -140,6 +140,16 @@
       ]
     },
     {
+      "name": "command",
+      "type": "registry:ui",
+      "title": "Command",
+      "description": "Command palette with input filtering and keyboard navigation.",
+      "registryDependencies": [
+        "tokens",
+        "roving-focus"
+      ]
+    },
+    {
       "name": "context-menu",
       "type": "registry:ui",
       "title": "Context Menu",

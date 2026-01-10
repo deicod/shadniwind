@@ -1,0 +1,14 @@
+{
+  "name": "command",
+  "type": "registry:ui",
+  "title": "Command",
+  "description": "Command palette with input filtering and keyboard navigation.",
+  "registryDependencies": ["tokens", "roving-focus"],
+  "files": [
+    {
+      "source": "ui/command.tsx",
+      "path": "components/ui/command.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

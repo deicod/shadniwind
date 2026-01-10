@@ -442,11 +442,11 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 9.5 Command [DEP: 4.1, 4.4] [INDEPENDENT]
-- [ ] Create `ui/command.tsx`
-- [ ] Command palette pattern
-- [ ] Web: keyboard-first
-- [ ] Native: fallback acceptable
-- [ ] Create manifest
+- [x] Create `ui/command.tsx`
+- [x] Command palette pattern
+- [x] Web: keyboard-first
+- [x] Native: fallback acceptable
+- [x] Create manifest
 
 ### 9.6 Hover Card [DEP: 4.1, 4.2] [INDEPENDENT]
 - [ ] Create `ui/hover-card.tsx`
