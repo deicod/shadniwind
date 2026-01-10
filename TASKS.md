@@ -502,10 +502,10 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 > **Agents: Up to 8** | After Waves 4-9 complete. These are complex, independent features.
 
 ### 12.1 Calendar [DEP: 4.4] [INDEPENDENT]
-- [ ] Create `ui/calendar.tsx`
-- [ ] Web: rich keyboard nav
-- [ ] Native: grid implementation and locale formatting
-- [ ] Create manifest
+- [x] Create `ui/calendar.tsx`
+- [x] Web: rich keyboard nav
+- [x] Native: grid implementation and locale formatting
+- [x] Create manifest
 
 ### 12.2 Date Picker [DEP: 12.1, 6.2] [SEQUENTIAL after 12.1]
 - [ ] Create `ui/date-picker.tsx`

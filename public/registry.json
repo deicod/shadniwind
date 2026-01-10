@@ -96,6 +96,15 @@
       ]
     },
     {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "Month grid calendar with keyboard navigation and date selection.",
+      "registryDependencies": [
+        "tokens"
+      ]
+    },
+    {
       "name": "card",
       "type": "registry:ui",
       "title": "Card",

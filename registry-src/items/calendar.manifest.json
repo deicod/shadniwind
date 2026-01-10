@@ -1,0 +1,14 @@
+{
+  "name": "calendar",
+  "type": "registry:ui",
+  "title": "Calendar",
+  "description": "Month grid calendar with keyboard navigation and date selection.",
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "source": "ui/calendar.tsx",
+      "path": "components/ui/calendar.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}
