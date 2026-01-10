@@ -508,10 +508,10 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 12.2 Date Picker [DEP: 12.1, 6.2] [SEQUENTIAL after 12.1]
-- [ ] Create `ui/date-picker.tsx`
-- [ ] Native: may use platform picker or custom
-- [ ] Web: calendar + input
-- [ ] Create manifest
+- [x] Create `ui/date-picker.tsx`
+- [x] Native: may use platform picker or custom
+- [x] Web: calendar + input
+- [x] Create manifest
 
 ### 12.3 Data Table [DEP: 5.10] [INDEPENDENT]
 - [ ] Create `ui/data-table.tsx`

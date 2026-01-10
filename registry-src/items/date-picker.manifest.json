@@ -1,0 +1,14 @@
+{
+  "name": "date-picker",
+  "type": "registry:ui",
+  "title": "Date Picker",
+  "description": "Input-style trigger with a calendar popover for selecting dates.",
+  "registryDependencies": ["calendar", "popover"],
+  "files": [
+    {
+      "source": "ui/date-picker.tsx",
+      "path": "components/ui/date-picker.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}
