@@ -1,0 +1,21 @@
+{
+  "name": "navigation-menu",
+  "type": "registry:ui",
+  "title": "Navigation Menu",
+  "description": "Web-first navigation menu with trigger/content panels and keyboard support.",
+  "registryDependencies": [
+    "tokens",
+    "portal",
+    "positioning",
+    "overlay",
+    "roving-focus",
+    "press"
+  ],
+  "files": [
+    {
+      "source": "ui/navigation-menu.tsx",
+      "path": "components/ui/navigation-menu.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

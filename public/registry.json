@@ -411,6 +411,20 @@
       ]
     },
     {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "title": "Navigation Menu",
+      "description": "Web-first navigation menu with trigger/content panels and keyboard support.",
+      "registryDependencies": [
+        "tokens",
+        "portal",
+        "positioning",
+        "overlay",
+        "roving-focus",
+        "press"
+      ]
+    },
+    {
       "name": "overlay",
       "type": "registry:lib",
       "title": "Overlay",
