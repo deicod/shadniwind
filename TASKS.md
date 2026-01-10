@@ -430,10 +430,10 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 9.3 Dropdown Menu [DEP: 4.1, 4.2, 4.4] [INDEPENDENT]
-- [ ] Create `ui/dropdown-menu.tsx`
-- [ ] Web semantics
-- [ ] Native: press trigger
-- [ ] Create manifest
+- [x] Create `ui/dropdown-menu.tsx`
+- [x] Web semantics
+- [x] Native: press trigger
+- [x] Create manifest
 
 ### 9.4 Context Menu [DEP: 4.1, 4.2, 4.4] [INDEPENDENT]
 - [ ] Create `ui/context-menu.tsx`

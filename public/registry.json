@@ -168,6 +168,21 @@
       ]
     },
     {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "Displays a list of actions or options in a menu.",
+      "registryDependencies": [
+        "tokens",
+        "portal",
+        "positioning",
+        "focus",
+        "overlay",
+        "roving-focus",
+        "press"
+      ]
+    },
+    {
       "name": "empty",
       "type": "registry:ui",
       "title": "Empty",
