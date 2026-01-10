@@ -552,6 +552,16 @@
       ]
     },
     {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "description": "Composable sidebar layout with responsive collapse and menu building blocks.",
+      "registryDependencies": [
+        "tokens",
+        "press"
+      ]
+    },
+    {
       "name": "skeleton",
       "type": "registry:ui",
       "title": "Skeleton",

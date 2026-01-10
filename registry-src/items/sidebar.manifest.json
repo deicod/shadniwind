@@ -1,0 +1,14 @@
+{
+  "name": "sidebar",
+  "type": "registry:ui",
+  "title": "Sidebar",
+  "description": "Composable sidebar layout with responsive collapse and menu building blocks.",
+  "registryDependencies": ["tokens", "press"],
+  "files": [
+    {
+      "source": "ui/sidebar.tsx",
+      "path": "components/ui/sidebar.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

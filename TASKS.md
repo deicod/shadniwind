@@ -541,10 +541,10 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 12.7 Sidebar [DEP: 2A] [INDEPENDENT]
-- [ ] Create `ui/sidebar.tsx`
-- [ ] Layout + responsive behavior
-- [ ] Provide building blocks rather than monolith
-- [ ] Create manifest
+- [x] Create `ui/sidebar.tsx`
+- [x] Layout + responsive behavior
+- [x] Provide building blocks rather than monolith
+- [x] Create manifest
 
 ### 12.8 Resizable [DEP: 2A] [INDEPENDENT]
 - [ ] Create `ui/resizable.tsx`
