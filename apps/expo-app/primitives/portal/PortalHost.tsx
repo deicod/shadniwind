@@ -4,6 +4,11 @@ import { StyleSheet, View, type ViewProps } from "react-native"
 import { usePortalStore } from "./PortalProvider"
 
 export type PortalHostProps = ViewProps & {
+  /**
+   * The unique name of this portal host.
+   * Portals with a matching `name` prop will render their content here.
+   * @default "root"
+   */
   name?: string
 }
 
@@ -15,6 +20,15 @@ const styles = StyleSheet.create({
   },
 })
 
+/**
+ * A container that renders content teleported from <Portal> components.
+ *
+ * It is typically placed at the root of the app (top-level) to ensure
+ * content (like Modals, Toasts) renders above other UI.
+ *
+ * By default, it fills the entire screen using absolute positioning and
+ * allows touch events to pass through (`pointerEvents="box-none"`).
+ */
 export function PortalHost({
   name = DEFAULT_HOST_NAME,
   pointerEvents,

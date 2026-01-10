@@ -9,6 +9,11 @@ export type PortalProviderProps = {
   children: React.ReactNode
 }
 
+/**
+ * Provides the PortalStore to all Portal and PortalHost components.
+ * This should be rendered at the root of your application, preferably
+ * in your root layout or App component before any UI that uses portals.
+ */
 export function PortalProvider({ children }: PortalProviderProps) {
   const storeRef = useRef<PortalStore | null>(null)
 
@@ -23,6 +28,11 @@ export function PortalProvider({ children }: PortalProviderProps) {
   )
 }
 
+/**
+ * Hook to access the internal PortalStore.
+ * @throws {Error} If used outside of a <PortalProvider>.
+ * @returns The singleton PortalStore instance.
+ */
 export function usePortalStore(): PortalStore {
   const store = useContext(PortalStoreContext)
 

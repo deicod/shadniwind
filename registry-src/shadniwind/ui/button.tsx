@@ -12,6 +12,15 @@ import {
 } from "react-native"
 import { StyleSheet, useUnistyles } from "react-native-unistyles"
 
+/**
+ * Visual variants for the Button component.
+ * - `default`: Filled primary color.
+ * - `destructive`: Filled destructive color (e.g., red) for dangerous actions.
+ * - `outline`: Bordered with background color.
+ * - `secondary`: Filled with secondary color.
+ * - `ghost`: Transparent background, hover effect only.
+ * - `link`: Underlined text, no background.
+ */
 export type ButtonVariant =
   | "default"
   | "destructive"
@@ -19,11 +28,34 @@ export type ButtonVariant =
   | "secondary"
   | "ghost"
   | "link"
+
+/**
+ * Size presets for the Button component.
+ * - `default`: Standard height (40px) and padding.
+ * - `sm`: Smaller height (36px) for compact areas.
+ * - `lg`: Taller height (44px) for emphasis.
+ * - `icon`: Square button (40x40) for icons only.
+ */
 export type ButtonSize = "default" | "sm" | "lg" | "icon"
 
+/**
+ * Props for the Button component.
+ */
 export type ButtonProps = Omit<PressableProps, "style"> & {
+  /**
+   * The visual style of the button.
+   * @default "default"
+   */
   variant?: ButtonVariant
+  /**
+   * The size of the button.
+   * @default "default"
+   */
   size?: ButtonSize
+  /**
+   * If true, displays a loading spinner and disables interaction.
+   * The spinner matches the text color of the variant.
+   */
   loading?: boolean
   style?: StyleProp<ViewStyle>
   textStyle?: StyleProp<TextStyle>
@@ -200,6 +232,15 @@ const styles = StyleSheet.create((theme) => {
 
 type ButtonRef = React.ComponentRef<typeof Pressable>
 
+/**
+ * A consistent, accessible button component built on `Pressable`.
+ * Supports variants, sizes, and a loading state.
+ *
+ * @example
+ * <Button variant="destructive" onPress={handleDelete}>
+ *   Delete Account
+ * </Button>
+ */
 export const Button = forwardRef<ButtonRef, ButtonProps>(
   (
     {
