@@ -1,0 +1,14 @@
+{
+  "name": "hover-card",
+  "type": "registry:ui",
+  "title": "Hover Card",
+  "description": "Displays rich content when a trigger is hovered or focused.",
+  "registryDependencies": ["tokens", "portal", "overlay", "positioning"],
+  "files": [
+    {
+      "source": "ui/hover-card.tsx",
+      "path": "components/ui/hover-card.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

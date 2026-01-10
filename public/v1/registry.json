@@ -265,6 +265,18 @@
       ]
     },
     {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "title": "Hover Card",
+      "description": "Displays rich content when a trigger is hovered or focused.",
+      "registryDependencies": [
+        "tokens",
+        "portal",
+        "overlay",
+        "positioning"
+      ]
+    },
+    {
       "name": "input",
       "type": "registry:ui",
       "dependencies": [

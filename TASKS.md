@@ -449,10 +449,10 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 9.6 Hover Card [DEP: 4.1, 4.2] [INDEPENDENT]
-- [ ] Create `ui/hover-card.tsx`
-- [ ] Web-first (hover/focus)
-- [ ] Native fallback: press-and-hold or omit hover semantics
-- [ ] Create manifest
+- [x] Create `ui/hover-card.tsx`
+- [x] Web-first (hover/focus)
+- [x] Native fallback: press-and-hold or omit hover semantics
+- [x] Create manifest
 
 ---
 
