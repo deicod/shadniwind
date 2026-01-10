@@ -493,6 +493,16 @@
       ]
     },
     {
+      "name": "resizable",
+      "type": "registry:ui",
+      "title": "Resizable",
+      "description": "Resizable panel group with draggable handles and web keyboard support.",
+      "registryDependencies": [
+        "tokens",
+        "press"
+      ]
+    },
+    {
       "name": "roving-focus",
       "type": "registry:lib",
       "title": "Roving Focus",

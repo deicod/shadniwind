@@ -547,11 +547,11 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 - [x] Create manifest
 
 ### 12.8 Resizable [DEP: 2A] [INDEPENDENT]
-- [ ] Create `ui/resizable.tsx`
-- [ ] Web-first
-- [ ] Native: "not supported" or very limited
-- [ ] Document limitations
-- [ ] Create manifest
+- [x] Create `ui/resizable.tsx`
+- [x] Web-first
+- [x] Native: "not supported" or very limited
+- [x] Document limitations
+- [x] Create manifest
 
 ---
 
