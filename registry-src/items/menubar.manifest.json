@@ -1,0 +1,21 @@
+{
+  "name": "menubar",
+  "type": "registry:ui",
+  "title": "Menubar",
+  "description": "Horizontal menu bar with keyboard navigation and dropdown menus.",
+  "registryDependencies": [
+    "tokens",
+    "portal",
+    "positioning",
+    "overlay",
+    "roving-focus",
+    "press"
+  ],
+  "files": [
+    {
+      "source": "ui/menubar.tsx",
+      "path": "components/ui/menubar.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

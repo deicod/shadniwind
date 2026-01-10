@@ -490,10 +490,10 @@ This document is structured for **concurrent multi-agent implementation**. Tasks
 > **Agents: 1** | Complex component, best done by single focused agent.
 
 ### 11.1 Menubar
-- [ ] Create `ui/menubar.tsx`
-- [ ] Web-first (arrow navigation)
-- [ ] Native: may be limited or not shipped initially
-- [ ] Create manifest
+- [x] Create `ui/menubar.tsx`
+- [x] Web-first (arrow navigation)
+- [x] Native: may be limited or not shipped initially
+- [x] Create manifest
 
 ---
 
