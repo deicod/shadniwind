@@ -229,6 +229,17 @@ shadniwind approach:
   - on web, apply focus-visible ring styles (using Unistyles web pseudo support where available)
   - keyboard support for menus/listbox-like components on web.
 
+### 11.4 Documentation
+Documentation is a first-class citizen in shadniwind. Since components are source-distributed, the documentation lives within the source files to assist the developer in their editor.
+
+Rules for Registry Items:
+- **TSDoc for Exports**: All exported types, interfaces, and components must have a TSDoc comment (`/** ... */`).
+- **The "Why" vs "What"**: Don't describe what the code does; explain its purpose, recommended placement, lifecycle behaviors, and platform caveats.
+- **Param/Returns**: Use `@param` and `@returns` tags for functions/hooks.
+- **Examples**: Include an `@example` block for complex components or hooks.
+- **Magic Numbers**: Explain the rationale behind magic numbers or complex logic with inline comments.
+- **Edge Cases**: Document known limitations or behavior on specific platforms (e.g., "Web only", "Native only").
+
 ---
 
 ## 12. CI / tooling requirements

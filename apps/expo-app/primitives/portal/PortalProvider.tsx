@@ -6,13 +6,19 @@ import { PortalStore } from "./portal-store"
 const PortalStoreContext = createContext<PortalStore | null>(null)
 
 export type PortalProviderProps = {
+  /**
+   * The application components that will have access to the portal system.
+   */
   children: React.ReactNode
 }
 
 /**
- * Provides the PortalStore to all Portal and PortalHost components.
- * This should be rendered at the root of your application, preferably
- * in your root layout or App component before any UI that uses portals.
+ * Provides the `PortalStore` context to all `Portal` and `PortalHost` components.
+ * 
+ * **Placement Guidance:**
+ * This should be rendered at the root of your application, typically in your 
+ * root layout (e.g., `app/_layout.tsx` in Expo Router). Only one `PortalProvider`
+ * should exist in the component tree.
  */
 export function PortalProvider({ children }: PortalProviderProps) {
   const storeRef = useRef<PortalStore | null>(null)

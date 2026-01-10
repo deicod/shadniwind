@@ -21,13 +21,19 @@ const styles = StyleSheet.create({
 })
 
 /**
- * A container that renders content teleported from <Portal> components.
+ * A container that renders content teleported from `<Portal>` components.
  *
+ * **Usage:**
  * It is typically placed at the root of the app (top-level) to ensure
- * content (like Modals, Toasts) renders above other UI.
+ * overlays (like Modals, Toasts, or Tooltips) render above all other UI elements.
+ * 
+ * **Behavior:**
+ * By default, it fills the entire screen using `StyleSheet.absoluteFillObject`.
+ * It is configured with `pointerEvents="box-none"` by default, allowing touch
+ * events to pass through to underlying views when no portal content is blocking them.
  *
- * By default, it fills the entire screen using absolute positioning and
- * allows touch events to pass through (`pointerEvents="box-none"`).
+ * @example
+ * <PortalHost name="root" />
  */
 export function PortalHost({
   name = DEFAULT_HOST_NAME,

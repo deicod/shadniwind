@@ -1,9 +1,15 @@
+/**
+ * The core design tokens for shadniwind.
+ * These tokens define the shared geometry, typography, and spacing used across all components.
+ */
 export const tokens = {
+  /** Border radius presets. */
   radius: {
     sm: 6,
     md: 8,
     lg: 12,
   },
+  /** Typography configuration including font families, sizes, line heights, and weights. */
   typography: {
     families: {
       sans: "System",
@@ -30,6 +36,7 @@ export const tokens = {
       bold: "700",
     },
   },
+  /** Spacing scale (4px base). */
   spacing: {
     0: 0,
     1: 4,
@@ -47,6 +54,9 @@ export const tokens = {
   },
 } as const
 
+/**
+ * The standard Light Theme configuration.
+ */
 export const lightTheme = {
   ...tokens,
   colors: {
@@ -72,6 +82,9 @@ export const lightTheme = {
   },
 } as const
 
+/**
+ * The standard Dark Theme configuration.
+ */
 export const darkTheme = {
   ...tokens,
   colors: {
@@ -97,6 +110,9 @@ export const darkTheme = {
   },
 } as const
 
+/**
+ * The theme structure used by Unistyles.
+ */
 export type Theme = {
   radius: typeof tokens.radius
   typography: typeof tokens.typography
@@ -124,6 +140,11 @@ export type Theme = {
   }
 }
 
+/**
+ * Utility to calculate spacing based on a 4px grid.
+ * @param value - The multiplier (e.g., 4 results in 16px).
+ * @returns The calculated spacing in pixels.
+ */
 export function space(value: number): number {
   return value * 4
 }

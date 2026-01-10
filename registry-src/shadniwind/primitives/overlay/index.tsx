@@ -43,6 +43,9 @@ const styles = StyleSheet.create({
   },
 })
 
+/**
+ * A full-screen backdrop component that can optionally be visible (scrim).
+ */
 export const OverlayBackdrop = React.forwardRef<
   OverlayBackdropRef,
   OverlayBackdropProps
@@ -77,6 +80,16 @@ export const OverlayBackdrop = React.forwardRef<
 
 OverlayBackdrop.displayName = "OverlayBackdrop"
 
+/**
+ * A layer that facilitates dismissing content when users interact outside of it
+ * or perform a system "back" action.
+ * 
+ * **Behaviors:**
+ * - **Web:** Adds a global listener for the `Escape` key to trigger `onDismiss`.
+ * - **Android:** Adds a `BackHandler` listener to trigger `onDismiss` when the 
+ *   hardware back button is pressed.
+ * - **Click-outside:** Triggers `onDismiss` when the backdrop/scrim is pressed.
+ */
 export const DismissLayer = React.forwardRef<View, DismissLayerProps>(
   (
     {
@@ -166,6 +179,9 @@ export const DismissLayer = React.forwardRef<View, DismissLayerProps>(
 
 DismissLayer.displayName = "DismissLayer"
 
+/**
+ * A high-level Overlay component that combines a `DismissLayer` with a visible scrim by default.
+ */
 export const Overlay = React.forwardRef<View, OverlayProps>(
   ({ scrim = true, ...props }, ref) => {
     return <DismissLayer ref={ref} scrim={scrim} {...props} />

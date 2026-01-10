@@ -19,12 +19,23 @@ export type PortalProps = {
 let portalKey = 0
 
 /**
- * Renders its children into a `PortalHost` with a matching name.
- * Use this to render content outside the current view hierarchy (e.g., for Modals, Tooltips).
+ * Teleports its children into a `PortalHost` with a matching name.
+ * 
+ * **Overview:**
+ * Use this component to render content outside its current parent view hierarchy. 
+ * This is essential for components that must overflow their containers, such 
+ * as Modals, Dropdowns, and Tooltips, especially on Native where `overflow: visible` 
+ * behaves differently or is constrained by parent bounds.
+ *
+ * **Lifecycle:**
+ * When mounted, it registers its content with the nearest `PortalProvider`'s store.
+ * When unmounted, it automatically cleans up its entry from the store.
  *
  * @example
  * <Portal name="root">
- *   <View>I am floating!</View>
+ *   <View style={{ backgroundColor: 'white', padding: 20 }}>
+ *     <Text>I am rendered at the root level!</Text>
+ *   </View>
  * </Portal>
  */
 export function Portal({ name = "root", children }: PortalProps) {

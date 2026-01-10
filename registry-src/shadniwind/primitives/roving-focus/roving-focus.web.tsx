@@ -3,7 +3,13 @@ import { View } from "react-native"
 import type { RovingFocusGroupProps, RovingFocusItemProps } from "./types.js"
 import { composeRefs } from "./utils.js"
 
+/**
+ * Data attribute used to identify items within a roving focus group.
+ */
 const ITEM_DATA_ATTR = "data-roving-focus-item"
+/**
+ * Data attribute used to store the unique value of an item.
+ */
 const VALUE_DATA_ATTR = "data-roving-focus-value"
 
 const RovingFocusContext = React.createContext<{
@@ -14,6 +20,10 @@ const RovingFocusContext = React.createContext<{
   loop?: boolean
 } | null>(null)
 
+/**
+ * Finds the next or previous item in a list of elements, optionally looping.
+ * @private
+ */
 function getNextItem(
   current: HTMLElement,
   items: HTMLElement[],
@@ -36,6 +46,18 @@ function getNextItem(
   return items[nextIndex]
 }
 
+/**
+ * RovingFocusGroup (Web Implementation)
+ * 
+ * **How it works:**
+ * A Roving Focus group ensures that only one item in the list is part of the 
+ * tab order (`tabIndex=0`). All other items have `tabIndex=-1`. 
+ * Users navigate between items using arrow keys. When an item is focused, 
+ * it becomes the new "focusable" entry point.
+ * 
+ * This implementation uses DOM queries and data attributes to manage focus 
+ * efficiently on the web without tracking every ref.
+ */
 export const RovingFocusGroup = React.forwardRef<View, RovingFocusGroupProps>(
   (
     {
@@ -65,6 +87,9 @@ export const RovingFocusGroup = React.forwardRef<View, RovingFocusGroupProps>(
       [isControlled, onValueChange],
     )
 
+    /**
+     * Handles keyboard navigation (Arrow keys, Home, End).
+     */
     const handleKeyDown = (e: React.KeyboardEvent) => {
       const container = e.currentTarget as HTMLElement
       const items = Array.from(
@@ -131,6 +156,9 @@ export const RovingFocusGroup = React.forwardRef<View, RovingFocusGroupProps>(
       [ref],
     )
 
+    /**
+     * Set the initial focusable item if none is selected.
+     */
     React.useEffect(() => {
       if (currentValue !== undefined) return
       const container = internalRef.current
@@ -171,6 +199,12 @@ export const RovingFocusGroup = React.forwardRef<View, RovingFocusGroupProps>(
 
 RovingFocusGroup.displayName = "RovingFocusGroup"
 
+/**
+ * RovingFocusItem (Web Implementation)
+ * 
+ * An item within a RovingFocusGroup. It automatically manages its `tabIndex`
+ * based on whether it is the currently active (selected) item in the group.
+ */
 export const RovingFocusItem = React.forwardRef<View, RovingFocusItemProps>(
   ({ value, disabled, children, asChild, ...props }, ref) => {
     const context = React.useContext(RovingFocusContext)
