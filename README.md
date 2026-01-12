@@ -11,6 +11,21 @@ Unlike traditional component libraries, shadniwind components are provided as so
 - **Native-First**: Optimized for React Native (iOS/Android) while maintaining excellent Web support.
 - **Nitro-Powered**: Uses `react-native-nitro-modules` for ultra-fast bridge communication.
 
+## One Codebase, Any Platform
+
+shadniwind is designed for **Universal Apps**. You write your application code once using React Native primitives (`View`, `Text`, etc.), and it renders to the appropriate target:
+
+- **Mobile (iOS/Android)**: Renders true native UI components.
+- **Web**: Uses `react-native-web` to render standard HTML/CSS/DOM elements.
+
+You don't need to maintain separate projects. With the recommended Expo setup, you build one app and run it on multiple platforms:
+
+- `npx expo run:ios` (Runs on iOS Simulator/Device)
+- `npx expo run:android` (Runs on Android Emulator/Device)
+- `npx expo start --web` (Runs in your browser)
+
+shadniwind components handle platform-specific nuances (like hover states on web vs. touch handling on native) internally, so you can focus on building features.
+
 ## Hard Requirements
 
 To use shadniwind, your environment must meet these specifications:
