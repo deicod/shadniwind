@@ -42,8 +42,7 @@
     ],
     "experiments": {
       "typedRoutes": true,
-      "reactCompiler": true,
-      "baseUrl": "/shadniwind/showcase"
+      "reactCompiler": true
     }
   }
 }

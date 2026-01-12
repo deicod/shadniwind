@@ -75,22 +75,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Install expo-app dependencies
-        working-directory: apps/expo-app
-        run: npm install
-
-      - name: Build expo-app
-        working-directory: apps/expo-app
-        run: npx expo export --platform web
-
       - name: Build registry
         if: ${{ hashFiles('scripts/build-registry.ts') != '' }}
         run: npx --yes tsx scripts/build-registry.ts
-
-      - name: Move expo-app build to public
-        run: |
-          mkdir -p public/showcase
-          cp -r apps/expo-app/dist/* public/showcase/
 
       - name: Configure Pages
         if: ${{ hashFiles('scripts/build-registry.ts') != '' }}
