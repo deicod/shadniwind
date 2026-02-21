@@ -5,7 +5,14 @@ Building forms with React Hook Form, TanStack Form, or natively.
 ## Installation
 
 ```bash
-npx shadniwind@latest add form
+npx shadcn@latest add @shadniwind/form-rhf
+```
+
+Optional variants:
+
+```bash
+npx shadcn@latest add @shadniwind/form-tsf
+npx shadcn@latest add @shadniwind/form-core
 ```
 
 ## Usage

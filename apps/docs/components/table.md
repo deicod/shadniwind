@@ -5,7 +5,7 @@ A responsive table component.
 ## Installation
 
 ```bash
-npx shadniwind@latest add table
+npx shadcn@latest add @shadniwind/table
 ```
 
 ## Usage

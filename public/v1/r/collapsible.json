@@ -4,7 +4,7 @@
   "title": "Collapsible",
   "description": "An interactive component which expands/collapses content with animated height transitions. Single-item accordion pattern.",
   "registryDependencies": [
-    "tokens"
+    "@shadniwind/tokens"
   ],
   "files": [
     {

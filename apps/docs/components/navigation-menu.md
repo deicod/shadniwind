@@ -5,7 +5,7 @@ A collection of links for navigating websites.
 ## Installation
 
 ```bash
-npx shadniwind@latest add navigation-menu
+npx shadcn@latest add @shadniwind/navigation-menu
 ```
 
 ## Usage

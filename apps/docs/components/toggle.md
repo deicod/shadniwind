@@ -5,7 +5,7 @@ A two-state button that can be either on or off.
 ## Installation
 
 ```bash
-npx shadniwind@latest add toggle
+npx shadcn@latest add @shadniwind/toggle
 ```
 
 ## Usage

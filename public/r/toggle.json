@@ -4,7 +4,7 @@
   "title": "Toggle",
   "description": "A two-state button that can be toggled on or off with support for controlled/uncontrolled state and aria-pressed on web.",
   "registryDependencies": [
-    "tokens"
+    "@shadniwind/tokens"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@ The Scroll Lock primitive prevents the body from scrolling. This is essential fo
 ## Installation
 
 ```bash
-npx shadniwind@latest add scroll-lock
+npx shadcn@latest add @shadniwind/scroll-lock
 ```
 
 ## Usage

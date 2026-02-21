@@ -5,7 +5,7 @@ Displays a list of options for the user to pick from—triggered by a button.
 ## Installation
 
 ```bash
-npx shadniwind@latest add select
+npx shadcn@latest add @shadniwind/select
 ```
 
 ## Usage

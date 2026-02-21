@@ -5,7 +5,7 @@ A toast notification primitive.
 ## Installation
 
 ```bash
-npx shadniwind@latest add toast
+npx shadcn@latest add @shadniwind/toast
 ```
 
 ## Usage

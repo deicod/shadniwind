@@ -4,7 +4,7 @@
   "title": "Table",
   "description": "Table component with subcomponents. Web: semantic HTML tables. Native: View-based approximation with limitations.",
   "registryDependencies": [
-    "tokens"
+    "@shadniwind/tokens"
   ],
   "files": [
     {

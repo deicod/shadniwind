@@ -5,7 +5,7 @@ Accessible resizable panel groups and layouts with keyboard support.
 ## Installation
 
 ```bash
-npx shadniwind@latest add resizable
+npx shadcn@latest add @shadniwind/resizable
 ```
 
 ## Usage

@@ -5,7 +5,7 @@ An input where the user selects a value from within a given range.
 ## Installation
 
 ```bash
-npx shadniwind@latest add slider
+npx shadcn@latest add @shadniwind/slider
 ```
 
 ## Usage

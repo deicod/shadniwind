@@ -5,7 +5,7 @@ Displays an indicator showing the completion progress of a task, typically displ
 ## Installation
 
 ```bash
-npx shadniwind@latest add progress
+npx shadcn@latest add @shadniwind/progress
 ```
 
 ## Usage

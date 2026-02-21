@@ -5,7 +5,7 @@ The Focus primitive manages focus traversal within a container. It allows for fo
 ## Installation
 
 ```bash
-npx shadniwind@latest add focus
+npx shadcn@latest add @shadniwind/focus
 ```
 
 ## Usage

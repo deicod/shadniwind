@@ -14,8 +14,8 @@
       "title": "Accordion",
       "description": "A vertically stacked set of interactive headings that expand or collapse to reveal content.",
       "registryDependencies": [
-        "collapsible",
-        "roving-focus"
+        "@shadniwind/collapsible",
+        "@shadniwind/roving-focus"
       ]
     },
     {
@@ -24,7 +24,7 @@
       "title": "Alert",
       "description": "Alert container with title and description subcomponents.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -33,12 +33,12 @@
       "title": "Alert Dialog",
       "description": "A modal dialog that requires an explicit action to close.",
       "registryDependencies": [
-        "tokens",
-        "portal",
-        "overlay",
-        "focus",
-        "scroll-lock",
-        "press"
+        "@shadniwind/tokens",
+        "@shadniwind/portal",
+        "@shadniwind/overlay",
+        "@shadniwind/focus",
+        "@shadniwind/scroll-lock",
+        "@shadniwind/press"
       ]
     },
     {
@@ -47,7 +47,7 @@
       "title": "Aspect Ratio",
       "description": "Maintains aspect ratio of children content. Uses CSS aspect-ratio on web, layout measurement on native.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -56,7 +56,7 @@
       "title": "Avatar",
       "description": "Avatar with image loading states and fallback initials.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -65,7 +65,7 @@
       "title": "Badge",
       "description": "Badge component with default, secondary, destructive, and outline variants.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -74,7 +74,7 @@
       "title": "Breadcrumb",
       "description": "Presentational breadcrumb navigation component. Uses Pressable with role=link and aria-current. Consumer must handle navigation via onItemPress.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -83,7 +83,7 @@
       "title": "Button",
       "description": "Button component with variants and pressed/disabled/loading states.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -92,7 +92,7 @@
       "title": "Button Group",
       "description": "Groups related buttons together with automatic border radius handling and optional separators. Supports horizontal/vertical orientation.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -101,7 +101,7 @@
       "title": "Calendar",
       "description": "Month grid calendar with keyboard navigation and date selection.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -110,7 +110,7 @@
       "title": "Card",
       "description": "Card container and subcomponents.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -119,7 +119,7 @@
       "title": "Carousel",
       "description": "Swipeable carousel with snapping and keyboard navigation on web.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -131,7 +131,7 @@
         "react-native-svg"
       ],
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -143,7 +143,7 @@
         "lucide-react-native"
       ],
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -152,7 +152,7 @@
       "title": "Collapsible",
       "description": "An interactive component which expands/collapses content with animated height transitions. Single-item accordion pattern.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -161,12 +161,12 @@
       "title": "Combobox",
       "description": "Provides a searchable list of options in an input-driven overlay.",
       "registryDependencies": [
-        "tokens",
-        "portal",
-        "positioning",
-        "focus",
-        "overlay",
-        "roving-focus"
+        "@shadniwind/tokens",
+        "@shadniwind/portal",
+        "@shadniwind/positioning",
+        "@shadniwind/focus",
+        "@shadniwind/overlay",
+        "@shadniwind/roving-focus"
       ]
     },
     {
@@ -175,8 +175,8 @@
       "title": "Command",
       "description": "Command palette with input filtering and keyboard navigation.",
       "registryDependencies": [
-        "tokens",
-        "roving-focus"
+        "@shadniwind/tokens",
+        "@shadniwind/roving-focus"
       ]
     },
     {
@@ -185,13 +185,13 @@
       "title": "Context Menu",
       "description": "Displays a context menu on right click or long press.",
       "registryDependencies": [
-        "tokens",
-        "portal",
-        "positioning",
-        "focus",
-        "overlay",
-        "roving-focus",
-        "press"
+        "@shadniwind/tokens",
+        "@shadniwind/portal",
+        "@shadniwind/positioning",
+        "@shadniwind/focus",
+        "@shadniwind/overlay",
+        "@shadniwind/roving-focus",
+        "@shadniwind/press"
       ]
     },
     {
@@ -200,7 +200,7 @@
       "title": "Data Table",
       "description": "Tabular data display with sorting and basic row interactions.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -209,8 +209,8 @@
       "title": "Date Picker",
       "description": "Input-style trigger with a calendar popover for selecting dates.",
       "registryDependencies": [
-        "calendar",
-        "popover"
+        "@shadniwind/calendar",
+        "@shadniwind/popover"
       ]
     },
     {
@@ -219,12 +219,12 @@
       "title": "Dialog",
       "description": "A modal dialog that traps focus on web and locks scroll while open.",
       "registryDependencies": [
-        "tokens",
-        "portal",
-        "overlay",
-        "focus",
-        "scroll-lock",
-        "press"
+        "@shadniwind/tokens",
+        "@shadniwind/portal",
+        "@shadniwind/overlay",
+        "@shadniwind/focus",
+        "@shadniwind/scroll-lock",
+        "@shadniwind/press"
       ]
     },
     {
@@ -233,12 +233,12 @@
       "title": "Drawer",
       "description": "A modal drawer that slides in from the edge of the screen.",
       "registryDependencies": [
-        "tokens",
-        "portal",
-        "overlay",
-        "focus",
-        "scroll-lock",
-        "press"
+        "@shadniwind/tokens",
+        "@shadniwind/portal",
+        "@shadniwind/overlay",
+        "@shadniwind/focus",
+        "@shadniwind/scroll-lock",
+        "@shadniwind/press"
       ]
     },
     {
@@ -247,13 +247,13 @@
       "title": "Dropdown Menu",
       "description": "Displays a list of actions or options in a menu.",
       "registryDependencies": [
-        "tokens",
-        "portal",
-        "positioning",
-        "focus",
-        "overlay",
-        "roving-focus",
-        "press"
+        "@shadniwind/tokens",
+        "@shadniwind/portal",
+        "@shadniwind/positioning",
+        "@shadniwind/focus",
+        "@shadniwind/overlay",
+        "@shadniwind/roving-focus",
+        "@shadniwind/press"
       ]
     },
     {
@@ -262,7 +262,7 @@
       "title": "Empty",
       "description": "Empty state component with icon, title, description, and action slots for displaying placeholder content in lists and views.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -271,7 +271,7 @@
       "title": "Field",
       "description": "High-level presentational field wrapper combining label, control, description, and error messages. Built on Form Core components.",
       "registryDependencies": [
-        "form-core"
+        "@shadniwind/form-core"
       ]
     },
     {
@@ -286,7 +286,7 @@
       "title": "Form Core",
       "description": "Presentational form components for consistent layout, labels, descriptions, and error display. No form state management. Use with form libraries.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -298,7 +298,7 @@
         "react-hook-form"
       ],
       "registryDependencies": [
-        "field"
+        "@shadniwind/field"
       ]
     },
     {
@@ -310,7 +310,7 @@
         "@tanstack/react-form"
       ],
       "registryDependencies": [
-        "field"
+        "@shadniwind/field"
       ]
     },
     {
@@ -319,10 +319,10 @@
       "title": "Hover Card",
       "description": "Displays rich content when a trigger is hovered or focused.",
       "registryDependencies": [
-        "tokens",
-        "portal",
-        "overlay",
-        "positioning"
+        "@shadniwind/tokens",
+        "@shadniwind/portal",
+        "@shadniwind/overlay",
+        "@shadniwind/positioning"
       ]
     },
     {
@@ -332,7 +332,7 @@
         "react-native-unistyles"
       ],
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -341,7 +341,7 @@
       "title": "Input Group",
       "description": "Composable input group with text addons, icons, and button attachments. Layout wrapper for enhancing inputs.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -353,8 +353,8 @@
         "react-native-unistyles"
       ],
       "registryDependencies": [
-        "tokens",
-        "roving-focus"
+        "@shadniwind/tokens",
+        "@shadniwind/roving-focus"
       ]
     },
     {
@@ -363,7 +363,7 @@
       "title": "Item",
       "description": "Generic item container with spacing variants. FormItem-like wrapper for vertically stacked items in forms or lists.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -372,7 +372,7 @@
       "title": "Kbd",
       "description": "Keyboard shortcut display component with monospace styling. Supports modifier key symbols and multiple sizes.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -381,7 +381,7 @@
       "title": "Label",
       "description": "Form label component with disabled state styling. Note: React Native does not support htmlFor or click-to-focus behavior.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -390,12 +390,12 @@
       "title": "Menubar",
       "description": "Horizontal menu bar with keyboard navigation and dropdown menus.",
       "registryDependencies": [
-        "tokens",
-        "portal",
-        "positioning",
-        "overlay",
-        "roving-focus",
-        "press"
+        "@shadniwind/tokens",
+        "@shadniwind/portal",
+        "@shadniwind/positioning",
+        "@shadniwind/overlay",
+        "@shadniwind/roving-focus",
+        "@shadniwind/press"
       ]
     },
     {
@@ -407,7 +407,7 @@
         "@react-native-picker/picker"
       ],
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -416,12 +416,12 @@
       "title": "Navigation Menu",
       "description": "Web-first navigation menu with trigger/content panels and keyboard support.",
       "registryDependencies": [
-        "tokens",
-        "portal",
-        "positioning",
-        "overlay",
-        "roving-focus",
-        "press"
+        "@shadniwind/tokens",
+        "@shadniwind/portal",
+        "@shadniwind/positioning",
+        "@shadniwind/overlay",
+        "@shadniwind/roving-focus",
+        "@shadniwind/press"
       ]
     },
     {
@@ -436,7 +436,7 @@
       "title": "Pagination",
       "description": "Pagination component for navigating through pages of data. Presentational component that requires consumer to wire to data source/router.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -445,11 +445,11 @@
       "title": "Popover",
       "description": "Displays rich content in a portal, triggered by a button.",
       "registryDependencies": [
-        "tokens",
-        "portal",
-        "positioning",
-        "focus",
-        "overlay"
+        "@shadniwind/tokens",
+        "@shadniwind/portal",
+        "@shadniwind/positioning",
+        "@shadniwind/focus",
+        "@shadniwind/overlay"
       ]
     },
     {
@@ -476,7 +476,7 @@
       "title": "Progress",
       "description": "Progress bar with determinate and indeterminate modes.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -488,8 +488,8 @@
         "lucide-react-native"
       ],
       "registryDependencies": [
-        "tokens",
-        "roving-focus"
+        "@shadniwind/tokens",
+        "@shadniwind/roving-focus"
       ]
     },
     {
@@ -498,8 +498,8 @@
       "title": "Resizable",
       "description": "Resizable panel group with draggable handles and web keyboard support.",
       "registryDependencies": [
-        "tokens",
-        "press"
+        "@shadniwind/tokens",
+        "@shadniwind/press"
       ]
     },
     {
@@ -514,7 +514,7 @@
       "title": "Scroll Area",
       "description": "A styled ScrollView wrapper. On web, scrollbars can be styled with CSS. On native, uses platform defaults.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -529,13 +529,13 @@
       "title": "Select",
       "description": "Displays a list of options for a single selection.",
       "registryDependencies": [
-        "tokens",
-        "portal",
-        "positioning",
-        "focus",
-        "overlay",
-        "roving-focus",
-        "press"
+        "@shadniwind/tokens",
+        "@shadniwind/portal",
+        "@shadniwind/positioning",
+        "@shadniwind/focus",
+        "@shadniwind/overlay",
+        "@shadniwind/roving-focus",
+        "@shadniwind/press"
       ]
     },
     {
@@ -544,7 +544,7 @@
       "title": "Separator",
       "description": "Horizontal or vertical separator line.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -553,12 +553,12 @@
       "title": "Sheet",
       "description": "A dialog variant that slides in from the edge of the screen.",
       "registryDependencies": [
-        "tokens",
-        "portal",
-        "overlay",
-        "focus",
-        "scroll-lock",
-        "press"
+        "@shadniwind/tokens",
+        "@shadniwind/portal",
+        "@shadniwind/overlay",
+        "@shadniwind/focus",
+        "@shadniwind/scroll-lock",
+        "@shadniwind/press"
       ]
     },
     {
@@ -567,8 +567,8 @@
       "title": "Sidebar",
       "description": "Composable sidebar layout with responsive collapse and menu building blocks.",
       "registryDependencies": [
-        "tokens",
-        "press"
+        "@shadniwind/tokens",
+        "@shadniwind/press"
       ]
     },
     {
@@ -577,7 +577,7 @@
       "title": "Skeleton",
       "description": "Loading skeleton with optional shimmer animation.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -586,8 +586,8 @@
       "title": "Slider",
       "description": "A slider component for selecting values from a range with single/multi-thumb support, step values, full keyboard navigation on web, and theme-based styling.",
       "registryDependencies": [
-        "tokens",
-        "roving-focus"
+        "@shadniwind/tokens",
+        "@shadniwind/roving-focus"
       ]
     },
     {
@@ -600,8 +600,8 @@
         "react-native-unistyles"
       ],
       "registryDependencies": [
-        "tokens",
-        "portal"
+        "@shadniwind/tokens",
+        "@shadniwind/portal"
       ]
     },
     {
@@ -610,7 +610,7 @@
       "title": "Spinner",
       "description": "Activity indicator wrapper.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -619,7 +619,7 @@
       "title": "Switch",
       "description": "A toggle switch with animated knob transition, controlled/uncontrolled state support, and web accessibility.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -628,7 +628,7 @@
       "title": "Table",
       "description": "Table component with subcomponents. Web: semantic HTML tables. Native: View-based approximation with limitations.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -637,8 +637,8 @@
       "title": "Tabs",
       "description": "A set of sections of content—known as tab panels—that are displayed one at a time.",
       "registryDependencies": [
-        "tokens",
-        "roving-focus"
+        "@shadniwind/tokens",
+        "@shadniwind/roving-focus"
       ]
     },
     {
@@ -647,7 +647,7 @@
       "title": "Textarea",
       "description": "Multiline text input with Unistyles variants.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -659,8 +659,8 @@
         "lucide-react-native"
       ],
       "registryDependencies": [
-        "tokens",
-        "portal"
+        "@shadniwind/tokens",
+        "@shadniwind/portal"
       ]
     },
     {
@@ -669,7 +669,7 @@
       "title": "Toggle",
       "description": "A two-state button that can be toggled on or off with support for controlled/uncontrolled state and aria-pressed on web.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     },
     {
@@ -678,9 +678,9 @@
       "title": "Toggle Group",
       "description": "A set of two-state buttons that can be toggled on or off.",
       "registryDependencies": [
-        "tokens",
-        "roving-focus",
-        "toggle"
+        "@shadniwind/tokens",
+        "@shadniwind/roving-focus",
+        "@shadniwind/toggle"
       ]
     },
     {
@@ -698,9 +698,9 @@
       "title": "Tooltip",
       "description": "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
       "registryDependencies": [
-        "tokens",
-        "portal",
-        "positioning"
+        "@shadniwind/tokens",
+        "@shadniwind/portal",
+        "@shadniwind/positioning"
       ]
     },
     {
@@ -709,7 +709,7 @@
       "title": "Typography",
       "description": "Typography presets with Unistyles variants.",
       "registryDependencies": [
-        "tokens"
+        "@shadniwind/tokens"
       ]
     }
   ]

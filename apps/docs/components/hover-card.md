@@ -5,7 +5,7 @@ For sighted users to preview content available behind a link.
 ## Installation
 
 ```bash
-npx shadniwind@latest add hover-card
+npx shadcn@latest add @shadniwind/hover-card
 ```
 
 ## Usage

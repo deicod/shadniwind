@@ -5,7 +5,7 @@ A window overlaid on either the primary window or another dialog window, renderi
 ## Installation
 
 ```bash
-npx shadniwind@latest add dialog
+npx shadcn@latest add @shadniwind/dialog
 ```
 
 ## Usage

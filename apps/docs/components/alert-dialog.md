@@ -5,7 +5,7 @@ A modal dialog that interrupts the user with important content and expects a res
 ## Installation
 
 ```bash
-npx shadniwind@latest add alert-dialog
+npx shadcn@latest add @shadniwind/alert-dialog
 ```
 
 ## Usage

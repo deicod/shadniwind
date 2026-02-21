@@ -5,7 +5,7 @@ Renders an accessible label for an element.
 ## Installation
 
 ```bash
-npx shadniwind@latest add label
+npx shadcn@latest add @shadniwind/label
 ```
 
 ## Usage

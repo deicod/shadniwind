@@ -5,7 +5,7 @@ An interactive component which expands/collapses a panel.
 ## Installation
 
 ```bash
-npx shadniwind@latest add collapsible
+npx shadcn@latest add @shadniwind/collapsible
 ```
 
 ## Usage

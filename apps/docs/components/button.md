@@ -5,7 +5,7 @@ Displays a button or a component that looks like a button.
 ## Installation
 
 ```bash
-npx shadniwind@latest add button
+npx shadcn@latest add @shadniwind/button
 ```
 
 ## Usage

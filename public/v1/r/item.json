@@ -4,7 +4,7 @@
   "title": "Item",
   "description": "Generic item container with spacing variants. FormItem-like wrapper for vertically stacked items in forms or lists.",
   "registryDependencies": [
-    "tokens"
+    "@shadniwind/tokens"
   ],
   "files": [
     {

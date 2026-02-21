@@ -9,3 +9,4 @@ dist/
 build/
 .cache/
 .turbo/
+*.tsbuildinfo

@@ -5,7 +5,7 @@ Wrapper around the native picker component.
 ## Installation
 
 ```bash
-npx shadniwind@latest add native-select
+npx shadcn@latest add @shadniwind/native-select
 ```
 
 ## Usage

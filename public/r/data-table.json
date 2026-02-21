@@ -4,7 +4,7 @@
   "title": "Data Table",
   "description": "Tabular data display with sorting and basic row interactions.",
   "registryDependencies": [
-    "tokens"
+    "@shadniwind/tokens"
   ],
   "files": [
     {

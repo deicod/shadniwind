@@ -5,7 +5,7 @@ A vertically stacked set of interactive headings that each reveal a section of c
 ## Installation
 
 ```bash
-npx shadniwind@latest add accordion
+npx shadcn@latest add @shadniwind/accordion
 ```
 
 ## Usage

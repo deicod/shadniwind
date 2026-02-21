@@ -4,7 +4,7 @@
   "title": "Kbd",
   "description": "Keyboard shortcut display component with monospace styling. Supports modifier key symbols and multiple sizes.",
   "registryDependencies": [
-    "tokens"
+    "@shadniwind/tokens"
   ],
   "files": [
     {

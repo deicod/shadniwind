@@ -5,7 +5,7 @@ A carousel with motion and swipe built using React Native ScrollView.
 ## Installation
 
 ```bash
-npx shadniwind@latest add carousel
+npx shadcn@latest add @shadniwind/carousel
 ```
 
 ## Usage

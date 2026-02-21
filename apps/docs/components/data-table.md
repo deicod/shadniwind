@@ -5,7 +5,7 @@ Powerful table and data grids built for React Native.
 ## Installation
 
 ```bash
-npx shadniwind@latest add data-table
+npx shadcn@latest add @shadniwind/data-table
 ```
 
 ## Usage

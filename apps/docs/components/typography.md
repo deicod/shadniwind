@@ -5,7 +5,7 @@ A set of text primitives for consistent typography.
 ## Installation
 
 ```bash
-npx shadniwind@latest add typography
+npx shadcn@latest add @shadniwind/typography
 ```
 
 ## Usage

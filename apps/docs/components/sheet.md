@@ -5,7 +5,7 @@ Extends the Dialog component to display content that complements the main screen
 ## Installation
 
 ```bash
-npx shadniwind@latest add sheet
+npx shadcn@latest add @shadniwind/sheet
 ```
 
 ## Usage

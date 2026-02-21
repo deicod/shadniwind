@@ -5,7 +5,7 @@ Visually or semantically separates content.
 ## Installation
 
 ```bash
-npx shadniwind@latest add separator
+npx shadcn@latest add @shadniwind/separator
 ```
 
 ## Usage

@@ -4,7 +4,7 @@
   "title": "Separator",
   "description": "Horizontal or vertical separator line.",
   "registryDependencies": [
-    "tokens"
+    "@shadniwind/tokens"
   ],
   "files": [
     {

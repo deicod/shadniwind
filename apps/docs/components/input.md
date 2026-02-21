@@ -5,7 +5,7 @@ Displays a form input field or a component that looks like an input field.
 ## Installation
 
 ```bash
-npx shadniwind@latest add input
+npx shadcn@latest add @shadniwind/input
 ```
 
 ## Usage

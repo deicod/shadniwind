@@ -5,7 +5,7 @@ The Positioning primitive handles the logic for placing floating content (like p
 ## Installation
 
 ```bash
-npx shadniwind@latest add positioning
+npx shadcn@latest add @shadniwind/positioning
 ```
 
 ## Usage

@@ -5,7 +5,7 @@ Allows users to combine inputs with buttons, icons, or text.
 ## Installation
 
 ```bash
-npx shadniwind@latest add input-group
+npx shadcn@latest add @shadniwind/input-group
 ```
 
 ## Usage

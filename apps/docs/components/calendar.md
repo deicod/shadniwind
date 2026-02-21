@@ -5,7 +5,7 @@ A date field component that allows users to enter and edit date.
 ## Installation
 
 ```bash
-npx shadniwind@latest add calendar
+npx shadcn@latest add @shadniwind/calendar
 ```
 
 ## Usage

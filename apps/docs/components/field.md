@@ -5,7 +5,7 @@ A high-level wrapper combining label, control, description, and error messages.
 ## Installation
 
 ```bash
-npx shadniwind@latest add field
+npx shadcn@latest add @shadniwind/field
 ```
 
 ## Usage

@@ -5,7 +5,7 @@ Displays an empty state with an icon, title, description, and action.
 ## Installation
 
 ```bash
-npx shadniwind@latest add empty
+npx shadcn@latest add @shadniwind/empty
 ```
 
 ## Usage

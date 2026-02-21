@@ -5,7 +5,7 @@ Displays a keyboard key or shortcut.
 ## Installation
 
 ```bash
-npx shadniwind@latest add kbd
+npx shadcn@latest add @shadniwind/kbd
 ```
 
 ## Usage

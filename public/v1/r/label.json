@@ -4,7 +4,7 @@
   "title": "Label",
   "description": "Form label component with disabled state styling. Note: React Native does not support htmlFor or click-to-focus behavior.",
   "registryDependencies": [
-    "tokens"
+    "@shadniwind/tokens"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@ An opinionated toast component for React Native.
 ## Installation
 
 ```bash
-npx shadniwind@latest add sonner
+npx shadcn@latest add @shadniwind/sonner
 ```
 
 ## Usage

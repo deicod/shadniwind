@@ -4,7 +4,7 @@
   "title": "Scroll Area",
   "description": "A styled ScrollView wrapper. On web, scrollbars can be styled with CSS. On native, uses platform defaults.",
   "registryDependencies": [
-    "tokens"
+    "@shadniwind/tokens"
   ],
   "files": [
     {

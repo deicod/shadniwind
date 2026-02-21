@@ -5,7 +5,7 @@ Displays a menu to the user — such as a set of actions or functions — trigge
 ## Installation
 
 ```bash
-npx shadniwind@latest add context-menu
+npx shadcn@latest add @shadniwind/context-menu
 ```
 
 ## Usage

@@ -5,7 +5,7 @@ Groups related buttons together.
 ## Installation
 
 ```bash
-npx shadniwind@latest add button-group
+npx shadcn@latest add @shadniwind/button-group
 ```
 
 ## Usage

@@ -4,7 +4,7 @@
   "title": "Breadcrumb",
   "description": "Presentational breadcrumb navigation component. Uses Pressable with role=link and aria-current. Consumer must handle navigation via onItemPress.",
   "registryDependencies": [
-    "tokens"
+    "@shadniwind/tokens"
   ],
   "files": [
     {

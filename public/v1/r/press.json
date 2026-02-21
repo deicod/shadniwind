@@ -16,7 +16,7 @@
     },
     {
       "path": "lib/press/index.ts",
-      "content": "export * from \"./types.js\"\nexport * from \"./utils.js\"\n",
+      "content": "export * from \"./types\"\nexport * from \"./utils\"\n",
       "type": "registry:lib"
     }
   ]

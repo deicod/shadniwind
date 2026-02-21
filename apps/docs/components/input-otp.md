@@ -5,7 +5,7 @@ Accessible one-time password component with copy paste support.
 ## Installation
 
 ```bash
-npx shadniwind@latest add input-otp
+npx shadcn@latest add @shadniwind/input-otp
 ```
 
 ## Usage

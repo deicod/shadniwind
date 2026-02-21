@@ -5,7 +5,7 @@ The Press primitive provides utilities for handling press interactions, specific
 ## Installation
 
 ```bash
-npx shadniwind@latest add press
+npx shadcn@latest add @shadniwind/press
 ```
 
 ## Usage

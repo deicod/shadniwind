@@ -8,7 +8,9 @@
     "lint": "biome lint .",
     "format": "biome format .",
     "check": "biome check .",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "npm run typecheck:node && npm run typecheck:registry",
+    "typecheck:node": "tsc -p tsconfig.node.json --noEmit",
+    "typecheck:registry": "tsc -p tsconfig.registry.json --noEmit",
     "build:registry": "tsx scripts/build-registry.ts",
     "test": "node --test --import tsx tests/**/*.test.ts"
   },

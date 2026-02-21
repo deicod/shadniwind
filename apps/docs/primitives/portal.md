@@ -5,7 +5,7 @@ The Portal primitive allows you to render content outside of the current compone
 ## Installation
 
 ```bash
-npx shadniwind@latest add portal
+npx shadcn@latest add @shadniwind/portal
 ```
 
 ## Usage

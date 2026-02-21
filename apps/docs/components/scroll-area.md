@@ -5,7 +5,7 @@ Augments native scroll functionality for custom, cross-browser styling.
 ## Installation
 
 ```bash
-npx shadniwind@latest add scroll-area
+npx shadcn@latest add @shadniwind/scroll-area
 ```
 
 ## Usage

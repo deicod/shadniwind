@@ -5,7 +5,7 @@ An image element with a fallback for representing the user.
 ## Installation
 
 ```bash
-npx shadniwind@latest add avatar
+npx shadcn@latest add @shadniwind/avatar
 ```
 
 ## Usage

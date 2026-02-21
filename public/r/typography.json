@@ -4,7 +4,7 @@
   "title": "Typography",
   "description": "Typography presets with Unistyles variants.",
   "registryDependencies": [
-    "tokens"
+    "@shadniwind/tokens"
   ],
   "files": [
     {

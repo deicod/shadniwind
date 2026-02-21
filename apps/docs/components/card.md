@@ -5,7 +5,7 @@ Displays a card with header, content, and footer.
 ## Installation
 
 ```bash
-npx shadniwind@latest add card
+npx shadcn@latest add @shadniwind/card
 ```
 
 ## Usage

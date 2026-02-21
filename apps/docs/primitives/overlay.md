@@ -5,7 +5,7 @@ The Overlay primitive provides a layer that sits on top of other content. It han
 ## Installation
 
 ```bash
-npx shadniwind@latest add overlay
+npx shadcn@latest add @shadniwind/overlay
 ```
 
 ## Usage

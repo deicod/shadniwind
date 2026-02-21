@@ -5,7 +5,7 @@ Displays rich content in a portal, triggered by a button.
 ## Installation
 
 ```bash
-npx shadniwind@latest add popover
+npx shadcn@latest add @shadniwind/popover
 ```
 
 ## Usage

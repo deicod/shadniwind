@@ -74,18 +74,23 @@ The `components.json` file tells the shadcn CLI how to install components. Creat
     "hooks": "@/hooks"
   },
   "registries": {
-    "shadniwind": "https://deicod.github.io/shadniwind/v1/registry.json"
+    "@shadniwind": "https://deicod.github.io/shadniwind/v1/r/{name}.json"
   }
 }
 ```
 
-**Key setting:** The `registries` field points to the shadniwind registry.
+**Key settings:** Registry names must be prefixed with `@`, and custom registry URLs must include `{name}`.
+
+You can also add the registry via CLI:
+```bash
+npx shadcn@latest registry add "@shadniwind=https://deicod.github.io/shadniwind/v1/r/{name}.json"
+```
 
 ### 3. Install Core Dependencies (Tokens)
 Install the `tokens` package. This sets up the base theme (colors, spacing, typography) and the styling engine configuration.
 
 ```bash
-npx shadcn@latest add tokens
+npx shadcn@latest add @shadniwind/tokens
 ```
 *Note: This will install `react-native-unistyles` and create `lib/tokens.ts` and `lib/unistyles.ts`.*
 
@@ -113,7 +118,7 @@ import React from 'react';
 Install the `portal` primitive. This is required for components that float above your content, like Dialogs, Popovers, and Tooltips.
 
 ```bash
-npx shadcn@latest add portal
+npx shadcn@latest add @shadniwind/portal
 ```
 
 ### 6. Wrap Your App
@@ -139,17 +144,17 @@ export default function RootLayout() {
 You can now start adding components:
 
 ```bash
-npx shadcn@latest add button
+npx shadcn@latest add @shadniwind/button
 ```
 
 Then use it in your code:
 ```tsx
-import { Button, ButtonText } from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
 
 export function HomeScreen() {
   return (
     <Button onPress={() => console.log('Pressed!')}>
-      <ButtonText>Hello World</ButtonText>
+      Hello World
     </Button>
   );
 }

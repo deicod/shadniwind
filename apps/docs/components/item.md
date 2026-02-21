@@ -5,7 +5,7 @@ A layout primitive for consistent spacing between items.
 ## Installation
 
 ```bash
-npx shadniwind@latest add item
+npx shadcn@latest add @shadniwind/item
 ```
 
 ## Usage

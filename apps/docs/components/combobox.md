@@ -5,7 +5,7 @@ Autocomplete input and command palette with a list of suggestions.
 ## Installation
 
 ```bash
-npx shadniwind@latest add combobox
+npx shadcn@latest add @shadniwind/combobox
 ```
 
 ## Usage

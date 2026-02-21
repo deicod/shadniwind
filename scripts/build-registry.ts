@@ -301,7 +301,15 @@ function buildItemBase(manifest: Manifest): Omit<RegistryItem, "files"> {
     item.devDependencies = manifest.devDependencies
   }
   if (manifest.registryDependencies?.length) {
-    item.registryDependencies = manifest.registryDependencies
+    item.registryDependencies = manifest.registryDependencies.map(
+      (dependency) => {
+        if (dependency.startsWith("@")) {
+          return dependency
+        }
+
+        return `@${REGISTRY_NAME}/${dependency}`
+      },
+    )
   }
   if (manifest.docs) {
     item.docs = manifest.docs
@@ -334,6 +342,56 @@ function buildItemBase(manifest: Manifest): Omit<RegistryItem, "files"> {
   return item
 }
 
+function isSelfPlatformWrapperImport(
+  sourcePath: string,
+  relativeSpecifier: string,
+): boolean {
+  const sourcePathPosix = toPosixPath(sourcePath)
+  const sourceDir = path.posix.dirname(sourcePathPosix)
+  const sourceBaseName = path.posix.basename(sourcePathPosix)
+
+  const wrapperMatch = sourceBaseName.match(
+    /^(?<base>.+)\.(web|native|ios|android)\.(tsx|ts|jsx|js)$/,
+  )
+  if (!wrapperMatch?.groups?.base) {
+    return false
+  }
+
+  const wrapperBasePath = path.posix.normalize(
+    path.posix.join(sourceDir, wrapperMatch.groups.base),
+  )
+  const resolvedImportPath = path.posix.normalize(
+    path.posix.join(sourceDir, relativeSpecifier),
+  )
+
+  return resolvedImportPath === wrapperBasePath
+}
+
+function rewriteRelativeJsSpecifiersForRegistry(
+  content: string,
+  sourcePath: string,
+): string {
+  const rewrite = (
+    full: string,
+    prefix: string,
+    specifier: string,
+    suffix: string,
+  ): string => {
+    if (isSelfPlatformWrapperImport(sourcePath, specifier)) {
+      return full
+    }
+
+    return `${prefix}${specifier}${suffix}`
+  }
+
+  return content
+    .replace(/(\bfrom\s+["'])(\.{1,2}\/[^"']+)\.js(["'])/g, rewrite)
+    .replace(
+      /(\bexport\s+[^\n;]*\s+from\s+["'])(\.{1,2}\/[^"']+)\.js(["'])/g,
+      rewrite,
+    )
+}
+
 async function buildRegistryItem(manifest: Manifest): Promise<RegistryItem> {
   const files = await Promise.all(
     manifest.files.map(async (file) => {
@@ -344,7 +402,11 @@ async function buildRegistryItem(manifest: Manifest): Promise<RegistryItem> {
         )
       }
 
-      const content = await readFile(sourcePath, "utf8")
+      const sourceContent = await readFile(sourcePath, "utf8")
+      const content = rewriteRelativeJsSpecifiersForRegistry(
+        sourceContent,
+        sourcePath,
+      )
 
       return {
         path: file.path,

@@ -5,7 +5,7 @@ Displays an animated loading indicator.
 ## Installation
 
 ```bash
-npx shadniwind@latest add spinner
+npx shadcn@latest add @shadniwind/spinner
 ```
 
 ## Usage

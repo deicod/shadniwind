@@ -5,7 +5,7 @@ Displays a badge or a component that looks like a badge.
 ## Installation
 
 ```bash
-npx shadniwind@latest add badge
+npx shadcn@latest add @shadniwind/badge
 ```
 
 ## Usage

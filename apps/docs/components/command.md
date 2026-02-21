@@ -5,7 +5,7 @@ Fast, composable, unstyled command menu for React Native.
 ## Installation
 
 ```bash
-npx shadniwind@latest add command
+npx shadcn@latest add @shadniwind/command
 ```
 
 ## Usage

@@ -5,7 +5,7 @@ Beautiful charts. Built using `react-native-svg`.
 ## Installation
 
 ```bash
-npx shadniwind@latest add chart
+npx shadcn@latest add @shadniwind/chart
 ```
 
 ## Usage

@@ -5,7 +5,7 @@ Pagination with page navigation, next and previous links.
 ## Installation
 
 ```bash
-npx shadniwind@latest add pagination
+npx shadcn@latest add @shadniwind/pagination
 ```
 
 ## Usage

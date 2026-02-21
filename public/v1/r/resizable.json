@@ -4,8 +4,8 @@
   "title": "Resizable",
   "description": "Resizable panel group with draggable handles and web keyboard support.",
   "registryDependencies": [
-    "tokens",
-    "press"
+    "@shadniwind/tokens",
+    "@shadniwind/press"
   ],
   "files": [
     {

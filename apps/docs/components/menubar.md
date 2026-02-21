@@ -5,7 +5,7 @@ A visually persistent menu common in desktop applications that provides quick ac
 ## Installation
 
 ```bash
-npx shadniwind@latest add menubar
+npx shadcn@latest add @shadniwind/menubar
 ```
 
 ## Usage

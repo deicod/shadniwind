@@ -5,7 +5,7 @@ A set of checkable buttons—known as radio buttons—where no more than one of 
 ## Installation
 
 ```bash
-npx shadniwind@latest add radio-group
+npx shadcn@latest add @shadniwind/radio-group
 ```
 
 ## Usage

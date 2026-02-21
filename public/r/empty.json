@@ -4,7 +4,7 @@
   "title": "Empty",
   "description": "Empty state component with icon, title, description, and action slots for displaying placeholder content in lists and views.",
   "registryDependencies": [
-    "tokens"
+    "@shadniwind/tokens"
   ],
   "files": [
     {

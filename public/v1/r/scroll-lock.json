@@ -11,7 +11,7 @@
     },
     {
       "path": "lib/scroll-lock/use-scroll-lock.ts",
-      "content": "import { Platform } from \"react-native\"\nimport { useScrollLock as useScrollLockNative } from \"./use-scroll-lock.native.js\"\nimport { useScrollLock as useScrollLockWeb } from \"./use-scroll-lock.web.js\"\n\nexport const useScrollLock =\n  Platform.OS === \"web\" ? useScrollLockWeb : useScrollLockNative\n",
+      "content": "import { Platform } from \"react-native\"\nimport { useScrollLock as useScrollLockNative } from \"./use-scroll-lock.native\"\nimport { useScrollLock as useScrollLockWeb } from \"./use-scroll-lock.web\"\n\nexport const useScrollLock =\n  Platform.OS === \"web\" ? useScrollLockWeb : useScrollLockNative\n",
       "type": "registry:lib"
     },
     {
@@ -26,7 +26,7 @@
     },
     {
       "path": "lib/scroll-lock/index.ts",
-      "content": "export * from \"./types.js\"\nexport * from \"./use-scroll-lock.js\"\n",
+      "content": "export * from \"./types\"\nexport * from \"./use-scroll-lock\"\n",
       "type": "registry:lib"
     }
   ]

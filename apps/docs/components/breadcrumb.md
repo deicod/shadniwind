@@ -5,7 +5,7 @@ Displays the path to the current resource using a hierarchy of links.
 ## Installation
 
 ```bash
-npx shadniwind@latest add breadcrumb
+npx shadcn@latest add @shadniwind/breadcrumb
 ```
 
 ## Usage

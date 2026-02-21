@@ -5,7 +5,7 @@ Displays a callout for user attention.
 ## Installation
 
 ```bash
-npx shadniwind@latest add alert
+npx shadcn@latest add @shadniwind/alert
 ```
 
 ## Usage

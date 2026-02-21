@@ -5,7 +5,7 @@ The Roving Focus primitive manages focus within a group of items using arrow key
 ## Installation
 
 ```bash
-npx shadniwind@latest add roving-focus
+npx shadcn@latest add @shadniwind/roving-focus
 ```
 
 ## Usage

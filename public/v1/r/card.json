@@ -4,7 +4,7 @@
   "title": "Card",
   "description": "Card container and subcomponents.",
   "registryDependencies": [
-    "tokens"
+    "@shadniwind/tokens"
   ],
   "files": [
     {

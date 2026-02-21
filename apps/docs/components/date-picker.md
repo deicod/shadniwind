@@ -5,7 +5,7 @@ A date field component that allows users to enter and edit date.
 ## Installation
 
 ```bash
-npx shadniwind@latest add date-picker
+npx shadcn@latest add @shadniwind/date-picker
 ```
 
 ## Usage

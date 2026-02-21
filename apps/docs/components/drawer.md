@@ -5,7 +5,7 @@ A drawer component for React Native.
 ## Installation
 
 ```bash
-npx shadniwind@latest add drawer
+npx shadcn@latest add @shadniwind/drawer
 ```
 
 ## Usage

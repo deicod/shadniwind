@@ -5,7 +5,7 @@ Used to show a specific amount of content that is loading.
 ## Installation
 
 ```bash
-npx shadniwind@latest add skeleton
+npx shadcn@latest add @shadniwind/skeleton
 ```
 
 ## Usage

@@ -5,7 +5,7 @@ Displays a form textarea or a component that looks like a textarea.
 ## Installation
 
 ```bash
-npx shadniwind@latest add textarea
+npx shadcn@latest add @shadniwind/textarea
 ```
 
 ## Usage

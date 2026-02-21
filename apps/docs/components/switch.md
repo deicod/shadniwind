@@ -5,7 +5,7 @@ A control that allows the user to toggle between checked and not checked.
 ## Installation
 
 ```bash
-npx shadniwind@latest add switch
+npx shadcn@latest add @shadniwind/switch
 ```
 
 ## Usage

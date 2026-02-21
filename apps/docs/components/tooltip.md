@@ -5,7 +5,7 @@ A popup that displays information related to an element when the element receive
 ## Installation
 
 ```bash
-npx shadniwind@latest add tooltip
+npx shadcn@latest add @shadniwind/tooltip
 ```
 
 ## Usage

@@ -5,7 +5,7 @@ Displays content within a desired ratio.
 ## Installation
 
 ```bash
-npx shadniwind@latest add aspect-ratio
+npx shadcn@latest add @shadniwind/aspect-ratio
 ```
 
 ## Usage

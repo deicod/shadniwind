@@ -5,7 +5,7 @@ A composable, responsive sidebar component.
 ## Installation
 
 ```bash
-npx shadniwind@latest add sidebar
+npx shadcn@latest add @shadniwind/sidebar
 ```
 
 ## Usage

@@ -5,7 +5,7 @@ A set of layered sections of content—known as tab panels—that are displayed 
 ## Installation
 
 ```bash
-npx shadniwind@latest add tabs
+npx shadcn@latest add @shadniwind/tabs
 ```
 
 ## Usage
