@@ -1,16 +1,20 @@
 import type React from "react"
-import { forwardRef, useEffect, useMemo, useState } from "react"
+import { forwardRef, useEffect, useMemo, useRef, useState } from "react"
 import {
   ActivityIndicator,
+  Animated,
   Platform,
   Pressable,
   type PressableProps,
+  StyleSheet as RNStyleSheet,
   type StyleProp,
   Text,
   type TextStyle,
   type ViewStyle,
 } from "react-native"
 import { StyleSheet, useUnistyles } from "react-native-unistyles"
+
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
 
 /**
  * Visual variants for the Button component.
@@ -263,6 +267,7 @@ export const Button = forwardRef<ButtonRef, ButtonProps>(
     const { theme } = useUnistyles()
     const [focusVisible, setFocusVisible] = useState(false)
     const [pressed, setPressed] = useState(false)
+    const scaleAnim = useRef(new Animated.Value(1)).current
     const isDisabled = disabled || loading
     const hasText = typeof children === "string" || typeof children === "number"
 
@@ -282,8 +287,13 @@ export const Button = forwardRef<ButtonRef, ButtonProps>(
     useEffect(() => {
       if (isDisabled) {
         setPressed(false)
+        Animated.spring(scaleAnim, {
+          toValue: 1,
+          useNativeDriver: true,
+          speed: 50,
+        }).start()
       }
-    }, [isDisabled])
+    }, [isDisabled, scaleAnim])
 
     const spinnerColor = useMemo(() => {
       switch (variant) {
@@ -318,17 +328,30 @@ export const Button = forwardRef<ButtonRef, ButtonProps>(
     const handlePressIn: PressableProps["onPressIn"] = (event) => {
       if (!isDisabled) {
         setPressed(true)
+        Animated.spring(scaleAnim, {
+          toValue: 0.98,
+          useNativeDriver: true,
+          speed: 50,
+        }).start()
       }
       onPressIn?.(event)
     }
 
     const handlePressOut: PressableProps["onPressOut"] = (event) => {
       setPressed(false)
+      Animated.spring(scaleAnim, {
+        toValue: 1,
+        useNativeDriver: true,
+        speed: 50,
+      }).start()
       onPressOut?.(event)
     }
 
+    const flatStyle = RNStyleSheet.flatten(style) || {}
+    const userTransform = flatStyle.transform || []
+
     return (
-      <Pressable
+      <AnimatedPressable
         ref={ref}
         accessibilityRole={accessibilityRole ?? "button"}
         accessibilityState={{ disabled: isDisabled, busy: loading }}
@@ -337,7 +360,23 @@ export const Button = forwardRef<ButtonRef, ButtonProps>(
         onBlur={handleBlur}
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
-        style={[styles.container as ViewStyle, style]}
+        {...({
+          passthroughAnimatedPropExplicitValues: {
+            style: {
+              transform: [...userTransform, { scale: pressed ? 0.98 : 1 }],
+            },
+          },
+        } as any)}
+        style={[
+          styles.container as ViewStyle,
+          style,
+          {
+            transform: [
+              ...userTransform,
+              { scale: scaleAnim as unknown as number },
+            ] as any,
+          },
+        ]}
         {...props}
       >
         {loading ? (
@@ -352,7 +391,7 @@ export const Button = forwardRef<ButtonRef, ButtonProps>(
         ) : (
           (children as React.ReactNode)
         )}
-      </Pressable>
+      </AnimatedPressable>
     )
   },
 )

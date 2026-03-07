@@ -3,13 +3,13 @@ import {
   type LayoutChangeEvent,
   type StyleProp,
   Text,
+  type TextStyle,
   View,
   type ViewProps,
   type ViewStyle,
-  type TextStyle,
 } from "react-native"
-import { StyleSheet, useUnistyles } from "react-native-unistyles"
 import { Circle, Line, Path, Rect, Svg } from "react-native-svg"
+import { StyleSheet, useUnistyles } from "react-native-unistyles"
 
 export type ChartType = "line" | "bar" | "area"
 
@@ -196,8 +196,7 @@ export const Chart = React.forwardRef<View, ChartProps>(
     const gridLines = React.useMemo(() => {
       if (!showGrid || gridLineCount <= 0) return []
       return Array.from({ length: gridLineCount + 1 }, (_, index) => {
-        const y =
-          resolvedPadding + (innerHeight / gridLineCount) * index
+        const y = resolvedPadding + (innerHeight / gridLineCount) * index
         return { key: `grid-${Math.round(y * 1000)}`, y }
       })
     }, [gridLineCount, innerHeight, resolvedPadding, showGrid])

@@ -33,7 +33,9 @@ const NavigationMenuContext = React.createContext<
 function useNavigationMenu() {
   const context = React.useContext(NavigationMenuContext)
   if (!context) {
-    throw new Error("NavigationMenu components must be used within NavigationMenu")
+    throw new Error(
+      "NavigationMenu components must be used within NavigationMenu",
+    )
   }
   return context
 }
@@ -83,9 +85,9 @@ export const NavigationMenu = React.forwardRef<View, NavigationMenuProps>(
     const [openValue, setOpenValueState] = React.useState<string | undefined>(
       defaultValue,
     )
-    const [activeValue, setActiveValueState] = React.useState<string | undefined>(
-      valueProp ?? defaultValue,
-    )
+    const [activeValue, setActiveValueState] = React.useState<
+      string | undefined
+    >(valueProp ?? defaultValue)
     const isControlled = valueProp !== undefined
     const currentOpenValue = isControlled ? valueProp : openValue
 
@@ -139,27 +141,28 @@ NavigationMenu.displayName = "NavigationMenu"
 
 export type NavigationMenuListProps = ViewProps
 
-export const NavigationMenuList = React.forwardRef<View, NavigationMenuListProps>(
-  ({ style, ...props }, ref) => {
-    const { activeValue, setActiveValue } = useNavigationMenu()
+export const NavigationMenuList = React.forwardRef<
+  View,
+  NavigationMenuListProps
+>(({ style, ...props }, ref) => {
+  const { activeValue, setActiveValue } = useNavigationMenu()
 
-    if (Platform.OS === "web") {
-      return (
-        <RovingFocusGroup.RovingFocusGroup
-          ref={ref}
-          orientation="horizontal"
-          value={activeValue}
-          onValueChange={setActiveValue}
-          loop
-          style={[styles.list, style]}
-          {...props}
-        />
-      )
-    }
+  if (Platform.OS === "web") {
+    return (
+      <RovingFocusGroup.RovingFocusGroup
+        ref={ref}
+        orientation="horizontal"
+        value={activeValue}
+        onValueChange={setActiveValue}
+        loop
+        style={[styles.list, style]}
+        {...props}
+      />
+    )
+  }
 
-    return <View ref={ref} style={[styles.list, style]} {...props} />
-  },
-)
+  return <View ref={ref} style={[styles.list, style]} {...props} />
+})
 
 NavigationMenuList.displayName = "NavigationMenuList"
 
@@ -380,7 +383,11 @@ export const NavigationMenuTrigger = React.forwardRef<
     }
 
     return (
-      <RovingFocusGroup.RovingFocusItem value={value} disabled={isDisabled} asChild>
+      <RovingFocusGroup.RovingFocusItem
+        value={value}
+        disabled={isDisabled}
+        asChild
+      >
         <Pressable
           ref={setTriggerRef}
           role={Platform.OS === "web" ? "button" : undefined}

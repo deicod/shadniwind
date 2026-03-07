@@ -1,6 +1,15 @@
 import * as React from "react"
-import { Platform, Pressable, type PressableProps, Text } from "react-native"
+import {
+  Animated,
+  Platform,
+  Pressable,
+  type PressableProps,
+  StyleSheet as RNStyleSheet,
+  Text,
+} from "react-native"
 import { StyleSheet } from "react-native-unistyles"
+
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
 
 export type ToggleProps = Omit<PressableProps, "onPress"> & {
   pressed?: boolean
@@ -22,6 +31,8 @@ export const Toggle = React.forwardRef<
       disabled = false,
       children,
       style,
+      onPressIn,
+      onPressOut,
       ...props
     },
     ref,
@@ -31,6 +42,19 @@ export const Toggle = React.forwardRef<
 
     const isControlled = pressedProp !== undefined
     const pressed = isControlled ? pressedProp : uncontrolledPressed
+    const scaleAnim = React.useRef(new Animated.Value(1)).current
+    const [isPressing, setIsPressing] = React.useState(false)
+
+    React.useEffect(() => {
+      if (disabled) {
+        setIsPressing(false)
+        Animated.spring(scaleAnim, {
+          toValue: 1,
+          useNativeDriver: true,
+          speed: 50,
+        }).start()
+      }
+    }, [disabled, scaleAnim])
 
     const handlePress = React.useCallback(() => {
       if (disabled) return
@@ -49,8 +73,35 @@ export const Toggle = React.forwardRef<
       disabled,
     })
 
+    const handlePressIn: PressableProps["onPressIn"] = (event) => {
+      if (!disabled) {
+        setIsPressing(true)
+        Animated.spring(scaleAnim, {
+          toValue: 0.96,
+          useNativeDriver: true,
+          speed: 50,
+        }).start()
+      }
+      onPressIn?.(event)
+    }
+
+    const handlePressOut: PressableProps["onPressOut"] = (event) => {
+      setIsPressing(false)
+      Animated.spring(scaleAnim, {
+        toValue: 1,
+        useNativeDriver: true,
+        speed: 50,
+      }).start()
+      onPressOut?.(event)
+    }
+
+    const userStyle =
+      typeof style === "function" ? style({ pressed: isPressing }) : style
+    const flatUserStyle = RNStyleSheet.flatten(userStyle) || {}
+    const userTransform = flatUserStyle.transform || []
+
     return (
-      <Pressable
+      <AnimatedPressable
         ref={ref}
         role={Platform.OS === "web" ? "button" : undefined}
         aria-pressed={Platform.OS === "web" ? pressed : undefined}
@@ -62,16 +113,28 @@ export const Toggle = React.forwardRef<
           disabled,
         }}
         onPress={handlePress}
+        onPressIn={handlePressIn}
+        onPressOut={handlePressOut}
         disabled={disabled}
-        style={({ pressed: isPressing }) =>
+        {...({
+          passthroughAnimatedPropExplicitValues: {
+            style: {
+              transform: [...userTransform, { scale: isPressing ? 0.96 : 1 }],
+            },
+          },
+        } as any)}
+        style={
           [
             styles.toggle,
             variantStyles,
             isPressing && !disabled && styles.togglePressing,
-            typeof style === "function"
-              ? style({ pressed: isPressing })
-              : style,
-            // biome-ignore lint/suspicious/noExplicitAny: Complex style array with variants requires type assertion
+            userStyle,
+            {
+              transform: [
+                ...userTransform,
+                { scale: scaleAnim as unknown as number },
+              ] as any,
+            },
           ] as any
         }
         {...props}
@@ -83,7 +146,7 @@ export const Toggle = React.forwardRef<
         ) : (
           children
         )}
-      </Pressable>
+      </AnimatedPressable>
     )
   },
 )

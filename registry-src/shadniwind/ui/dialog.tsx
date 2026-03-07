@@ -239,14 +239,8 @@ export const DialogContent = React.forwardRef<View, DialogContentProps>(
     },
     ref,
   ) => {
-    const {
-      open,
-      onOpenChange,
-      contentRef,
-      titleId,
-      descriptionId,
-      modal,
-    } = useDialog()
+    const { open, onOpenChange, contentRef, titleId, descriptionId, modal } =
+      useDialog()
 
     useScrollLock(open && modal)
     const variantStyles = styles.useVariants({
@@ -294,7 +288,9 @@ export const DialogContent = React.forwardRef<View, DialogContentProps>(
               role={Platform.OS === "web" ? "dialog" : undefined}
               aria-modal={Platform.OS === "web" ? modal : undefined}
               aria-labelledby={Platform.OS === "web" ? titleId : undefined}
-              aria-describedby={Platform.OS === "web" ? descriptionId : undefined}
+              aria-describedby={
+                Platform.OS === "web" ? descriptionId : undefined
+              }
               accessibilityViewIsModal={modal}
               style={
                 [
@@ -349,7 +345,12 @@ export const DialogTitle = React.forwardRef<Text, DialogTitleProps>(
   ({ style, ...props }, ref) => {
     const { titleId } = useDialog()
     return (
-      <Text ref={ref} nativeID={titleId} style={[styles.title, style]} {...props} />
+      <Text
+        ref={ref}
+        nativeID={titleId}
+        style={[styles.title, style]}
+        {...props}
+      />
     )
   },
 )

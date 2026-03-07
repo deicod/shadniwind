@@ -247,14 +247,8 @@ export const DrawerContent = React.forwardRef<View, DrawerContentProps>(
     },
     ref,
   ) => {
-    const {
-      open,
-      onOpenChange,
-      contentRef,
-      titleId,
-      descriptionId,
-      modal,
-    } = useDrawer()
+    const { open, onOpenChange, contentRef, titleId, descriptionId, modal } =
+      useDrawer()
     const { width, height } = useWindowDimensions()
     const translate = React.useRef(new Animated.Value(open ? 0 : 1)).current
     const dragValue = React.useRef(new Animated.Value(0)).current
@@ -329,8 +323,7 @@ export const DrawerContent = React.forwardRef<View, DrawerContentProps>(
         0,
         1,
       )
-      const distance =
-        side === "left" || side === "right" ? width : height
+      const distance = side === "left" || side === "right" ? width : height
       if (side === "left" || side === "right") {
         const direction = side === "left" ? -1 : 1
         return {
@@ -360,19 +353,20 @@ export const DrawerContent = React.forwardRef<View, DrawerContentProps>(
 
     const isDismissable = dismissable ?? modal
     const isPanEnabled =
-      Platform.OS !== "web" && isDismissable && open && (width > 0 || height > 0)
+      Platform.OS !== "web" &&
+      isDismissable &&
+      open &&
+      (width > 0 || height > 0)
 
     const getDragProgress = React.useCallback(
       (gestureState: PanResponderGestureState) => {
-        const distance =
-          side === "left" || side === "right" ? width : height
+        const distance = side === "left" || side === "right" ? width : height
         if (distance <= 0) return 0
         const delta =
           side === "left" || side === "right"
             ? gestureState.dx
             : gestureState.dy
-        const signedDelta =
-          side === "left" || side === "top" ? -delta : delta
+        const signedDelta = side === "left" || side === "top" ? -delta : delta
         return Math.max(0, Math.min(1, signedDelta / distance))
       },
       [height, side, width],
@@ -410,8 +404,7 @@ export const DrawerContent = React.forwardRef<View, DrawerContentProps>(
             const signedVelocity =
               side === "left" || side === "top" ? -velocity : velocity
             const shouldClose =
-              progress > CLOSE_THRESHOLD ||
-              signedVelocity > VELOCITY_THRESHOLD
+              progress > CLOSE_THRESHOLD || signedVelocity > VELOCITY_THRESHOLD
 
             if (shouldClose) {
               handleDismiss()
@@ -452,7 +445,9 @@ export const DrawerContent = React.forwardRef<View, DrawerContentProps>(
               role={Platform.OS === "web" ? "dialog" : undefined}
               aria-modal={Platform.OS === "web" ? modal : undefined}
               aria-labelledby={Platform.OS === "web" ? titleId : undefined}
-              aria-describedby={Platform.OS === "web" ? descriptionId : undefined}
+              aria-describedby={
+                Platform.OS === "web" ? descriptionId : undefined
+              }
               accessibilityViewIsModal={modal}
               style={
                 [
@@ -509,7 +504,12 @@ export const DrawerTitle = React.forwardRef<Text, DrawerTitleProps>(
   ({ style, ...props }, ref) => {
     const { titleId } = useDrawer()
     return (
-      <Text ref={ref} nativeID={titleId} style={[styles.title, style]} {...props} />
+      <Text
+        ref={ref}
+        nativeID={titleId}
+        style={[styles.title, style]}
+        {...props}
+      />
     )
   },
 )

@@ -1,8 +1,16 @@
-import * as React from "react"
-import { Pressable, type PressableProps, type StyleProp, View, type ViewProps, type ViewStyle } from "react-native"
-import { StyleSheet, useUnistyles } from "react-native-unistyles"
 // @ts-expect-error - lucide-react-native is a peer dependency
 import { Circle } from "lucide-react-native"
+import * as React from "react"
+import {
+  Animated,
+  Pressable,
+  type PressableProps,
+  type StyleProp,
+  type View,
+  type ViewProps,
+  type ViewStyle,
+} from "react-native"
+import { StyleSheet, useUnistyles } from "react-native-unistyles"
 import * as RovingFocusGroup from "../primitives/roving-focus/index.js"
 
 const RadioGroupContext = React.createContext<{
@@ -89,8 +97,22 @@ export const RadioGroupItem = React.forwardRef<View, RadioGroupItemProps>(
       disabled: isDisabled,
     })
 
+    const scaleAnim = React.useRef(new Animated.Value(checked ? 1 : 0)).current
+
+    React.useEffect(() => {
+      Animated.timing(scaleAnim, {
+        toValue: checked ? 1 : 0,
+        duration: 150,
+        useNativeDriver: true,
+      }).start()
+    }, [checked, scaleAnim])
+
     return (
-      <RovingFocusGroup.RovingFocusItem value={value} disabled={isDisabled} asChild>
+      <RovingFocusGroup.RovingFocusItem
+        value={value}
+        disabled={isDisabled}
+        asChild
+      >
         <Pressable
           ref={ref}
           role="radio"
@@ -117,15 +139,18 @@ export const RadioGroupItem = React.forwardRef<View, RadioGroupItemProps>(
           }
           {...props}
         >
-          {checked && (
-            <View style={styles.indicator}>
-              <Circle
-                fill={theme.colors.primary}
-                color={theme.colors.primary}
-                size={7}
-              />
-            </View>
-          )}
+          <Animated.View
+            style={[
+              styles.indicator,
+              { opacity: scaleAnim, transform: [{ scale: scaleAnim }] },
+            ]}
+          >
+            <Circle
+              fill={theme.colors.primary}
+              color={theme.colors.primary}
+              size={7}
+            />
+          </Animated.View>
         </Pressable>
       </RovingFocusGroup.RovingFocusItem>
     )

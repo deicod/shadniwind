@@ -33,9 +33,9 @@ type DatePickerContextValue = {
   formatDate: (date: Date) => string
 }
 
-const DatePickerContext = React.createContext<DatePickerContextValue | undefined>(
-  undefined,
-)
+const DatePickerContext = React.createContext<
+  DatePickerContextValue | undefined
+>(undefined)
 
 function useDatePicker() {
   const context = React.useContext(DatePickerContext)
@@ -120,7 +120,9 @@ export function DatePicker({
   const [uncontrolledMonth, setUncontrolledMonth] =
     React.useState<Date>(initialMonth)
   const isMonthControlled = monthProp !== undefined
-  const currentMonth = startOfMonth(isMonthControlled ? monthProp : uncontrolledMonth)
+  const currentMonth = startOfMonth(
+    isMonthControlled ? monthProp : uncontrolledMonth,
+  )
 
   const handleValueChange = React.useCallback(
     (nextDate?: Date) => {
@@ -240,7 +242,11 @@ export const DatePickerTrigger = React.forwardRef<
       // biome-ignore lint/suspicious/noExplicitAny: Web-only keyboard event type
       (event: any) => {
         if (Platform.OS !== "web" || isDisabled) return
-        if (event.key === " " || event.key === "Enter" || event.key === "ArrowDown") {
+        if (
+          event.key === " " ||
+          event.key === "Enter" ||
+          event.key === "ArrowDown"
+        ) {
           event.preventDefault()
           onOpenChange(true)
         }
@@ -307,7 +313,13 @@ export const DatePickerTrigger = React.forwardRef<
     }
 
     return (
-      <PopoverTrigger ref={ref} asChild disabled={isDisabled} onPress={onPress} {...props}>
+      <PopoverTrigger
+        ref={ref}
+        asChild
+        disabled={isDisabled}
+        onPress={onPress}
+        {...props}
+      >
         <Pressable
           role={Platform.OS === "web" ? "button" : undefined}
           aria-expanded={Platform.OS === "web" ? open : undefined}
@@ -409,54 +421,55 @@ export type DatePickerCalendarProps = Omit<
   closeOnSelect?: boolean
 }
 
-export const DatePickerCalendar = React.forwardRef<View, DatePickerCalendarProps>(
-  ({ closeOnSelect = true, style, ...props }, ref) => {
-    const {
-      value,
-      onValueChange,
-      onOpenChange,
-      month,
-      onMonthChange,
-      locale,
-      weekStartsOn,
-      showOutsideDays,
-      disabled,
-      minDate,
-      maxDate,
-      disabledDates,
-    } = useDatePicker()
+export const DatePickerCalendar = React.forwardRef<
+  View,
+  DatePickerCalendarProps
+>(({ closeOnSelect = true, style, ...props }, ref) => {
+  const {
+    value,
+    onValueChange,
+    onOpenChange,
+    month,
+    onMonthChange,
+    locale,
+    weekStartsOn,
+    showOutsideDays,
+    disabled,
+    minDate,
+    maxDate,
+    disabledDates,
+  } = useDatePicker()
 
-    const handleValueChange = React.useCallback(
-      (nextDate?: Date) => {
-        onValueChange(nextDate)
-        if (closeOnSelect) {
-          onOpenChange(false)
-        }
-      },
-      [closeOnSelect, onOpenChange, onValueChange],
-    )
+  const handleValueChange = React.useCallback(
+    (nextDate?: Date) => {
+      onValueChange(nextDate)
+      if (closeOnSelect) {
+        onOpenChange(false)
+      }
+    },
+    [closeOnSelect, onOpenChange, onValueChange],
+  )
 
-    return (
-      <Calendar
-        ref={ref}
-        value={value}
-        onValueChange={handleValueChange}
-        month={month}
-        onMonthChange={onMonthChange}
-        locale={locale}
-        weekStartsOn={weekStartsOn}
-        showOutsideDays={showOutsideDays}
-        disabled={disabled}
-        minDate={minDate}
-        maxDate={maxDate}
-        disabledDates={disabledDates}
-        role={Platform.OS === "web" ? "grid" : undefined}
-        style={[styles.calendar, style]}
-        {...props}
-      />
-    )
-  },
-)
+  return (
+    <Calendar
+      ref={ref}
+      value={value}
+      onValueChange={handleValueChange}
+      month={month}
+      onMonthChange={onMonthChange}
+      locale={locale}
+      weekStartsOn={weekStartsOn}
+      showOutsideDays={showOutsideDays}
+      disabled={disabled}
+      minDate={minDate}
+      maxDate={maxDate}
+      disabledDates={disabledDates}
+      role={Platform.OS === "web" ? "grid" : undefined}
+      style={[styles.calendar, style]}
+      {...props}
+    />
+  )
+})
 
 DatePickerCalendar.displayName = "DatePickerCalendar"
 

@@ -1,3 +1,5 @@
+// @ts-expect-error - lucide-react-native is a peer dependency
+import { Check } from "lucide-react-native"
 import * as React from "react"
 import {
   Platform,
@@ -7,17 +9,15 @@ import {
   type ScrollViewProps,
   type StyleProp,
   Text,
-  type TextProps,
   TextInput,
   type TextInputProps,
+  type TextProps,
   type TextStyle,
   View,
   type ViewProps,
   type ViewStyle,
 } from "react-native"
 import { StyleSheet, useUnistyles } from "react-native-unistyles"
-// @ts-expect-error - lucide-react-native is a peer dependency
-import { Check } from "lucide-react-native"
 import { FocusScope } from "../primitives/focus/index.js"
 import { DismissLayer } from "../primitives/overlay/index.js"
 import { Portal } from "../primitives/portal/index.js"
@@ -117,9 +117,7 @@ export function Combobox({
   const [value, setValue] = React.useState<string | undefined>(
     valueProp ?? defaultValue,
   )
-  const [inputValue, setInputValue] = React.useState(
-    defaultInputValue ?? "",
-  )
+  const [inputValue, setInputValue] = React.useState(defaultInputValue ?? "")
   const [activeValue, setActiveValue] = React.useState<string | undefined>(
     valueProp ?? defaultValue,
   )
@@ -136,7 +134,9 @@ export function Combobox({
   const isControlledValue = valueProp !== undefined
   const currentValue = isControlledValue ? valueProp : value
   const isControlledInput = inputValueProp !== undefined
-  const currentInputValue = isControlledInput ? inputValueProp ?? "" : inputValue
+  const currentInputValue = isControlledInput
+    ? (inputValueProp ?? "")
+    : inputValue
   const isControlledOpen = openProp !== undefined
   const currentOpen = isControlledOpen ? openProp : open
 
@@ -148,13 +148,10 @@ export function Combobox({
     )
   }, [itemsVersion])
 
-  const filterItem = React.useCallback<ComboboxFilter>(
-    (item, query) => {
-      if (!query) return true
-      return item.label.toLowerCase().includes(query.toLowerCase())
-    },
-    [],
-  )
+  const filterItem = React.useCallback<ComboboxFilter>((item, query) => {
+    if (!query) return true
+    return item.label.toLowerCase().includes(query.toLowerCase())
+  }, [])
 
   const activeFilter = filter ?? filterItem
 
@@ -752,7 +749,11 @@ export const ComboboxItem = React.forwardRef<View, ComboboxItemProps>(
     if (!isVisible) return null
 
     return (
-      <RovingFocusGroup.RovingFocusItem value={value} disabled={isDisabled} asChild>
+      <RovingFocusGroup.RovingFocusItem
+        value={value}
+        disabled={isDisabled}
+        asChild
+      >
         <Pressable
           ref={ref}
           role={Platform.OS === "web" ? "option" : undefined}

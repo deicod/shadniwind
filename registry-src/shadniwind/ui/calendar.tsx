@@ -161,7 +161,9 @@ export const Calendar = React.forwardRef<View, CalendarProps>(
     const [uncontrolledMonth, setUncontrolledMonth] =
       React.useState<Date>(initialMonth)
     const isMonthControlled = monthProp !== undefined
-    const currentMonth = startOfMonth(isMonthControlled ? monthProp : uncontrolledMonth)
+    const currentMonth = startOfMonth(
+      isMonthControlled ? monthProp : uncontrolledMonth,
+    )
 
     const [focusedDate, setFocusedDate] = React.useState<Date>(() => {
       return startOfDay(selectedDate ?? currentMonth)
@@ -278,7 +280,10 @@ export const Calendar = React.forwardRef<View, CalendarProps>(
       if (Platform.OS !== "web") return
       const key = formatDateKey(focusedDate)
       const node = dayRefs.current.get(key)
-      if (node && typeof (node as { focus?: () => void }).focus === "function") {
+      if (
+        node &&
+        typeof (node as { focus?: () => void }).focus === "function"
+      ) {
         requestAnimationFrame(() => {
           ;(node as { focus?: () => void }).focus?.()
         })
@@ -380,7 +385,10 @@ export const Calendar = React.forwardRef<View, CalendarProps>(
         </View>
         <View style={styles.weeks}>
           {weeks.map((week) => (
-            <View key={`week-${formatDateKey(week[0].date)}`} style={styles.weekRow}>
+            <View
+              key={`week-${formatDateKey(week[0].date)}`}
+              style={styles.weekRow}
+            >
               {week.map((day) => {
                 const isOutside = day.outside
                 const isSelected =
@@ -498,7 +506,11 @@ function CalendarDayButton({
       focusable={!disabled}
       onPress={handlePress}
       onFocus={handleFocus}
-      onKeyDown={Platform.OS === "web" ? (event: unknown) => onKeyDown(event, date) : undefined}
+      onKeyDown={
+        Platform.OS === "web"
+          ? (event: unknown) => onKeyDown(event, date)
+          : undefined
+      }
       tabIndex={Platform.OS === "web" ? (focused ? 0 : -1) : undefined}
       style={({ pressed }) =>
         [

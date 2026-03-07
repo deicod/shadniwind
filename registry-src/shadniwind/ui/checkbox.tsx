@@ -1,7 +1,12 @@
 // @ts-expect-error - lucide-react-native is a peer dependency
 import { Check, Minus } from "lucide-react-native"
 import * as React from "react"
-import { Platform, Pressable, type PressableProps } from "react-native"
+import {
+  Animated,
+  Platform,
+  Pressable,
+  type PressableProps,
+} from "react-native"
 import { StyleSheet, useUnistyles } from "react-native-unistyles"
 
 export type CheckedState = boolean | "indeterminate"
@@ -64,6 +69,27 @@ export const Checkbox = React.forwardRef<
 
     const { theme } = useUnistyles()
 
+    const checkAnim = React.useRef(
+      new Animated.Value(checked === true ? 1 : 0),
+    ).current
+    const minusAnim = React.useRef(
+      new Animated.Value(checked === "indeterminate" ? 1 : 0),
+    ).current
+
+    React.useEffect(() => {
+      Animated.timing(checkAnim, {
+        toValue: checked === true ? 1 : 0,
+        duration: 150,
+        useNativeDriver: true,
+      }).start()
+
+      Animated.timing(minusAnim, {
+        toValue: checked === "indeterminate" ? 1 : 0,
+        duration: 150,
+        useNativeDriver: true,
+      }).start()
+    }, [checked, checkAnim, minusAnim])
+
     return (
       <Pressable
         ref={ref}
@@ -97,12 +123,32 @@ export const Checkbox = React.forwardRef<
         }
         {...props}
       >
-        {checked === true && (
+        <Animated.View
+          style={[
+            StyleSheet.absoluteFill,
+            {
+              opacity: checkAnim,
+              transform: [{ scale: checkAnim }],
+              alignItems: "center",
+              justifyContent: "center",
+            },
+          ]}
+        >
           <Check size={16} color={theme.colors.primaryForeground} />
-        )}
-        {checked === "indeterminate" && (
+        </Animated.View>
+        <Animated.View
+          style={[
+            StyleSheet.absoluteFill,
+            {
+              opacity: minusAnim,
+              transform: [{ scale: minusAnim }],
+              alignItems: "center",
+              justifyContent: "center",
+            },
+          ]}
+        >
           <Minus size={16} color={theme.colors.primaryForeground} />
-        )}
+        </Animated.View>
       </Pressable>
     )
   },

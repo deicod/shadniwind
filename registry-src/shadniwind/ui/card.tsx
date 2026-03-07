@@ -90,7 +90,7 @@ const styles = StyleSheet.create((theme) => ({
 
 /**
  * A flexible container for grouping related content (e.g., product details, user profile).
- * 
+ *
  * @example
  * <Card>
  *   <CardHeader>

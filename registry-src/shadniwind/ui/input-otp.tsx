@@ -4,8 +4,8 @@ import {
   Pressable,
   Text,
   TextInput,
-  type ViewStyle,
   View,
+  type ViewStyle,
 } from "react-native"
 import { StyleSheet, useUnistyles } from "react-native-unistyles"
 import { composeRefs } from "../primitives/roving-focus/utils.js"

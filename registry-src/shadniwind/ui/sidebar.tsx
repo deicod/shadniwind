@@ -6,10 +6,10 @@ import {
   type StyleProp,
   Text,
   type TextStyle,
+  useWindowDimensions,
   View,
   type ViewProps,
   type ViewStyle,
-  useWindowDimensions,
 } from "react-native"
 import { StyleSheet } from "react-native-unistyles"
 import { composeEventHandlers } from "../primitives/press/index.js"
@@ -87,8 +87,7 @@ export function SidebarProvider({
 
   const [uncontrolledCollapsed, setUncontrolledCollapsed] =
     React.useState(defaultCollapsed)
-  const [uncontrolledOpen, setUncontrolledOpen] =
-    React.useState(defaultOpen)
+  const [uncontrolledOpen, setUncontrolledOpen] = React.useState(defaultOpen)
 
   const isCollapsedControlled = collapsedProp !== undefined
   const isOpenControlled = openProp !== undefined
@@ -229,13 +228,8 @@ export type SidebarInsetProps = ViewProps
 
 export const SidebarInset = React.forwardRef<View, SidebarInsetProps>(
   ({ style, ...props }, ref) => {
-    const {
-      side,
-      collapsed,
-      expandedWidth,
-      collapsedWidth,
-      isOffcanvas,
-    } = useSidebar()
+    const { side, collapsed, expandedWidth, collapsedWidth, isOffcanvas } =
+      useSidebar()
 
     const insetWidth = isOffcanvas
       ? 0
@@ -246,7 +240,9 @@ export const SidebarInset = React.forwardRef<View, SidebarInsetProps>(
     const insetStyle: ViewStyle =
       side === "left" ? { marginLeft: insetWidth } : { marginRight: insetWidth }
 
-    return <View ref={ref} style={[styles.inset, insetStyle, style]} {...props} />
+    return (
+      <View ref={ref} style={[styles.inset, insetStyle, style]} {...props} />
+    )
   },
 )
 

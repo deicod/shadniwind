@@ -1,3 +1,5 @@
+// @ts-expect-error - lucide-react-native is a peer dependency
+import { Check, Circle } from "lucide-react-native"
 import * as React from "react"
 import {
   Platform,
@@ -14,8 +16,6 @@ import {
   type ViewStyle,
 } from "react-native"
 import { StyleSheet, useUnistyles } from "react-native-unistyles"
-// @ts-expect-error - lucide-react-native is a peer dependency
-import { Check, Circle } from "lucide-react-native"
 import { FocusScope } from "../primitives/focus/index.js"
 import { DismissLayer } from "../primitives/overlay/index.js"
 import { Portal } from "../primitives/portal/index.js"
@@ -120,7 +120,15 @@ export const ContextMenuTrigger = React.forwardRef<
   ContextMenuTriggerProps
 >(
   (
-    { children, asChild, onContextMenu, onLongPress, disabled, longPressDelay, ...props },
+    {
+      children,
+      asChild,
+      onContextMenu,
+      onLongPress,
+      disabled,
+      longPressDelay,
+      ...props
+    },
     ref,
   ) => {
     const { open, onOpenChange, triggerRef, triggerId } = useContextMenu()
@@ -169,7 +177,10 @@ export const ContextMenuTrigger = React.forwardRef<
       // biome-ignore lint/suspicious/noExplicitAny: Cloning logic
       return React.cloneElement(child as React.ReactElement<any>, {
         ref: triggerRef,
-        onContextMenu: composeEventHandlers(childOnContextMenu, handleContextMenu),
+        onContextMenu: composeEventHandlers(
+          childOnContextMenu,
+          handleContextMenu,
+        ),
         onLongPress: composeEventHandlers(childOnLongPress, handleLongPress),
         role: Platform.OS === "web" ? "button" : undefined,
         "aria-expanded": Platform.OS === "web" ? open : undefined,
@@ -223,7 +234,10 @@ export type ContextMenuContentProps = ViewProps & {
   viewportProps?: ScrollViewProps
 }
 
-export const ContextMenuContent = React.forwardRef<View, ContextMenuContentProps>(
+export const ContextMenuContent = React.forwardRef<
+  View,
+  ContextMenuContentProps
+>(
   (
     {
       children,
@@ -465,7 +479,9 @@ const ContextMenuItemBase = React.forwardRef<View, ContextMenuItemBaseProps>(
           }
           {...props}
         >
-          {indicator ? <View style={styles.itemIndicator}>{indicator}</View> : null}
+          {indicator ? (
+            <View style={styles.itemIndicator}>{indicator}</View>
+          ) : null}
           <View style={styles.itemContent}>
             {typeof children === "string" || typeof children === "number" ? (
               <Text style={styles.itemText}>{children}</Text>
@@ -547,7 +563,9 @@ export const ContextMenuCheckboxItem = React.forwardRef<
         ariaChecked={checked}
         closeOnSelect={closeOnSelect}
         indicator={
-          checked ? <Check size={16} color={theme.colors.accentForeground} /> : null
+          checked ? (
+            <Check size={16} color={theme.colors.accentForeground} />
+          ) : null
         }
         onPress={handlePress}
         {...props}
@@ -614,7 +632,9 @@ export const ContextMenuRadioItem = React.forwardRef<
 >(({ value, onPress, closeOnSelect = true, ...props }, ref) => {
   const context = React.useContext(ContextMenuRadioGroupContext)
   if (!context) {
-    throw new Error("ContextMenuRadioItem must be used within ContextMenuRadioGroup")
+    throw new Error(
+      "ContextMenuRadioItem must be used within ContextMenuRadioGroup",
+    )
   }
   const { theme } = useUnistyles()
   const checked = context.value === value

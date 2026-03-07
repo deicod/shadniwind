@@ -27,9 +27,9 @@ type AlertDialogContextValue = {
   descriptionId: string
 }
 
-const AlertDialogContext = React.createContext<AlertDialogContextValue | undefined>(
-  undefined,
-)
+const AlertDialogContext = React.createContext<
+  AlertDialogContextValue | undefined
+>(undefined)
 
 function useAlertDialog() {
   const context = React.useContext(AlertDialogContext)
@@ -169,7 +169,10 @@ export type AlertDialogContentProps = ViewProps & {
   onDismiss?: () => void
 }
 
-export const AlertDialogContent = React.forwardRef<View, AlertDialogContentProps>(
+export const AlertDialogContent = React.forwardRef<
+  View,
+  AlertDialogContentProps
+>(
   (
     {
       children,
@@ -229,7 +232,9 @@ export const AlertDialogContent = React.forwardRef<View, AlertDialogContentProps
               role={Platform.OS === "web" ? "alertdialog" : undefined}
               aria-modal={Platform.OS === "web" ? true : undefined}
               aria-labelledby={Platform.OS === "web" ? titleId : undefined}
-              aria-describedby={Platform.OS === "web" ? descriptionId : undefined}
+              aria-describedby={
+                Platform.OS === "web" ? descriptionId : undefined
+              }
               accessibilityViewIsModal={true}
               style={
                 [
@@ -284,7 +289,12 @@ export const AlertDialogTitle = React.forwardRef<Text, AlertDialogTitleProps>(
   ({ style, ...props }, ref) => {
     const { titleId } = useAlertDialog()
     return (
-      <Text ref={ref} nativeID={titleId} style={[styles.title, style]} {...props} />
+      <Text
+        ref={ref}
+        nativeID={titleId}
+        style={[styles.title, style]}
+        {...props}
+      />
     )
   },
 )

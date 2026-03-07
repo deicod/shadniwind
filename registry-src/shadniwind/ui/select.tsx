@@ -1,3 +1,5 @@
+// @ts-expect-error - lucide-react-native is a peer dependency
+import { Check, ChevronDown } from "lucide-react-native"
 import * as React from "react"
 import {
   Platform,
@@ -14,8 +16,6 @@ import {
   type ViewStyle,
 } from "react-native"
 import { StyleSheet, useUnistyles } from "react-native-unistyles"
-// @ts-expect-error - lucide-react-native is a peer dependency
-import { Check, ChevronDown } from "lucide-react-native"
 import { FocusScope } from "../primitives/focus/index.js"
 import { DismissLayer } from "../primitives/overlay/index.js"
 import { Portal } from "../primitives/portal/index.js"
@@ -246,137 +246,146 @@ export const SelectTrigger = React.forwardRef<
     },
     ref,
   ) => {
-  const { open, onOpenChange, disabled: selectDisabled, triggerRef, contentId } =
-    useSelect()
-  const { theme } = useUnistyles()
-  const isDisabled = !!(disabled || selectDisabled)
-  const [isFocused, setIsFocused] = React.useState(false)
+    const {
+      open,
+      onOpenChange,
+      disabled: selectDisabled,
+      triggerRef,
+      contentId,
+    } = useSelect()
+    const { theme } = useUnistyles()
+    const isDisabled = !!(disabled || selectDisabled)
+    const [isFocused, setIsFocused] = React.useState(false)
 
-  const variantStyles = styles.useVariants({
-    focused: isFocused,
-    disabled: isDisabled,
-  })
-
-  const handlePress = React.useCallback(
-    (event: unknown) => {
-      if (isDisabled) return
-      onOpenChange(!open)
-      // @ts-expect-error - React Native event type
-      onPress?.(event)
-    },
-    [isDisabled, onOpenChange, open, onPress],
-  )
-
-  const handleKeyDown = React.useCallback(
-    // biome-ignore lint/suspicious/noExplicitAny: Web-only keyboard event type
-    (event: any) => {
-      if (Platform.OS !== "web" || isDisabled) return
-      if (event.key === " " || event.key === "Enter" || event.key === "ArrowDown") {
-        event.preventDefault()
-        onOpenChange(true)
-      }
-      onKeyDown?.(event)
-    },
-    [isDisabled, onKeyDown, onOpenChange],
-  )
-
-  const handleFocus = React.useCallback(
-    (event: unknown) => {
-      setIsFocused(true)
-      // @ts-expect-error - React Native event type
-      onFocus?.(event)
-    },
-    [onFocus],
-  )
-
-  const handleBlur = React.useCallback(
-    (event: unknown) => {
-      setIsFocused(false)
-      // @ts-expect-error - React Native event type
-      onBlur?.(event)
-    },
-    [onBlur],
-  )
-
-  React.useEffect(() => {
-    if (ref) {
-      if (typeof ref === "function") {
-        ref(triggerRef.current)
-      } else {
-        ;(ref as { current: View | null }).current = triggerRef.current
-      }
-    }
-  }, [ref, triggerRef])
-
-  const content = (
-    <Pressable
-      ref={triggerRef}
-      role={Platform.OS === "web" ? "combobox" : undefined}
-      aria-expanded={Platform.OS === "web" ? open : undefined}
-      aria-controls={Platform.OS === "web" ? contentId : undefined}
-      accessibilityRole="button"
-      accessibilityState={{ expanded: open, disabled: isDisabled }}
-      disabled={isDisabled}
-      onPress={handlePress}
-      onFocus={handleFocus}
-      onBlur={handleBlur}
-      // @ts-expect-error - onKeyDown is web-only
-      onKeyDown={Platform.OS === "web" ? handleKeyDown : undefined}
-      style={({ pressed }) =>
-        [
-          styles.trigger,
-          variantStyles,
-          pressed && !isDisabled && styles.triggerPressed,
-          typeof style === "function" ? style({ pressed }) : style,
-          // biome-ignore lint/suspicious/noExplicitAny: Complex style array with variants requires type assertion
-        ] as any
-      }
-      {...props}
-    >
-      <View style={styles.triggerContent}>{children}</View>
-      {showChevron && (
-        <View style={[styles.icon, open && styles.iconOpen]}>
-          <ChevronDown size={18} color={theme.colors.mutedForeground} />
-        </View>
-      )}
-    </Pressable>
-  )
-
-  if (asChild && React.isValidElement(children)) {
-    const child = children as React.ReactElement<{
-      onPress?: (event: unknown) => void
-      onKeyDown?: (event: unknown) => void
-      onFocus?: (event: unknown) => void
-      onBlur?: (event: unknown) => void
-    }>
-    const childOnPress = isDisabled ? undefined : child.props.onPress
-    const childOnKeyDown = child.props.onKeyDown
-    const childOnFocus = child.props.onFocus
-    const childOnBlur = child.props.onBlur
-    // biome-ignore lint/suspicious/noExplicitAny: Cloning logic
-    return React.cloneElement(child as React.ReactElement<any>, {
-      ref: triggerRef,
-      onPress: composeEventHandlers(childOnPress, handlePress),
-      onKeyDown:
-        Platform.OS === "web"
-          ? composeEventHandlers(childOnKeyDown, handleKeyDown)
-          : childOnKeyDown,
-      onFocus: composeEventHandlers(childOnFocus, handleFocus),
-      onBlur: composeEventHandlers(childOnBlur, handleBlur),
-      role: Platform.OS === "web" ? "combobox" : undefined,
-      "aria-expanded": Platform.OS === "web" ? open : undefined,
-      "aria-controls": Platform.OS === "web" ? contentId : undefined,
-      accessibilityRole: "button",
-      accessibilityState: {
-        expanded: open,
-        disabled: isDisabled,
-      },
+    const variantStyles = styles.useVariants({
+      focused: isFocused,
       disabled: isDisabled,
-      ...props,
     })
-  }
 
-  return content
+    const handlePress = React.useCallback(
+      (event: unknown) => {
+        if (isDisabled) return
+        onOpenChange(!open)
+        // @ts-expect-error - React Native event type
+        onPress?.(event)
+      },
+      [isDisabled, onOpenChange, open, onPress],
+    )
+
+    const handleKeyDown = React.useCallback(
+      // biome-ignore lint/suspicious/noExplicitAny: Web-only keyboard event type
+      (event: any) => {
+        if (Platform.OS !== "web" || isDisabled) return
+        if (
+          event.key === " " ||
+          event.key === "Enter" ||
+          event.key === "ArrowDown"
+        ) {
+          event.preventDefault()
+          onOpenChange(true)
+        }
+        onKeyDown?.(event)
+      },
+      [isDisabled, onKeyDown, onOpenChange],
+    )
+
+    const handleFocus = React.useCallback(
+      (event: unknown) => {
+        setIsFocused(true)
+        // @ts-expect-error - React Native event type
+        onFocus?.(event)
+      },
+      [onFocus],
+    )
+
+    const handleBlur = React.useCallback(
+      (event: unknown) => {
+        setIsFocused(false)
+        // @ts-expect-error - React Native event type
+        onBlur?.(event)
+      },
+      [onBlur],
+    )
+
+    React.useEffect(() => {
+      if (ref) {
+        if (typeof ref === "function") {
+          ref(triggerRef.current)
+        } else {
+          ;(ref as { current: View | null }).current = triggerRef.current
+        }
+      }
+    }, [ref, triggerRef])
+
+    const content = (
+      <Pressable
+        ref={triggerRef}
+        role={Platform.OS === "web" ? "combobox" : undefined}
+        aria-expanded={Platform.OS === "web" ? open : undefined}
+        aria-controls={Platform.OS === "web" ? contentId : undefined}
+        accessibilityRole="button"
+        accessibilityState={{ expanded: open, disabled: isDisabled }}
+        disabled={isDisabled}
+        onPress={handlePress}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        // @ts-expect-error - onKeyDown is web-only
+        onKeyDown={Platform.OS === "web" ? handleKeyDown : undefined}
+        style={({ pressed }) =>
+          [
+            styles.trigger,
+            variantStyles,
+            pressed && !isDisabled && styles.triggerPressed,
+            typeof style === "function" ? style({ pressed }) : style,
+            // biome-ignore lint/suspicious/noExplicitAny: Complex style array with variants requires type assertion
+          ] as any
+        }
+        {...props}
+      >
+        <View style={styles.triggerContent}>{children}</View>
+        {showChevron && (
+          <View style={[styles.icon, open && styles.iconOpen]}>
+            <ChevronDown size={18} color={theme.colors.mutedForeground} />
+          </View>
+        )}
+      </Pressable>
+    )
+
+    if (asChild && React.isValidElement(children)) {
+      const child = children as React.ReactElement<{
+        onPress?: (event: unknown) => void
+        onKeyDown?: (event: unknown) => void
+        onFocus?: (event: unknown) => void
+        onBlur?: (event: unknown) => void
+      }>
+      const childOnPress = isDisabled ? undefined : child.props.onPress
+      const childOnKeyDown = child.props.onKeyDown
+      const childOnFocus = child.props.onFocus
+      const childOnBlur = child.props.onBlur
+      // biome-ignore lint/suspicious/noExplicitAny: Cloning logic
+      return React.cloneElement(child as React.ReactElement<any>, {
+        ref: triggerRef,
+        onPress: composeEventHandlers(childOnPress, handlePress),
+        onKeyDown:
+          Platform.OS === "web"
+            ? composeEventHandlers(childOnKeyDown, handleKeyDown)
+            : childOnKeyDown,
+        onFocus: composeEventHandlers(childOnFocus, handleFocus),
+        onBlur: composeEventHandlers(childOnBlur, handleBlur),
+        role: Platform.OS === "web" ? "combobox" : undefined,
+        "aria-expanded": Platform.OS === "web" ? open : undefined,
+        "aria-controls": Platform.OS === "web" ? contentId : undefined,
+        accessibilityRole: "button",
+        accessibilityState: {
+          expanded: open,
+          disabled: isDisabled,
+        },
+        disabled: isDisabled,
+        ...props,
+      })
+    }
+
+    return content
   },
 )
 
@@ -396,11 +405,7 @@ export const SelectValue = React.forwardRef<Text, SelectValueProps>(
     return (
       <Text
         ref={ref}
-        style={[
-          styles.value,
-          isPlaceholder && styles.valuePlaceholder,
-          style,
-        ]}
+        style={[styles.value, isPlaceholder && styles.valuePlaceholder, style]}
         {...props}
       >
         {isPlaceholder ? placeholder : displayValue}
@@ -592,7 +597,9 @@ export const SelectContent = React.forwardRef<View, SelectContentProps>(
                   onValueChange={setFocusValue}
                   loop
                   // @ts-expect-error - onKeyDownCapture is web-only
-                  onKeyDownCapture={Platform.OS === "web" ? handleTypeahead : undefined}
+                  onKeyDownCapture={
+                    Platform.OS === "web" ? handleTypeahead : undefined
+                  }
                 >
                   {children}
                 </RovingFocusGroup.RovingFocusGroup>
@@ -633,8 +640,13 @@ function resolveTextValue(children: React.ReactNode, fallback?: string) {
 
 export const SelectItem = React.forwardRef<View, SelectItemProps>(
   ({ value, textValue, disabled, children, style, onPress, ...props }, ref) => {
-    const { value: selectedValue, onValueChange, onOpenChange, registerItem, disabled: selectDisabled } =
-      useSelect()
+    const {
+      value: selectedValue,
+      onValueChange,
+      onOpenChange,
+      registerItem,
+      disabled: selectDisabled,
+    } = useSelect()
     const { theme } = useUnistyles()
     const isSelected = selectedValue === value
     const isDisabled = !!(disabled || selectDisabled)
@@ -673,7 +685,11 @@ export const SelectItem = React.forwardRef<View, SelectItemProps>(
     )
 
     return (
-      <RovingFocusGroup.RovingFocusItem value={value} disabled={isDisabled} asChild>
+      <RovingFocusGroup.RovingFocusItem
+        value={value}
+        disabled={isDisabled}
+        asChild
+      >
         <Pressable
           ref={ref}
           role={Platform.OS === "web" ? "option" : undefined}

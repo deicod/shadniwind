@@ -239,14 +239,8 @@ export const SheetContent = React.forwardRef<View, SheetContentProps>(
     },
     ref,
   ) => {
-    const {
-      open,
-      onOpenChange,
-      contentRef,
-      titleId,
-      descriptionId,
-      modal,
-    } = useSheet()
+    const { open, onOpenChange, contentRef, titleId, descriptionId, modal } =
+      useSheet()
 
     useScrollLock(open && modal)
     const variantStyles = styles.useVariants({
@@ -294,7 +288,9 @@ export const SheetContent = React.forwardRef<View, SheetContentProps>(
               role={Platform.OS === "web" ? "dialog" : undefined}
               aria-modal={Platform.OS === "web" ? modal : undefined}
               aria-labelledby={Platform.OS === "web" ? titleId : undefined}
-              aria-describedby={Platform.OS === "web" ? descriptionId : undefined}
+              aria-describedby={
+                Platform.OS === "web" ? descriptionId : undefined
+              }
               accessibilityViewIsModal={modal}
               style={
                 [
@@ -349,7 +345,12 @@ export const SheetTitle = React.forwardRef<Text, SheetTitleProps>(
   ({ style, ...props }, ref) => {
     const { titleId } = useSheet()
     return (
-      <Text ref={ref} nativeID={titleId} style={[styles.title, style]} {...props} />
+      <Text
+        ref={ref}
+        nativeID={titleId}
+        style={[styles.title, style]}
+        {...props}
+      />
     )
   },
 )

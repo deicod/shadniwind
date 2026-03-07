@@ -1,3 +1,5 @@
+// @ts-expect-error - lucide-react-native is a peer dependency
+import { Check, Circle } from "lucide-react-native"
 import * as React from "react"
 import {
   Platform,
@@ -14,8 +16,6 @@ import {
   type ViewStyle,
 } from "react-native"
 import { StyleSheet, useUnistyles } from "react-native-unistyles"
-// @ts-expect-error - lucide-react-native is a peer dependency
-import { Check, Circle } from "lucide-react-native"
 import { DismissLayer } from "../primitives/overlay/index.js"
 import { Portal } from "../primitives/portal/index.js"
 import {
@@ -55,9 +55,9 @@ type MenubarMenuContextValue = {
   triggerId: string
 }
 
-const MenubarMenuContext = React.createContext<MenubarMenuContextValue | undefined>(
-  undefined,
-)
+const MenubarMenuContext = React.createContext<
+  MenubarMenuContextValue | undefined
+>(undefined)
 
 function useMenubarMenu() {
   const context = React.useContext(MenubarMenuContext)
@@ -78,9 +78,9 @@ export const Menubar = React.forwardRef<View, MenubarProps>(
     const [openValue, setOpenValueState] = React.useState<string | undefined>(
       defaultValue,
     )
-    const [activeValue, setActiveValueState] = React.useState<string | undefined>(
-      valueProp ?? defaultValue,
-    )
+    const [activeValue, setActiveValueState] = React.useState<
+      string | undefined
+    >(valueProp ?? defaultValue)
     const isControlled = valueProp !== undefined
     const currentOpenValue = isControlled ? valueProp : openValue
 
@@ -356,7 +356,11 @@ export const MenubarTrigger = React.forwardRef<
     }
 
     return (
-      <RovingFocusGroup.RovingFocusItem value={value} disabled={isDisabled} asChild>
+      <RovingFocusGroup.RovingFocusItem
+        value={value}
+        disabled={isDisabled}
+        asChild
+      >
         <Pressable
           ref={setTriggerRef}
           role={Platform.OS === "web" ? "menuitem" : undefined}
@@ -428,8 +432,15 @@ export const MenubarContent = React.forwardRef<View, MenubarContentProps>(
     },
     ref,
   ) => {
-    const { open, setOpen, triggerRef, contentRef, activeValue, setActiveValue, triggerId } =
-      useMenubarMenu()
+    const {
+      open,
+      setOpen,
+      triggerRef,
+      contentRef,
+      activeValue,
+      setActiveValue,
+      triggerId,
+    } = useMenubarMenu()
 
     const actualPlacement = align === "center" ? side : `${side}-${align}`
 
@@ -729,7 +740,9 @@ export const MenubarCheckboxItem = React.forwardRef<
         ariaChecked={checked}
         closeOnSelect={closeOnSelect}
         indicator={
-          checked ? <Check size={16} color={theme.colors.accentForeground} /> : null
+          checked ? (
+            <Check size={16} color={theme.colors.accentForeground} />
+          ) : null
         }
         onPress={handlePress}
         {...props}

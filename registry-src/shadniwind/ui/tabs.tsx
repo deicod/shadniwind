@@ -1,5 +1,14 @@
 import * as React from "react"
-import { Platform, Pressable, type PressableProps, type StyleProp, Text, View, type ViewProps, type ViewStyle } from "react-native"
+import {
+  Platform,
+  Pressable,
+  type PressableProps,
+  type StyleProp,
+  Text,
+  View,
+  type ViewProps,
+  type ViewStyle,
+} from "react-native"
 import { StyleSheet, useUnistyles } from "react-native-unistyles"
 import * as RovingFocusGroup from "../primitives/roving-focus/index.js"
 
@@ -15,7 +24,10 @@ export interface TabsProps extends ViewProps {
 }
 
 export const Tabs = React.forwardRef<View, TabsProps>(
-  ({ value: valueProp, defaultValue, onValueChange, children, ...props }, ref) => {
+  (
+    { value: valueProp, defaultValue, onValueChange, children, ...props },
+    ref,
+  ) => {
     const [value, setValue] = React.useState(valueProp ?? defaultValue)
     const isControlled = valueProp !== undefined
     const currentValue = isControlled ? valueProp : value
@@ -31,7 +43,9 @@ export const Tabs = React.forwardRef<View, TabsProps>(
     )
 
     return (
-      <TabsContext.Provider value={{ value: currentValue, onValueChange: handleValueChange }}>
+      <TabsContext.Provider
+        value={{ value: currentValue, onValueChange: handleValueChange }}
+      >
         <View ref={ref} {...props}>
           {children}
         </View>
@@ -50,7 +64,6 @@ export const TabsList = React.forwardRef<View, TabsListProps>(
 
     // On web, we want RovingFocusGroup for keyboard nav
     if (Platform.OS === "web") {
-
       return (
         <RovingFocusGroup.RovingFocusGroup
           orientation="horizontal"
@@ -121,10 +134,7 @@ export const TabsTrigger = React.forwardRef<View, TabsTriggerProps>(
       >
         {typeof children === "string" ? (
           <Text
-            style={[
-              styles.triggerText,
-              isActive && styles.triggerTextActive,
-            ]}
+            style={[styles.triggerText, isActive && styles.triggerTextActive]}
           >
             {children}
           </Text>
@@ -164,7 +174,12 @@ export const TabsContent = React.forwardRef<View, TabsContentProps>(
     if (!isActive) return null
 
     return (
-      <View ref={ref} role="tabpanel" style={[styles.content, style]} {...props}>
+      <View
+        ref={ref}
+        role="tabpanel"
+        style={[styles.content, style]}
+        {...props}
+      >
         {props.children}
       </View>
     )

@@ -1,3 +1,5 @@
+// @ts-expect-error - lucide-react-native is a peer dependency
+import { ChevronDown } from "lucide-react-native"
 import * as React from "react"
 import {
   Animated,
@@ -9,8 +11,6 @@ import {
   type ViewProps,
 } from "react-native"
 import { StyleSheet, useUnistyles } from "react-native-unistyles"
-// @ts-expect-error - lucide-react-native is a peer dependency
-import { ChevronDown } from "lucide-react-native"
 import * as RovingFocusGroup from "../primitives/roving-focus/index.js"
 
 export type AccordionType = "single" | "multiple"
@@ -217,6 +217,23 @@ export const AccordionTrigger = React.forwardRef<
   const isDisabled = props.disabled ?? accordionContext.disabled
   const { theme } = useUnistyles()
 
+  const rotateAnim = React.useRef(
+    new Animated.Value(itemContext.open ? 1 : 0),
+  ).current
+
+  React.useEffect(() => {
+    Animated.timing(rotateAnim, {
+      toValue: itemContext.open ? 1 : 0,
+      duration: 200,
+      useNativeDriver: true,
+    }).start()
+  }, [itemContext.open, rotateAnim])
+
+  const chevronRotate = rotateAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: ["0deg", "180deg"],
+  })
+
   const handlePress = () => {
     if (!isDisabled) {
       itemContext.onToggle()
@@ -268,7 +285,9 @@ export const AccordionTrigger = React.forwardRef<
         </>
       </View>
       {showChevron && (
-        <View style={[styles.chevron, itemContext.open && styles.chevronOpen]}>
+        <Animated.View
+          style={[styles.chevron, { transform: [{ rotate: chevronRotate }] }]}
+        >
           <ChevronDown
             size={20}
             color={
@@ -277,7 +296,7 @@ export const AccordionTrigger = React.forwardRef<
                 : theme.colors.foreground
             }
           />
-        </View>
+        </Animated.View>
       )}
     </Pressable>
   )
@@ -419,10 +438,6 @@ const styles = StyleSheet.create((theme) => ({
   },
   chevron: {
     marginLeft: 12,
-    transform: [{ rotate: "0deg" }],
-  },
-  chevronOpen: {
-    transform: [{ rotate: "180deg" }],
   },
   content: {
     overflow: "hidden",

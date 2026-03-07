@@ -1,19 +1,19 @@
 import * as React from "react"
 import {
+  type LayoutChangeEvent,
+  type NativeScrollEvent,
+  type NativeSyntheticEvent,
   Platform,
   Pressable,
   type PressableProps,
   ScrollView,
   type ScrollViewProps,
-  type LayoutChangeEvent,
-  type NativeScrollEvent,
-  type NativeSyntheticEvent,
   type StyleProp,
   Text,
+  type TextStyle,
   View,
   type ViewProps,
   type ViewStyle,
-  type TextStyle,
 } from "react-native"
 import { StyleSheet } from "react-native-unistyles"
 
@@ -226,9 +226,9 @@ export const CarouselContent = React.forwardRef<
           ref(node)
         } else if (ref) {
           ;(
-            ref as React.MutableRefObject<
-              React.ComponentRef<typeof ScrollView> | null
-            >
+            ref as React.MutableRefObject<React.ComponentRef<
+              typeof ScrollView
+            > | null>
           ).current = node
         }
       },
@@ -320,7 +320,8 @@ export const CarouselContent = React.forwardRef<
       (itemSize ?? containerSize) === containerSize
     const resolvedPagingEnabled = pagingEnabledProp ?? shouldPage
     const resolvedSnapToInterval =
-      snapToIntervalProp ?? (resolvedPagingEnabled ? undefined : snapInterval || undefined)
+      snapToIntervalProp ??
+      (resolvedPagingEnabled ? undefined : snapInterval || undefined)
     const resolvedDecelerationRate =
       decelerationRateProp ?? (snapInterval > 0 ? "fast" : undefined)
 
@@ -399,8 +400,7 @@ export const CarouselPrevious = React.forwardRef<
   const { currentIndex, itemCount, loop, orientation, scrollToIndex } =
     useCarousel()
   const isHorizontal = orientation === "horizontal"
-  const autoDisabled =
-    itemCount <= 0 ? true : !loop && currentIndex <= 0
+  const autoDisabled = itemCount <= 0 ? true : !loop && currentIndex <= 0
   const isDisabled = disabled ?? autoDisabled
   const variantStyles = styles.useVariants({ disabled: isDisabled })
 

@@ -1,3 +1,5 @@
+// @ts-expect-error - lucide-react-native is a peer dependency
+import { Check, Circle } from "lucide-react-native"
 import * as React from "react"
 import {
   Platform,
@@ -14,8 +16,6 @@ import {
   type ViewStyle,
 } from "react-native"
 import { StyleSheet, useUnistyles } from "react-native-unistyles"
-// @ts-expect-error - lucide-react-native is a peer dependency
-import { Check, Circle } from "lucide-react-native"
 import { FocusScope } from "../primitives/focus/index.js"
 import { DismissLayer } from "../primitives/overlay/index.js"
 import { Portal } from "../primitives/portal/index.js"
@@ -323,10 +323,7 @@ type DropdownMenuItemBaseProps = Omit<PressableProps, "children" | "role"> & {
   ariaChecked?: boolean
 }
 
-const DropdownMenuItemBase = React.forwardRef<
-  View,
-  DropdownMenuItemBaseProps
->(
+const DropdownMenuItemBase = React.forwardRef<View, DropdownMenuItemBaseProps>(
   (
     {
       children,
@@ -453,9 +450,7 @@ const DropdownMenuItemBase = React.forwardRef<
               children
             )}
           </View>
-          {shortcut ? (
-            <Text style={styles.shortcut}>{shortcut}</Text>
-          ) : null}
+          {shortcut ? <Text style={styles.shortcut}>{shortcut}</Text> : null}
         </Pressable>
       </RovingFocusGroup.RovingFocusItem>
     )
@@ -473,9 +468,7 @@ export type DropdownMenuItemProps = Omit<
 
 export const DropdownMenuItem = React.forwardRef<View, DropdownMenuItemProps>(
   (props, ref) => {
-    return (
-      <DropdownMenuItemBase ref={ref} role="menuitem" {...props} />
-    )
+    return <DropdownMenuItemBase ref={ref} role="menuitem" {...props} />
   },
 )
 
@@ -531,7 +524,9 @@ export const DropdownMenuCheckboxItem = React.forwardRef<
         ariaChecked={checked}
         closeOnSelect={closeOnSelect}
         indicator={
-          checked ? <Check size={16} color={theme.colors.accentForeground} /> : null
+          checked ? (
+            <Check size={16} color={theme.colors.accentForeground} />
+          ) : null
         }
         onPress={handlePress}
         {...props}
@@ -598,7 +593,9 @@ export const DropdownMenuRadioItem = React.forwardRef<
 >(({ value, onPress, closeOnSelect = true, ...props }, ref) => {
   const context = React.useContext(DropdownMenuRadioGroupContext)
   if (!context) {
-    throw new Error("DropdownMenuRadioItem must be used within DropdownMenuRadioGroup")
+    throw new Error(
+      "DropdownMenuRadioItem must be used within DropdownMenuRadioGroup",
+    )
   }
   const { theme } = useUnistyles()
   const checked = context.value === value
@@ -621,7 +618,11 @@ export const DropdownMenuRadioItem = React.forwardRef<
       closeOnSelect={closeOnSelect}
       indicator={
         checked ? (
-          <Circle size={10} fill={theme.colors.accentForeground} color={theme.colors.accentForeground} />
+          <Circle
+            size={10}
+            fill={theme.colors.accentForeground}
+            color={theme.colors.accentForeground}
+          />
         ) : null
       }
       onPress={handlePress}

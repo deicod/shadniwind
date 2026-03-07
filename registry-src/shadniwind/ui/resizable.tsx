@@ -1,8 +1,8 @@
 import * as React from "react"
 import {
+  type LayoutChangeEvent,
   PanResponder,
   Platform,
-  type LayoutChangeEvent,
   View,
   type ViewProps,
   type ViewStyle,
@@ -45,7 +45,9 @@ function clamp(value: number, min: number, max: number) {
 
 function normalizeSizes(sizes: number[], count: number) {
   if (count <= 0) return []
-  const safeSizes = sizes.map((value) => (Number.isFinite(value) ? Math.max(0, value) : 0))
+  const safeSizes = sizes.map((value) =>
+    Number.isFinite(value) ? Math.max(0, value) : 0,
+  )
   const total = safeSizes.reduce((sum, value) => sum + value, 0)
   if (total <= 0) {
     return Array.from({ length: count }, () => 100 / count)
@@ -147,10 +149,15 @@ export const ResizablePanelGroup = React.forwardRef<
         )
         return normalizeSizes(normalizedDefaults, panelCount)
       }
-      return normalizeSizes(Array.from({ length: panelCount }, () => 1), panelCount)
+      return normalizeSizes(
+        Array.from({ length: panelCount }, () => 1),
+        panelCount,
+      )
     }, [defaultSizes, hasPanelDefaults, panelCount, panelDefaults])
 
-    const [uncontrolledSizes, setUncontrolledSizes] = React.useState(() => initialSizes)
+    const [uncontrolledSizes, setUncontrolledSizes] = React.useState(
+      () => initialSizes,
+    )
 
     const isControlled = sizesProp !== undefined
     const resolvedSizes = React.useMemo(() => {
@@ -215,8 +222,14 @@ export const ResizablePanelGroup = React.forwardRef<
         const rightMin = rightConstraints.minSize ?? 0
         const rightMax = rightConstraints.maxSize ?? 100
 
-        const minDelta = Math.max(leftMin - currentLeft, currentRight - rightMax)
-        const maxDelta = Math.min(leftMax - currentLeft, currentRight - rightMin)
+        const minDelta = Math.max(
+          leftMin - currentLeft,
+          currentRight - rightMax,
+        )
+        const maxDelta = Math.min(
+          leftMax - currentLeft,
+          currentRight - rightMin,
+        )
 
         const clampedDelta = clamp(deltaPercent, minDelta, maxDelta)
         nextSizes[index] = currentLeft + clampedDelta
@@ -301,11 +314,7 @@ export const ResizablePanel = React.forwardRef<View, ResizablePanelProps>(
         : { flex: 1 }
 
     return (
-      <View
-        ref={ref}
-        style={[styles.panel, sizeStyle, style]}
-        {...props}
-      />
+      <View ref={ref} style={[styles.panel, sizeStyle, style]} {...props} />
     )
   },
 )
@@ -313,7 +322,10 @@ export const ResizablePanel = React.forwardRef<View, ResizablePanelProps>(
 ResizablePanel.displayName = "ResizablePanel"
 
 export const ResizableHandle = React.forwardRef<View, ResizableHandleProps>(
-  ({ disabled, withHandle = false, keyboardStep = 2, style, _index, ...props }, ref) => {
+  (
+    { disabled, withHandle = false, keyboardStep = 2, style, _index, ...props },
+    ref,
+  ) => {
     const { direction, resizeByDelta, resizeByPercent, sizes } = useResizable()
     const isDisabled = !!disabled
     const index = typeof _index === "number" ? _index : -1

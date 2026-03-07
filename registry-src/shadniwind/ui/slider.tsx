@@ -2,9 +2,9 @@ import * as React from "react"
 import {
   Animated,
   type GestureResponderEvent,
-  type PanResponderGestureState,
   type LayoutChangeEvent,
   PanResponder,
+  type PanResponderGestureState,
   Platform,
   type StyleProp,
   View,
@@ -505,11 +505,7 @@ export const Slider = React.forwardRef<SliderRef, SliderProps>(
           )
         }
 
-        return (
-          <React.Fragment key={thumbKey}>
-            {thumbContent}
-          </React.Fragment>
-        )
+        return <React.Fragment key={thumbKey}>{thumbContent}</React.Fragment>
       })
     }
 

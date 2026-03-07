@@ -99,15 +99,15 @@ export const ToggleGroup = React.forwardRef<View, ToggleGroupProps>(
 
     const content = (
       <View ref={ref} style={[styles.group, style]} {...props}>
-          {React.Children.map(children, (child) => {
-              if (React.isValidElement(child)) {
-                // We need to clone to pass toggle-group logic handling?
-                // Or proper context usage.
-                // We'll use Context so ToggleGroupItem can read state.
-                return child
-              }
-              return null
-            })}
+        {React.Children.map(children, (child) => {
+          if (React.isValidElement(child)) {
+            // We need to clone to pass toggle-group logic handling?
+            // Or proper context usage.
+            // We'll use Context so ToggleGroupItem can read state.
+            return child
+          }
+          return null
+        })}
       </View>
     )
 
@@ -167,13 +167,13 @@ export const ToggleGroupItem = React.forwardRef<View, ToggleGroupItemProps>(
     const settings = React.useContext(ToggleGroupContext)
 
     const isPressed = React.useMemo(() => {
-        if (context.type === "single") {
-            return context.value === value
-        }
-        if (Array.isArray(context.value)) {
-            return context.value.includes(value)
-        }
-        return false
+      if (context.type === "single") {
+        return context.value === value
+      }
+      if (Array.isArray(context.value)) {
+        return context.value.includes(value)
+      }
+      return false
     }, [context.type, context.value, value])
 
     const isDisabled = disabled || context.disabled || settings.disabled
@@ -190,7 +190,11 @@ export const ToggleGroupItem = React.forwardRef<View, ToggleGroupItemProps>(
 
     if (Platform.OS === "web" && settings.rovingFocus) {
       return (
-        <RovingFocusGroup.RovingFocusItem value={value} disabled={isDisabled} asChild>
+        <RovingFocusGroup.RovingFocusItem
+          value={value}
+          disabled={isDisabled}
+          asChild
+        >
           {content}
         </RovingFocusGroup.RovingFocusItem>
       )

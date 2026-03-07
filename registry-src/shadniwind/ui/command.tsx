@@ -7,9 +7,9 @@ import {
   type ScrollViewProps,
   type StyleProp,
   Text,
-  type TextProps,
   TextInput,
   type TextInputProps,
+  type TextProps,
   type TextStyle,
   View,
   type ViewProps,
@@ -91,15 +91,12 @@ export const Command = React.forwardRef<View, CommandProps>(
     const inputId = React.useId()
 
     const isControlled = valueProp !== undefined
-    const currentQuery = isControlled ? valueProp ?? "" : query
+    const currentQuery = isControlled ? (valueProp ?? "") : query
 
-    const filterItem = React.useCallback<CommandFilter>(
-      (item, search) => {
-        if (!search) return true
-        return item.label.toLowerCase().includes(search.toLowerCase())
-      },
-      [],
-    )
+    const filterItem = React.useCallback<CommandFilter>((item, search) => {
+      if (!search) return true
+      return item.label.toLowerCase().includes(search.toLowerCase())
+    }, [])
 
     const activeFilter = filter ?? filterItem
 
@@ -174,7 +171,10 @@ export const Command = React.forwardRef<View, CommandProps>(
         setActiveValue(undefined)
         return
       }
-      if (activeValue && filteredItems.some((item) => item.value === activeValue)) {
+      if (
+        activeValue &&
+        filteredItems.some((item) => item.value === activeValue)
+      ) {
         return
       }
       const firstEnabled = filteredItems.find((item) => !item.disabled)
@@ -302,7 +302,13 @@ export const CommandInput = React.forwardRef<TextInput, CommandInputProps>(
         }
         onKeyDown?.(event)
       },
-      [activeValue, getNextActiveValue, onKeyDown, runItemAction, setActiveValue],
+      [
+        activeValue,
+        getNextActiveValue,
+        onKeyDown,
+        runItemAction,
+        setActiveValue,
+      ],
     )
 
     const handleFocus = React.useCallback(
@@ -421,7 +427,16 @@ function resolveTextValue(children: React.ReactNode, fallback?: string) {
 
 export const CommandItem = React.forwardRef<View, CommandItemProps>(
   (
-    { value, textValue, disabled, children, onSelect, onPress, style, ...props },
+    {
+      value,
+      textValue,
+      disabled,
+      children,
+      onSelect,
+      onPress,
+      style,
+      ...props
+    },
     ref,
   ) => {
     const {
@@ -502,7 +517,11 @@ export const CommandItem = React.forwardRef<View, CommandItemProps>(
     if (!isVisible) return null
 
     return (
-      <RovingFocusGroup.RovingFocusItem value={value} disabled={isDisabled} asChild>
+      <RovingFocusGroup.RovingFocusItem
+        value={value}
+        disabled={isDisabled}
+        asChild
+      >
         <Pressable
           ref={ref}
           role={Platform.OS === "web" ? "option" : undefined}
