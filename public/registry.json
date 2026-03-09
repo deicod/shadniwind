@@ -428,7 +428,10 @@
       "name": "overlay",
       "type": "registry:lib",
       "title": "Overlay",
-      "description": "Dismiss layer and scrim/backdrop primitive for overlays."
+      "description": "Dismiss layer and scrim/backdrop primitive for overlays.",
+      "registryDependencies": [
+        "@shadniwind/tokens"
+      ]
     },
     {
       "name": "pagination",
@@ -456,7 +459,10 @@
       "name": "portal",
       "type": "registry:lib",
       "title": "Portal",
-      "description": "Portal provider and host primitives for overlays."
+      "description": "Portal provider and host primitives for overlays.",
+      "registryDependencies": [
+        "@shadniwind/tokens"
+      ]
     },
     {
       "name": "positioning",

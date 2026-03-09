@@ -92,43 +92,116 @@ Install the `tokens` package. This sets up the base theme (colors, spacing, typo
 ```bash
 npx shadcn@latest add @shadniwind/tokens
 ```
-*Note: This will install `react-native-unistyles` and create `lib/tokens.ts` and `lib/unistyles.ts`.*
+*Note: This will install `react-native-unistyles` and create `lib/tokens.ts`, `lib/unistyles.ts`, and `lib/unistyles-types.d.ts`.*
 
-### 4. Initialize Styling
-You must initialize the styling system **before** your app renders. Import `lib/unistyles` at the very top of your entry file.
+### 4. Add the Unistyles Babel Plugin
+shadniwind components use the Unistyles v3 authoring model (`StyleSheet.create((theme) => ...)`, variants, and runtime theme access). Add the Unistyles Babel plugin so files in your app, `components/`, and `lib/` are processed correctly.
 
-**For Expo Router (`app/_layout.tsx`):**
-```tsx
-import '@/lib/unistyles'; // <-- MUST be the first import
-import { Slot } from 'expo-router';
+Use app-scoped absolute paths in `autoProcessPaths`. Do not pass bare folder names like `"components"` because the Unistyles plugin matches with `filename.includes(...)` and can accidentally process files in `node_modules`.
 
-export default function RootLayout() {
-  return <Slot />;
+**`babel.config.js`:**
+```js
+const path = require("node:path");
+
+module.exports = function (api) {
+  api.cache(true);
+
+  return {
+    presets: ["babel-preset-expo"],
+    plugins: [
+      [
+        "react-native-unistyles/plugin",
+        {
+          root: "app",
+          autoProcessPaths: [
+            path.join(__dirname, "components"),
+            path.join(__dirname, "lib"),
+          ],
+        },
+      ],
+    ],
+  };
+};
+```
+
+If you already have a Babel config, merge the Unistyles plugin into it instead of replacing your existing plugins.
+If your app keeps Unistyles-authored files in other local directories, add those with `path.join(__dirname, "...")` too.
+
+### 5. Initialize Styling
+You must initialize Unistyles **before** Expo Router or your app modules import components that call `StyleSheet.create`.
+
+**For Expo Router:**
+
+Update your entry point so Unistyles initializes before Expo Router resolves your routes.
+
+**`package.json`:**
+```json
+{
+  "main": "index.ts"
 }
 ```
 
+**`index.ts`:**
+```tsx
+import "./lib/unistyles";
+import "expo-router/entry";
+```
+
+If you use Expo static web output, also add a root HTML file so Unistyles initializes during static rendering and emits its SSR CSS/hydration payload on the server render.
+
+**`app/+html.tsx`:**
+```tsx
+import { ScrollViewStyleReset } from "expo-router/html";
+import type { PropsWithChildren } from "react";
+import { useServerUnistyles } from "react-native-unistyles";
+
+import "../lib/unistyles";
+
+export default function Root({ children }: PropsWithChildren) {
+  const serverUnistyles = useServerUnistyles({ includeRNWStyles: false });
+
+  return (
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <ScrollViewStyleReset />
+        {serverUnistyles}
+      </head>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+Expo Router already handles the React Native Web stylesheet during export, so pass `includeRNWStyles: false` and let `useServerUnistyles` inject only the Unistyles SSR tags.
+
 **For Bare React Native (`App.tsx`):**
 ```tsx
-import '@/lib/unistyles'; // <-- MUST be the first import
-import React from 'react';
+import "./lib/unistyles";
+import React from "react";
 // ...
 ```
 
-### 5. Setup Overlay System
-Install the `portal` primitive. This is required for components that float above your content, like Dialogs, Popovers, and Tooltips.
+### 6. Setup Overlay System
+Install the `portal` primitive if you use components that float above your content, like Dialogs, Popovers, Tooltips, Drawers, and Sheets. Registry dependencies will install the portal files automatically for those components, but you still need to wire the root `PortalProvider` and `PortalHost` once.
 
 ```bash
 npx shadcn@latest add @shadniwind/portal
 ```
 
-### 6. Wrap Your App
+### 7. Wrap Your App
 Wrap your application root with `PortalProvider` and add a `PortalHost`.
 
 **For Expo Router (`app/_layout.tsx`):**
 ```tsx
-import '@/lib/unistyles';
-import { PortalProvider, PortalHost } from '@/lib/portal';
-import { Slot } from 'expo-router';
+import { Slot } from "expo-router";
+
+import { PortalHost, PortalProvider } from "@/lib/portal";
 
 export default function RootLayout() {
   return (
@@ -140,7 +213,7 @@ export default function RootLayout() {
 }
 ```
 
-### 7. You're Ready!
+### 8. You're Ready!
 You can now start adding components:
 
 ```bash

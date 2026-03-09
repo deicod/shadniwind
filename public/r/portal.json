@@ -3,6 +3,9 @@
   "type": "registry:lib",
   "title": "Portal",
   "description": "Portal provider and host primitives for overlays.",
+  "registryDependencies": [
+    "@shadniwind/tokens"
+  ],
   "files": [
     {
       "path": "lib/portal/PortalProvider.tsx",
@@ -11,7 +14,7 @@
     },
     {
       "path": "lib/portal/PortalHost.tsx",
-      "content": "import { Fragment, useSyncExternalStore } from \"react\"\nimport { StyleSheet, View, type ViewProps } from \"react-native\"\n\nimport { usePortalStore } from \"./PortalProvider\"\n\nexport type PortalHostProps = ViewProps & {\n  /**\n   * The unique name of this portal host.\n   * Portals with a matching `name` prop will render their content here.\n   * @default \"root\"\n   */\n  name?: string\n}\n\nconst DEFAULT_HOST_NAME = \"root\"\n\nconst styles = StyleSheet.create({\n  host: {\n    ...StyleSheet.absoluteFillObject,\n  },\n})\n\n/**\n * A container that renders content teleported from <Portal> components.\n *\n * It is typically placed at the root of the app (top-level) to ensure\n * content (like Modals, Toasts) renders above other UI.\n *\n * By default, it fills the entire screen using absolute positioning and\n * allows touch events to pass through (`pointerEvents=\"box-none\"`).\n */\nexport function PortalHost({\n  name = DEFAULT_HOST_NAME,\n  pointerEvents,\n  style,\n  children,\n  ...props\n}: PortalHostProps) {\n  const store = usePortalStore()\n\n  const nodes = useSyncExternalStore(\n    store.subscribe,\n    () => store.getSnapshot(name),\n    () => store.getSnapshot(name),\n  )\n\n  return (\n    <View\n      pointerEvents={pointerEvents ?? \"box-none\"}\n      style={[styles.host, style]}\n      {...props}\n    >\n      {children}\n      {nodes.map((entry) => (\n        <Fragment key={entry.key}>{entry.node}</Fragment>\n      ))}\n    </View>\n  )\n}\n",
+      "content": "import { Fragment, useSyncExternalStore } from \"react\"\nimport { View, type ViewProps } from \"react-native\"\nimport { StyleSheet } from \"react-native-unistyles\"\n\nimport { usePortalStore } from \"./PortalProvider\"\n\nexport type PortalHostProps = ViewProps & {\n  /**\n   * The unique name of this portal host.\n   * Portals with a matching `name` prop will render their content here.\n   * @default \"root\"\n   */\n  name?: string\n}\n\nconst DEFAULT_HOST_NAME = \"root\"\n\nconst styles = StyleSheet.create({\n  host: {\n    ...StyleSheet.absoluteFillObject,\n  },\n})\n\n/**\n * A container that renders content teleported from <Portal> components.\n *\n * It is typically placed at the root of the app (top-level) to ensure\n * content (like Modals, Toasts) renders above other UI.\n *\n * By default, it fills the entire screen using absolute positioning and\n * allows touch events to pass through (`pointerEvents=\"box-none\"`).\n */\nexport function PortalHost({\n  name = DEFAULT_HOST_NAME,\n  pointerEvents,\n  style,\n  children,\n  ...props\n}: PortalHostProps) {\n  const store = usePortalStore()\n\n  const nodes = useSyncExternalStore(\n    store.subscribe,\n    () => store.getSnapshot(name),\n    () => store.getSnapshot(name),\n  )\n\n  return (\n    <View\n      pointerEvents={pointerEvents ?? \"box-none\"}\n      style={[styles.host, style]}\n      {...props}\n    >\n      {children}\n      {nodes.map((entry) => (\n        <Fragment key={entry.key}>{entry.node}</Fragment>\n      ))}\n    </View>\n  )\n}\n",
       "type": "registry:lib"
     },
     {

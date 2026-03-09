@@ -1,5 +1,8 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.3.11/schema.json",
+  "files": {
+    "includes": ["**", "!apps/expo-app/dist"]
+  },
   "formatter": {
     "enabled": true,
     "indentStyle": "space",

@@ -1,5 +1,6 @@
 import { Fragment, useSyncExternalStore } from "react"
-import { StyleSheet, View, type ViewProps } from "react-native"
+import { View, type ViewProps } from "react-native"
+import { StyleSheet } from "react-native-unistyles"
 
 import { usePortalStore } from "./PortalProvider"
 

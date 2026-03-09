@@ -8,6 +8,8 @@ A window overlaid on either the primary window or another dialog window, renderi
 npx shadcn@latest add @shadniwind/dialog
 ```
 
+`@shadniwind/dialog` installs its portal and overlay primitives via registry dependencies, but you still need one root `PortalProvider` / `PortalHost` setup in your app shell for overlay components to render correctly.
+
 ## Usage
 
 ```tsx

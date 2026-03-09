@@ -4,11 +4,11 @@ import {
   Pressable,
   type PressableProps,
   type StyleProp,
-  StyleSheet,
   View,
   type ViewProps,
   type ViewStyle,
 } from "react-native"
+import { StyleSheet } from "react-native-unistyles"
 
 import { resolveDismissLayerState } from "./dismiss-layer-state.js"
 

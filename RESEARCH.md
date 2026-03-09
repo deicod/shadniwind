@@ -207,6 +207,8 @@ React Native resolves style arrays \`\` by allowing styleB to override propertie
 
 This section serves as the implementation guide for the core components, demonstrating how to handle the specific challenges of porting web concepts to native.
 
+> Historical note: the example snippets in this section were captured during early Unistyles v2 research and intentionally use deprecated `createStyleSheet` / `useStyles` APIs. Do not copy them into shadniwind. The repository standard is Unistyles v3 `StyleSheet.create(...)` with `styles.useVariants(...)`.
+
 ### **5.1 The Button Component**
 
 **Challenge:** Replicating the "hover" state on web and "press" state on mobile using a single API, while managing compound variants (e.g., ghost variant \+ hover state).  

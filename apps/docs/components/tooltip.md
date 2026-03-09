@@ -8,6 +8,8 @@ A popup that displays information related to an element when the element receive
 npx shadcn@latest add @shadniwind/tooltip
 ```
 
+`@shadniwind/tooltip` installs its portal and positioning primitives via registry dependencies, but you still need one root `PortalProvider` / `PortalHost` setup in your app shell for overlay components to render correctly.
+
 ## Usage
 
 ```tsx

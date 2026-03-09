@@ -3,6 +3,7 @@
   "type": "registry:lib",
   "title": "Portal",
   "description": "Portal provider and host primitives for overlays.",
+  "registryDependencies": ["tokens"],
   "files": [
     {
       "source": "primitives/portal/PortalProvider.tsx",
