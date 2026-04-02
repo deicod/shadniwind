@@ -2,12 +2,12 @@
 
 **shadniwind** is a collection of shadcn-style, source-distributed UI components specifically built for **React Native** and **React Native Web**. 
 
-Unlike traditional component libraries, shadniwind components are provided as source code that you own and can customize. It is built from the ground up to leverage the performance and flexibility of **react-native-unistyles v3**.
+Unlike traditional component libraries, shadniwind components are provided as source code that you own and can customize. It is built from the ground up to leverage the performance and flexibility of **react-native-unistyles v3.2+**.
 
 ## Why shadniwind?
 
 - **Source Distributed**: Just like shadcn/ui, you copy the components into your project. You have full control.
-- **Unistyles v3**: Leverages the latest Unistyles for high-performance styling, theming, and responsive design.
+- **Unistyles v3.2+**: Leverages the latest Unistyles for high-performance styling, theming, and responsive design.
 - **Native-First**: Optimized for React Native (iOS/Android) while maintaining excellent Web support.
 - **Nitro-Powered**: Uses `react-native-nitro-modules` for ultra-fast bridge communication.
 
@@ -33,16 +33,17 @@ To use shadniwind, your environment must meet these specifications:
 - **React Native 0.78+**: With the New Architecture enabled.
 - **Expo SDK 53+**: Using the dev client or prebuild flow. **Expo Go is not supported** due to native dependencies.
 - **Dependencies**: 
-  - `react-native-nitro-modules`
-  - `react-native-edge-to-edge`
-  - `react-native-unistyles v3`
+  - `react-native-unistyles >= 3.2.0`
+  - `react-native-nitro-modules >= 0.35.2`
+- **Optional dependency**:
+  - `react-native-edge-to-edge >= 1.8.1` (if your app relies on its plugin/runtime behavior)
 
 ## Getting Started
 
 Follow these steps to initialize a new project with shadniwind.
 
 ### 1. Create a Project
-Because shadniwind uses native dependencies (`react-native-nitro-modules`, `react-native-edge-to-edge`), you must use a **Development Build**. Expo Go is not supported.
+Because shadniwind uses native dependencies (`react-native-nitro-modules`), you must use a **Development Build**. Expo Go is not supported.
 
 Create a new Expo project:
 ```bash
@@ -92,7 +93,7 @@ Install the `tokens` package. This sets up the base theme (colors, spacing, typo
 ```bash
 npx shadcn@latest add @shadniwind/tokens
 ```
-*Note: This will install `react-native-unistyles` and create `lib/tokens.ts`, `lib/unistyles.ts`, and `lib/unistyles-types.d.ts`.*
+*Note: This will install `react-native-unistyles` and `react-native-nitro-modules`, then create `lib/tokens.ts`, `lib/unistyles.ts`, and `lib/unistyles-types.d.ts`.*
 
 ### 4. Add the Unistyles Babel Plugin
 shadniwind components use the Unistyles v3 authoring model (`StyleSheet.create((theme) => ...)`, variants, and runtime theme access). Add the Unistyles Babel plugin so files in your app, `components/`, and `lib/` are processed correctly.

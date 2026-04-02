@@ -4,7 +4,11 @@
   "title": "Sonner",
   "description": "An opinionated toast component for React Native.",
   "registryDependencies": ["tokens", "portal"],
-  "dependencies": ["lucide-react-native", "react-native-unistyles"],
+  "dependencies": [
+    "lucide-react-native",
+    "react-native-unistyles@^3.2.0",
+    "react-native-nitro-modules@^0.35.2"
+  ],
   "files": [
     {
       "source": "ui/sonner.tsx",

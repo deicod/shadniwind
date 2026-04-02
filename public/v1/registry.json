@@ -329,7 +329,8 @@
       "name": "input",
       "type": "registry:ui",
       "dependencies": [
-        "react-native-unistyles"
+        "react-native-unistyles@^3.2.0",
+        "react-native-nitro-modules@^0.35.2"
       ],
       "registryDependencies": [
         "@shadniwind/tokens"
@@ -350,7 +351,8 @@
       "title": "Input OTP",
       "description": "One-time password input with auto-complete, paste support, and separator patterns",
       "dependencies": [
-        "react-native-unistyles"
+        "react-native-unistyles@^3.2.0",
+        "react-native-nitro-modules@^0.35.2"
       ],
       "registryDependencies": [
         "@shadniwind/tokens",
@@ -603,7 +605,8 @@
       "description": "An opinionated toast component for React Native.",
       "dependencies": [
         "lucide-react-native",
-        "react-native-unistyles"
+        "react-native-unistyles@^3.2.0",
+        "react-native-nitro-modules@^0.35.2"
       ],
       "registryDependencies": [
         "@shadniwind/tokens",
@@ -695,7 +698,8 @@
       "title": "Tokens",
       "description": "Semantic tokens and Unistyles theme configuration.",
       "dependencies": [
-        "react-native-unistyles"
+        "react-native-unistyles@^3.2.0",
+        "react-native-nitro-modules@^0.35.2"
       ]
     },
     {

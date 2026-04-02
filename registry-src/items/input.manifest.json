@@ -1,7 +1,10 @@
 {
   "name": "input",
   "type": "registry:ui",
-  "dependencies": ["react-native-unistyles"],
+  "dependencies": [
+    "react-native-unistyles@^3.2.0",
+    "react-native-nitro-modules@^0.35.2"
+  ],
   "registryDependencies": ["tokens"],
   "files": [
     {

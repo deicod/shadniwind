@@ -5,7 +5,8 @@
   "description": "An opinionated toast component for React Native.",
   "dependencies": [
     "lucide-react-native",
-    "react-native-unistyles"
+    "react-native-unistyles@^3.2.0",
+    "react-native-nitro-modules@^0.35.2"
   ],
   "registryDependencies": [
     "@shadniwind/tokens",

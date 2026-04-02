@@ -4,7 +4,10 @@
   "title": "Input OTP",
   "description": "One-time password input with auto-complete, paste support, and separator patterns",
   "keywords": ["otp", "pin", "verification", "auth", "password", "input"],
-  "dependencies": ["react-native-unistyles"],
+  "dependencies": [
+    "react-native-unistyles@^3.2.0",
+    "react-native-nitro-modules@^0.35.2"
+  ],
   "registryDependencies": ["tokens", "roving-focus"],
   "files": [
     {
